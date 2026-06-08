@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慈濟慈善基金會｜淨零減碳承諾</title>
+<style>
+  :root {
+    --blue:   #003F7D;
+    --gold:   #C8A445;
+    --green:  #2A7A4B;
+    --mint:   #E8F5EE;
+    --sky:    #E8F0FA;
+    --red:    #C0392B;
+    --gray:   #4A5568;
+    --light:  #F7F9FC;
+    --white:  #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    background: #EEF2F8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 16px;
+  }
+
+  /* ── 主卡片 ── */
+  .card {
+    width: 1040px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,63,125,0.12);
+  }
+
+  /* ── 頂部 Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #002D5E 0%, #003F7D 55%, #005BAA 100%);
+    padding: 44px 56px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-deco {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.06);
+  }
+  .hero-deco-1 { width: 420px; height: 420px; right: -80px; top: -140px; }
+  .hero-deco-2 { width: 260px; height: 260px; right: 60px;  top: -40px;  }
+  .hero-deco-3 { width: 160px; height: 160px; right: 150px; top: 30px;   }
+
+  .hero-tag {
+    display: inline-block;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 10px;
+    max-width: 580px;
+  }
+  .hero-title em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* Hero 三數字徽章 */
+  .hero-stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .stat-pill {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 140px;
+  }
+  .stat-pill .num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .stat-pill .lbl {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.65);
+    display: block;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  /* ── 金色分隔線 ── */
+  .gold-bar { height: 5px; background: linear-gradient(90deg, var(--gold) 0%, #E8C870 50%, var(--gold) 100%); }
+
+  /* ── 路徑區塊 ── */
+  .pathway-section {
+    padding: 48px 56px 36px;
+    background: var(--light);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1A202C;
+    margin-bottom: 32px;
+  }
+
+  /* 路徑視覺（SVG + HTML 混合）*/
+  .pathway-wrap {
+    position: relative;
+    height: 260px;
+    margin-bottom: 8px;
+  }
+  .pathway-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 年份節點 */
+  .nodes {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: flex-end;
+    height: 100%;
+  }
+  .node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .node-circle {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--white);
+    z-index: 2;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .node-val {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1A202C;
+    white-space: nowrap;
+  }
+  .node-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray);
+  }
+  .node-sub {
+    font-size: 10px;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.4;
+    max-width: 90px;
+  }
+  .node-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge-green  { background: #D1FAE5; color: #065F46; }
+  .badge-gold   { background: #FEF3C7; color: #92400E; }
+  .badge-target { background: #FEE2E2; color: #991B1B; }
+
+  /* 說明列 */
+  .pathway-legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--gray);
+    justify-content: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot  { width: 12px; height: 4px; border-radius: 2px; }
+
+  /* ── 行動區塊 ── */
+  .actions-section {
+    padding: 40px 56px;
+    background: var(--white);
+  }
+
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .action-card {
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+    border: 1.5px solid transparent;
+    transition: transform 0.2s;
+  }
+  .action-card:hover { transform: translateY(-2px); }
+  .action-card.solar  { background: #FFFBEB; border-color: #FDE68A; }
+  .action-card.chiller{ background: #EFF6FF; border-color: #BFDBFE; }
+  .action-card.iso    { background: #F0FDF4; border-color: #A7F3D0; }
+  .action-card.ev     { background: #F5F3FF; border-color: #DDD6FE; }
+
+  .action-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .action-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #1A202C;
+    margin-bottom: 6px;
+  }
+  .action-co2 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  .action-co2.solar-c   { color: #D97706; }
+  .action-co2.chiller-c { color: #1D4ED8; }
+  .action-co2.iso-c     { color: var(--green); }
+  .action-co2.ev-c      { color: #6D28D9; }
+  .action-unit {
+    font-size: 9.5px;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+  .action-desc {
+    font-size: 10.5px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ── 承諾區塊 ── */
+  .promise-section {
+    background: linear-gradient(135deg, #002D5E, #003F7D);
+    padding: 36px 56px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .promise-left { flex: 1; }
+  .promise-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .promise-text {
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.8;
+    font-weight: 500;
+  }
+  .promise-text strong { color: var(--gold); }
+  .promise-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .promise-target {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+  }
+  .promise-big {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .promise-big-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+  }
+
+  /* ── 頁尾 ── */
+  .footer {
+    background: #F0F4FA;
+    border-top: 1px solid #D6E0EF;
+    padding: 14px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    color: #718096;
+  }
+  .footer strong { color: var(--blue); }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- ╔═══ HERO ═══╗ -->
+  <div class="hero">
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
+    <div class="hero-deco hero-deco-3"></div>
+
+    <div class="hero-tag">CLIMATE ACTION · 氣候行動</div>
+    <h1 class="hero-title">
+      我們承諾在<em> 2030 </em>年前<br>
+      大幅減少碳排放
+    </h1>
+    <p class="hero-sub">
+      慈濟慈善基金會採用科學基礎減碳方法，對 23 個會所的能源使用制定具體目標，
+      以具體行動呼應全球 1.5°C 氣候目標。
+    </p>
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <span class="num">25.2%</span>
+        <span class="lbl">2030 年前<br>Scope 1+2 目標降幅</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num">↓ 9.2%</span>
+        <span class="lbl">2025 年已完成<br>超前科學目標軌跡</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num">2027</span>
+        <span class="lbl">預計提前 3 年<br>達成 2030 減碳目標</span>
+      </div>
+    </div>
+  </div>
+  <div class="gold-bar"></div>
+
+  <!-- ╔═══ 路徑圖 ═══╗ -->
+  <div class="pathway-section">
+    <div class="section-label">CARBON PATHWAY · 減碳路徑</div>
+    <div class="section-title">Scope 1+2 直接碳排放走勢（公噸 CO₂e）</div>
+
+    <!-- SVG 路徑曲線 -->
+    <div class="pathway-wrap">
+      <svg class="pathway-svg" viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#4A5568"/>
+            <stop offset="25%"  stop-color="#003F7D"/>
+            <stop offset="50%"  stop-color="#3B82F6"/>
+            <stop offset="75%"  stop-color="#2A7A4B"/>
+          </linearGradient>
+          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#003F7D" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#003F7D" stop-opacity="0.01"/>
+          </linearGradient>
+          <linearGradient id="targetGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#C0392B" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#C0392B" stop-opacity="0.05"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 目標線 6863 → y = (1 - 6863/9500) * 160 + 20 = 44.4 -->
+        <!-- Scale: max=9500, range 160px, offset 20px top -->
+        <!-- y = 180 - (val/9500)*160 -->
+        <!-- 9175 → 22.7 -->
+        <!-- 8327 → 37.1 -->
+        <!-- 7931 → 44.5 -->
+        <!-- 6031 → 78.6 -->
+        <!-- 6863 → 64.1 -->
+
+        <!-- 目標 zone (shaded area above target line) -->
+        <rect x="0" y="64" width="1000" height="136" fill="url(#targetGrad)" rx="0"/>
+
+        <!-- 目標虛線 -->
+        <line x1="0" y1="64" x2="1000" y2="64"
+              stroke="#C0392B" stroke-width="1.8" stroke-dasharray="8 5"/>
+
+        <!-- 面積填充 -->
+        <path d="M 50,23 C 150,28 200,35 300,37 C 380,39 430,43 500,44.5 C 580,46 640,70 750,79 L 750,200 L 50,200 Z"
+              fill="url(#areaGrad)"/>
+
+        <!-- 主路徑曲線 -->
+        <path d="M 50,23 C 150,28 200,35 300,37 C 380,39 430,43 500,44.5 C 580,46 640,70 750,79"
+              fill="none" stroke="url(#pathGrad)" stroke-width="3.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 2030 目標節點 (虛線延伸) -->
+        <path d="M 750,79 L 920,64"
+              fill="none" stroke="#2A7A4B" stroke-width="2.5"
+              stroke-dasharray="6 4" opacity="0.6"/>
+
+        <!-- 節點圓點 -->
+        <!-- 2024: x=50, y=23 -->
+        <circle cx="50"  cy="23" r="8" fill="#4A5568" stroke="white" stroke-width="2"/>
+        <!-- 2025: x=300, y=37 -->
+        <circle cx="300" cy="37" r="9" fill="#003F7D" stroke="white" stroke-width="2"/>
+        <!-- 2026: x=500, y=44.5 -->
+        <circle cx="500" cy="44.5" r="8" fill="#3B82F6" stroke="white" stroke-width="2"/>
+        <!-- 2027: x=750, y=79 -->
+        <circle cx="750" cy="79"   r="11" fill="#2A7A4B" stroke="white" stroke-width="3"/>
+        <!-- star highlight -->
+        <circle cx="750" cy="79"   r="17" fill="#2A7A4B" fill-opacity="0.15" stroke="none"/>
+        <!-- 2030 target: x=920, y=64 -->
+        <circle cx="920" cy="64"   r="8" fill="none" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 3"/>
+
+        <!-- 目標線標籤 -->
+        <text x="8" y="59" fill="#C0392B" font-size="9" font-weight="700" font-family="'Microsoft JhengHei',sans-serif">2030 目標</text>
+        <text x="8" y="71" fill="#C0392B" font-size="9" font-family="'Microsoft JhengHei',sans-serif">6,863 tCO₂e</text>
+
+        <!-- 超額緩衝標注 -->
+        <line x1="750" y1="64" x2="750" y2="79" stroke="#2A7A4B" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <rect x="758" y="65" width="68" height="18" rx="4" fill="#2A7A4B" fill-opacity="0.9"/>
+        <text x="792" y="77" fill="white" font-size="9" font-weight="700" font-family="'Microsoft JhengHei',sans-serif" text-anchor="middle">超額 832 噸</text>
+      </svg>
+
+      <!-- 節點標籤（絕對定位） -->
+      <div class="nodes">
+        <!-- 2024 -->
+        <div class="node" style="padding-bottom:208px;">
+          <span class="node-val">9,175</span>
+          <span class="node-year">2024</span>
+          <span class="node-sub">基準年<br>（SGS 認證）</span>
+        </div>
+        <!-- 2025 -->
+        <div class="node" style="padding-bottom:186px;">
+          <span class="node-val">8,327</span>
+          <span class="node-year">2025</span>
+          <span class="node-badge badge-green">↓ 9.2% ✅</span>
+        </div>
+        <!-- 2026 -->
+        <div class="node" style="padding-bottom:170px;">
+          <span class="node-val">7,931</span>
+          <span class="node-year">2026</span>
+          <span class="node-sub">預估</span>
+        </div>
+        <!-- 2027 -->
+        <div class="node" style="padding-bottom:118px;">
+          <span class="node-val" style="color:#2A7A4B; font-size:18px;">6,031</span>
+          <span class="node-year" style="color:#2A7A4B; font-weight:900;">2027 🎉</span>
+          <span class="node-badge badge-gold">提前 3 年達標</span>
+        </div>
+        <!-- 2030 -->
+        <div class="node" style="padding-bottom:138px;">
+          <span class="node-val" style="color:#C0392B;">6,863</span>
+          <span class="node-year">2030</span>
+          <span class="node-badge badge-target">科學目標</span>
+        </div>
+      </div>
+    </div><!-- /.pathway-wrap -->
+
+    <div class="pathway-legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#4A5568;"></div>實際數據
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#3B82F6; opacity:.7;"></div>預估值
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#2A7A4B;"></div>提前達標
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#C0392B; height:2px; border-top: 2px dashed #C0392B; background:none;"></div>2030 科學目標
+      </div>
+      <div class="legend-item" style="font-style:italic;">
+        * 2026-2027 為工程估算
+      </div>
+    </div>
+  </div><!-- /.pathway-section -->
+
+  <!-- ╔═══ 行動組合 ═══╗ -->
+  <div class="actions-section">
+    <div class="section-label">KEY ACTIONS · 減碳行動</div>
+    <div class="section-title">四大減碳行動，科技與制度雙軌並進</div>
+
+    <div class="actions-grid">
+
+      <!-- 太陽能 -->
+      <div class="action-card solar">
+        <span class="action-icon">☀️</span>
+        <div class="action-title">太陽能綠電自用</div>
+        <div class="action-co2 solar-c">2,748</div>
+        <div class="action-unit">公噸 CO₂e / 年（2027 全到位）</div>
+        <div class="action-desc">5,080 kWp 屋頂太陽能<br>41 個場域，相當於種植<br>約 23 萬棵樹的固碳效益</div>
+      </div>
+
+      <!-- 節能冰機 -->
+      <div class="action-card chiller">
+        <span class="action-icon">❄️</span>
+        <div class="action-title">高效節能冰水系統</div>
+        <div class="action-co2 chiller-c">396</div>
+        <div class="action-unit">公噸 CO₂e / 年（三所已啟用）</div>
+        <div class="action-desc">花蓮・新店・桃園<br>汰換老舊空調主機<br>節能率 55–72%</div>
+      </div>
+
+      <!-- ISO 50001 -->
+      <div class="action-card iso">
+        <span class="action-icon">🌱</span>
+        <div class="action-title">ISO 能源管理系統</div>
+        <div class="action-co2 iso-c">2.7×</div>
+        <div class="action-unit">認證會所節能效益是一般會所的倍數</div>
+        <div class="action-desc">5 所通過 BSI 國際認證<br>2025 年平均降幅 13.1%<br>持續推展至全部 23 所</div>
+      </div>
+
+      <!-- 公務車 -->
+      <div class="action-card ev">
+        <span class="action-icon">🚗</span>
+        <div class="action-title">公務車電動化</div>
+        <div class="action-co2 ev-c">45</div>
+        <div class="action-unit">公噸 CO₂e / 年（全電動後）</div>
+        <div class="action-desc">現有 19 台公務車<br>已有 2 台電動、4 台油電<br>逐步全面汰換</div>
+      </div>
+
+    </div>
+  </div><!-- /.actions-section -->
+
+  <!-- ╔═══ 承諾 ═══╗ -->
+  <div class="promise-section">
+    <div class="promise-left">
+      <div class="promise-label">OUR COMMITMENT · 我們的承諾</div>
+      <p class="promise-text">
+        慈濟以<strong>愛護大地</strong>為信念，將氣候行動融入日常運作。<br>
+        我們承諾 <strong>2030 年前減少 25.2% 碳排放</strong>，<br>
+        並持續朝 <strong>2050 年 Scope 1+2+3 全面淨零</strong> 邁進。
+      </p>
+    </div>
+    <div class="promise-right">
+      <div class="promise-target">2030 Scope 1+2 排放目標</div>
+      <div class="promise-big">6,863</div>
+      <div class="promise-big-sub">公噸 CO₂e　（預估 2027 提前達成）</div>
+    </div>
+  </div>
+
+  <!-- ╔═══ 頁尾 ═══╗ -->
+  <div class="footer">
+    <div>
+      <strong>財團法人中華民國佛教慈濟慈善事業基金會</strong>　｜　氣候行動報告 2026　｜　範疇：慈善基金會 23 個會所
+    </div>
+    <div>
+      資料來源：SGS 第三方碳盤查認證　｜　方法論：SBTi 1.5°C 科學基礎目標　｜　排放係數：台電 0.494 kgCO₂/kWh
+    </div>
+  </div>
+
+</div><!-- /.card -->
+</body>
+</html>
