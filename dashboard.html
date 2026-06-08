@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慈濟 SBTi 淨零減碳｜執行進度儀表板 2026</title>
+<style>
+  :root {
+    --blue:    #003F7D;
+    --blue2:   #1A5FAC;
+    --green:   #1A7A44;
+    --green-bg:#E6F7EE;
+    --green-bd:#7EC8A0;
+    --yellow:  #B45309;
+    --yellow-bg:#FFFBEB;
+    --yellow-bd:#FBD38D;
+    --red:     #991B1B;
+    --red-bg:  #FEF2F2;
+    --red-bd:  #FECACA;
+    --white-bd:#CBD5E1;
+    --white-bg:#F8FAFC;
+    --gray:    #475569;
+    --gray100: #F1F5F9;
+    --gray200: #E2E8F0;
+    --dark:    #0F172A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+    font-size: 14px; line-height: 1.7; color: var(--dark);
+    background: #EEF2F8; min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, var(--blue) 0%, #005BB5 100%);
+    color: #fff; padding: 32px 48px 28px;
+  }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .header-tag { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.65); margin-bottom: 6px; }
+  .header-title { font-size: 24px; font-weight: 900; line-height: 1.3; }
+  .header-title em { color: #FCD34D; font-style: normal; }
+  .header-sub { font-size: 12px; color: rgba(255,255,255,.75); margin-top: 4px; }
+  .header-date { font-size: 11px; color: rgba(255,255,255,.6); white-space: nowrap; padding-top: 4px; }
+  .header-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .hlink {
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px; padding: 5px 14px; font-size: 11px; color: #fff;
+    transition: background .2s;
+  }
+  .hlink:hover { background: rgba(255,255,255,.25); }
+  .gold-bar { height: 3px; background: linear-gradient(90deg,#F59E0B,#FCD34D,#F59E0B); }
+
+  /* ─── KPI STRIP ─── */
+  .kpi-strip {
+    background: #fff; border-bottom: 1px solid var(--gray200);
+    display: flex; gap: 0; flex-wrap: wrap;
+  }
+  .kpi-cell {
+    flex: 1; min-width: 140px; padding: 18px 20px; text-align: center;
+    border-right: 1px solid var(--gray200);
+  }
+  .kpi-cell:last-child { border-right: none; }
+  .kpi-n { font-size: 26px; font-weight: 900; line-height: 1; }
+  .kpi-n.blue   { color: var(--blue); }
+  .kpi-n.green  { color: var(--green); }
+  .kpi-n.yellow { color: var(--yellow); }
+  .kpi-n.red    { color: var(--red); }
+  .kpi-l { font-size: 10.5px; color: var(--gray); margin-top: 4px; }
+
+  /* ─── LEGEND ─── */
+  .legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    padding: 12px 32px; background: var(--gray100);
+    border-bottom: 1px solid var(--gray200); font-size: 11.5px;
+  }
+  .leg { display: flex; align-items: center; gap: 6px; }
+  .leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ─── MAIN LAYOUT ─── */
+  .main { padding: 24px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:860px){ .main { grid-template-columns: 1fr; padding: 16px; } }
+
+  /* ─── SECTION CARD ─── */
+  .card {
+    border-radius: 12px; border: 1.5px solid;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .card.green  { border-color: var(--green-bd); }
+  .card.yellow { border-color: var(--yellow-bd); }
+  .card.red    { border-color: var(--red-bd); }
+  .card.white  { border-color: var(--white-bd); }
+
+  .card-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px; font-weight: 800; font-size: 14px;
+  }
+  .card.green  .card-head { background: var(--green-bg);  color: var(--green); }
+  .card.yellow .card-head { background: var(--yellow-bg); color: var(--yellow); }
+  .card.red    .card-head { background: var(--red-bg);    color: var(--red); }
+  .card.white  .card-head { background: var(--white-bg);  color: var(--gray); }
+
+  .card-head-icon { font-size: 18px; }
+  .card-head-count {
+    margin-left: auto; font-size: 11px; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px;
+  }
+  .card.green  .card-head-count { background: var(--green);  color: #fff; }
+  .card.yellow .card-head-count { background: var(--yellow); color: #fff; }
+  .card.red    .card-head-count { background: var(--red);    color: #fff; }
+  .card.white  .card-head-count { background: var(--gray);   color: #fff; }
+
+  .card-body { padding: 4px 0 8px; background: #fff; flex: 1; }
+
+  /* ─── ITEM ROW ─── */
+  .item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 18px; border-bottom: 1px solid var(--gray100);
+    transition: background .15s;
+  }
+  .item:last-child { border-bottom: none; }
+  .item:hover { background: var(--gray100); }
+  .item-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+  .item-main { flex: 1; min-width: 0; }
+  .item-title { font-weight: 700; font-size: 13px; color: var(--dark); }
+  .item-detail { font-size: 11.5px; color: var(--gray); margin-top: 1px; line-height: 1.6; }
+  .item-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
+  .badge {
+    font-size: 10px; font-weight: 700; padding: 1px 7px;
+    border-radius: 20px; white-space: nowrap;
+  }
+  .badge-green  { background: #D1FAE5; color: #065F46; }
+  .badge-blue   { background: #DBEAFE; color: #1E40AF; }
+  .badge-red    { background: #FEE2E2; color: #991B1B; }
+  .badge-orange { background: #FEF3C7; color: #92400E; }
+  .badge-gray   { background: var(--gray200); color: #374151; }
+  .badge-purple { background: #EDE9FE; color: #5B21B6; }
+
+  /* ─── PROGRESS BAR ─── */
+  .prog-wrap { margin-top: 5px; }
+  .prog-bg { height: 5px; background: var(--gray200); border-radius: 3px; overflow: hidden; }
+  .prog-fill { height: 100%; border-radius: 3px; }
+  .prog-green  .prog-fill { background: var(--green); }
+  .prog-yellow .prog-fill { background: #F59E0B; }
+  .prog-red    .prog-fill { background: var(--red); }
+  .prog-label { font-size: 10px; color: var(--gray); margin-top: 2px; }
+
+  /* ─── FULL-WIDTH CARD ─── */
+  .full { grid-column: 1 / -1; }
+
+  /* ─── TIMELINE MINI ─── */
+  .tl-mini { padding: 8px 18px 12px; background: #fff; }
+  .tl-row { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--gray100); }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-yr { font-size: 11px; font-weight: 800; width: 56px; flex-shrink: 0; padding-top: 1px; }
+  .tl-yr.done   { color: var(--green); }
+  .tl-yr.urgent { color: var(--red); }
+  .tl-yr.high   { color: #D97706; }
+  .tl-yr.mid    { color: var(--blue2); }
+  .tl-yr.low    { color: var(--gray); }
+  .tl-items { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tl-chip {
+    font-size: 11px; padding: 2px 10px; border-radius: 20px; border: 1px solid;
+  }
+  .tl-chip.done   { background: #D1FAE5; border-color: #6EE7B7; color: #065F46; }
+  .tl-chip.urgent { background: #FEE2E2; border-color: #FECACA; color: #991B1B; }
+  .tl-chip.high   { background: #FEF3C7; border-color: #FDE68A; color: #92400E; }
+  .tl-chip.mid    { background: #DBEAFE; border-color: #BFDBFE; color: #1E40AF; }
+  .tl-chip.low    { background: var(--gray100); border-color: var(--gray200); color: var(--gray); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--blue); color: rgba(255,255,255,.65);
+    padding: 18px 32px; font-size: 11px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .footer a { color: #FCD34D; }
+  .footer strong { color: rgba(255,255,255,.9); }
+</style>
+</head>
+<body>
+
+<!-- ╔══ HEADER ══╗ -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-tag">SBTI NET-ZERO DASHBOARD · 淨零減碳執行進度</div>
+      <h1 class="header-title">慈濟慈善基金會<br><em>SBTi 淨零減碳路徑</em>執行儀表板</h1>
+      <div class="header-sub">23 會所 · 基準年 2024 · 1.5°C 科學目標 · 2030 年達標</div>
+    </div>
+    <div class="header-date">更新：2026-06-09</div>
+  </div>
+  <div class="header-links">
+    <a class="hlink" href="index.html">📊 董事會報告</a>
+    <a class="hlink" href="public-pathway.html">🌱 公眾溝通版</a>
+    <a class="hlink" href="chiller-priority.html">🧊 冰機汰換計畫</a>
+  </div>
+</div>
+<div class="gold-bar"></div>
+
+<!-- ╔══ KPI STRIP ══╗ -->
+<div class="kpi-strip">
+  <div class="kpi-cell">
+    <div class="kpi-n blue">9,175</div>
+    <div class="kpi-l">基準年 Scope 1+2<br>（tCO₂e，2024）</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-n green">8,327</div>
+    <div class="kpi-l">2025 實際 Scope 1+2<br>（-9.2%，超前達標）</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-n blue">6,863</div>
+    <div class="kpi-l">2030 年 1.5°C 目標<br>（tCO₂e）</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-n green">≈ 6,031</div>
+    <div class="kpi-l">2027 預估值<br>（提前超額達標）</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-n green">+832</div>
+    <div class="kpi-l">2027 超額緩衝量<br>（tCO₂e，1.5°C之上）</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-n yellow">6月底</div>
+    <div class="kpi-l">花蓮冰機實際數據<br>可得時間</div>
+  </div>
+</div>
+
+<!-- ╔══ LEGEND ══╗ -->
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:#1A7A44;"></div> 已完成</div>
+  <div class="leg"><div class="leg-dot" style="background:#F59E0B;"></div> 待執行重要事項</div>
+  <div class="leg"><div class="leg-dot" style="background:#94A3B8;"></div> 待補充資料</div>
+  <div class="leg"><div class="leg-dot" style="background:#DC2626;"></div> 需能源管理委員會決議</div>
+</div>
+
+<!-- ╔══ MAIN GRID ══╗ -->
+<div class="main">
+
+  <!-- ── 已完成（綠）── -->
+  <div class="card green">
+    <div class="card-head">
+      <span class="card-head-icon">✅</span>
+      已完成項目
+      <span class="card-head-count">10 項</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <span class="item-icon">📋</span>
+        <div class="item-main">
+          <div class="item-title">Step 1：基準年確立</div>
+          <div class="item-detail">2024 年基準，SGS 第三方認證。總排放 12,929 tCO₂e；Scope 1+2 = 9,175 tCO₂e</div>
+          <div class="item-badges"><span class="badge badge-green">SGS 認證</span><span class="badge badge-blue">2024 固定</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🎯</span>
+        <div class="item-main">
+          <div class="item-title">Step 2：SBTi 科學目標軌跡</div>
+          <div class="item-detail">1.5°C 路徑，4.2%/年線性削減。2030 目標：6,863 tCO₂e。2025 實際已超前 462 tCO₂e</div>
+          <div class="item-badges"><span class="badge badge-green">1.5°C 路徑</span><span class="badge badge-blue">2025 超前達標</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">📊</span>
+        <div class="item-main">
+          <div class="item-title">Step 4：缺口分析（v2，2026-06-08）</div>
+          <div class="item-detail">太陽能 + 三所冰機組合，2027 年預計提前達成 2030 目標，超額 832 tCO₂e</div>
+          <div class="item-badges"><span class="badge badge-green">2027 提前達標</span><span class="badge badge-orange">v3 等花蓮實測</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">❄️</span>
+        <div class="item-main">
+          <div class="item-title">花蓮靜思堂磁浮冰機（500RT R1234ze）</div>
+          <div class="item-detail">GWP=1 低暖化冷媒，COP≧6.1。Scope1 逸散減量 71.4 tCO₂e＋Scope2 節電 243 tCO₂e</div>
+          <div class="item-badges"><span class="badge badge-green">2026/05 啟用</span><span class="badge badge-blue">合計 314 tCO₂e/年</span></div>
+          <div class="prog-wrap prog-green"><div class="prog-bg"><div class="prog-fill" style="width:100%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">❄️</span>
+        <div class="item-main">
+          <div class="item-title">桃園分會冰機汰換（計畫 113-02）</div>
+          <div class="item-detail">160RT KLFW R-134a 主機，節能 55.5%。Scope1 冷媒 50.8 + Scope2 節電 39.4 tCO₂e</div>
+          <div class="item-badges"><span class="badge badge-green">2026/04 啟用</span><span class="badge badge-blue">合計 90 tCO₂e/年</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🔧</span>
+        <div class="item-main">
+          <div class="item-title">新店靜思堂泵浦變頻（計畫 113-03）</div>
+          <div class="item-detail">區域水泵＋冷卻水泵加裝變頻器，節能 72.9%。投資 6 萬，回收 0.3 年</div>
+          <div class="item-badges"><span class="badge badge-green">2026/04 啟用</span><span class="badge badge-blue">25.4 tCO₂e/年</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🔧</span>
+        <div class="item-main">
+          <div class="item-title">新店靜思堂管路控制優化（計畫 113-01）</div>
+          <div class="item-detail">管路＋控制優化（非換冰機）。實測 49 天比對，保守情境 5.49 tCO₂e/年</div>
+          <div class="item-badges"><span class="badge badge-green">2026/04 啟用</span><span class="badge badge-gray">原估 88.6 已作廢</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🏆</span>
+        <div class="item-main">
+          <div class="item-title">BSI ISO 50001 能源管理系統（5 所）</div>
+          <div class="item-detail">花蓮↓17.5%、新店↓14.8%、桃園↓12.4%、台中↓6%、高雄↓4%。5所平均降幅 13.1%（非認證所僅 4.8%）</div>
+          <div class="item-badges"><span class="badge badge-green">BSI 認證</span><span class="badge badge-blue">2025 節減 642 tCO₂e</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🌞</span>
+        <div class="item-main">
+          <div class="item-title">太陽能綠電（5,080 kWp，40 案場）</div>
+          <div class="item-detail">556 萬度/年，2027 年 41 處全到位。年減碳 2,748 tCO₂e（0.494 kg CO₂/度）</div>
+          <div class="item-badges"><span class="badge badge-orange">2027 全到位</span><span class="badge badge-blue">2,748 tCO₂e/年</span></div>
+          <div class="prog-wrap prog-green"><div class="prog-bg"><div class="prog-fill" style="width:80%"></div></div><div class="prog-label">40/41 案場（約 80% 到位）</div></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">📄</span>
+        <div class="item-main">
+          <div class="item-title">董事會報告 + 能委會提案文件</div>
+          <div class="item-detail">SBTi 減碳路徑報告已上線。冰機汰換優先排序提案文件已備妥供委員會討論</div>
+          <div class="item-badges"><span class="badge badge-green">GitHub Pages 已發布</span><span class="badge badge-green">提案備妥</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /card green -->
+
+  <!-- ── 需能委會決議（紅）── -->
+  <div class="card red">
+    <div class="card-head">
+      <span class="card-head-icon">🔴</span>
+      需能源管理委員會決議
+      <span class="card-head-count">5 項</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <span class="item-icon">⚖️</span>
+        <div class="item-main">
+          <div class="item-title">決議一：確認全台冰機汰換排序原則</div>
+          <div class="item-detail">往復式優先 → R-22≥20 年 → 大容量優先 → 合併施工原則。是否同意此評分邏輯？</div>
+          <div class="item-badges"><span class="badge badge-red">待決議</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🚨</span>
+        <div class="item-main">
+          <div class="item-title">決議二：核定 2027 年汰換項目</div>
+          <div class="item-detail">① 民權聯絡處（300RT 往復式，1992年，<strong>34年機齡</strong>，零件斷料）<br>② 花蓮同心圓餐廳（500RT R-22，27年，可與靜思堂舊機合併施工）<br>③ 花蓮靜思堂舊機（1,550RT McQuay）退役時程確認</div>
+          <div class="item-badges"><span class="badge badge-red">最緊急</span><span class="badge badge-orange">預算需授權</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">⚠️</span>
+        <div class="item-main">
+          <div class="item-title">決議三：核定 2027–2028 年汰換項目</div>
+          <div class="item-detail">三重志業園區（700RT，R-22，19年）、臺南分會（440RT，R-22，24年）、高雄分會（740RT，R-134a，19年）、彰化分會 CH-2（100RT，R-22，26年）、萬華聯絡處（170RT，R-22，26年）</div>
+          <div class="item-badges"><span class="badge badge-red">緊急</span><span class="badge badge-blue">預估減碳 ~1,100 tCO₂e/年</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">📋</span>
+        <div class="item-main">
+          <div class="item-title">決議四：指派資料補件負責人</div>
+          <div class="item-detail">屏東分會、內湖聯絡處冰機資料；東區聯絡處啟用年份；桃園備用機（CHR-1/3）冷媒回收時程——各所請指定負責人與繳件期限</div>
+          <div class="item-badges"><span class="badge badge-red">待指派</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🏢</span>
+        <div class="item-main">
+          <div class="item-title">決議五：新店靜思堂 R-22 冰機汰換方向</div>
+          <div class="item-detail">500RT R-22（三台，機齡10年），最大未解鎖 Scope 1 機會約 90.5 tCO₂e/年。2030 年 R-22 禁止進口，建議 2029–30 排入計畫，是否先行列案研議？</div>
+          <div class="item-badges"><span class="badge badge-orange">最大Scope1機會</span><span class="badge badge-gray">2029–30年度</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /card red -->
+
+  <!-- ── 待執行重要事項（黃）── -->
+  <div class="card yellow">
+    <div class="card-head">
+      <span class="card-head-icon">🟡</span>
+      待執行重要事項
+      <span class="card-head-count">5 項</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <span class="item-icon">🌡️</span>
+        <div class="item-main">
+          <div class="item-title">花蓮冰機實際用電數據驗證</div>
+          <div class="item-detail">磁浮冰機 2026/05 啟用，需取得運轉滿 1 個月實際月用電量，驗證預估值 491,250 kWh（243 tCO₂e），更新董事會報告 v3</div>
+          <div class="item-badges"><span class="badge badge-orange">等待中</span><span class="badge badge-blue">2026 年 6 月底</span></div>
+          <div class="prog-wrap prog-yellow"><div class="prog-bg"><div class="prog-fill" style="width:60%"></div></div><div class="prog-label">設備啟用 ✅，等待數據（6月底）</div></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">📈</span>
+        <div class="item-main">
+          <div class="item-title">三重志業園區異常上升追蹤</div>
+          <div class="item-detail">2025 年 Scope 1+2 逆勢上升 +2.7%，其他會所多下降。需查明原因（新增設備？冷媒洩漏？用電異常？），應在下次 SGS 盤查前完成</div>
+          <div class="item-badges"><span class="badge badge-red">異常</span><span class="badge badge-gray">現場調查中</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">💡</span>
+        <div class="item-main">
+          <div class="item-title">Step 3 量化收尾：LED 汰換節電量</div>
+          <div class="item-detail">各會所 LED 換裝數量與節電量尚未彙整，不影響 2030 達標但可強化報告完整性（屬超額行動）</div>
+          <div class="item-badges"><span class="badge badge-orange">待量化</span><span class="badge badge-gray">不影響達標</span></div>
+          <div class="prog-wrap prog-yellow"><div class="prog-bg"><div class="prog-fill" style="width:20%"></div></div><div class="prog-label">資料蒐集中</div></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🚗</span>
+        <div class="item-main">
+          <div class="item-title">Step 3 量化收尾：公務車實際油耗確認</div>
+          <div class="item-detail">全車隊 19 台（13 燃油+4 油電+2 電動）電動化估算 ~41.1 tCO₂e/年，需待 SGS「移動燃燒源」實際油耗記錄確認，估算假設 20,000 km/年/台</div>
+          <div class="item-badges"><span class="badge badge-orange">估算中</span><span class="badge badge-blue">~41.1 tCO₂e/年</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">📑</span>
+        <div class="item-main">
+          <div class="item-title">董事會報告更新 v3（等花蓮實測後）</div>
+          <div class="item-detail">花蓮 6 月底數據到位後，更新 index.html 中的預估值 → 實測值，並更新 2026 年 Scope 1+2 推估值</div>
+          <div class="item-badges"><span class="badge badge-orange">等待觸發</span><span class="badge badge-blue">6 月底啟動</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /card yellow -->
+
+  <!-- ── 待補充資料（白）── -->
+  <div class="card white">
+    <div class="card-head">
+      <span class="card-head-icon">📂</span>
+      待補充資料
+      <span class="card-head-count">8 項</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <span class="item-icon">🏢</span>
+        <div class="item-main">
+          <div class="item-title">屏東分會冰機基本資料</div>
+          <div class="item-detail">需提供：廠牌、型號、冷媒種類、冷凍噸數、啟用年份。目前排序表空缺，無法列入汰換計畫</div>
+          <div class="item-badges"><span class="badge badge-gray">缺資料</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🏢</span>
+        <div class="item-main">
+          <div class="item-title">內湖聯絡處冰機基本資料</div>
+          <div class="item-detail">同上，廠牌、型號、冷媒、噸數、啟用年份均缺</div>
+          <div class="item-badges"><span class="badge badge-gray">缺資料</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">📅</span>
+        <div class="item-main">
+          <div class="item-title">東區聯絡處冰機啟用年份</div>
+          <div class="item-detail">東區聯絡處 CH-1/2（320RT R-134a）設備存在，但啟用年份不詳，無法計算機齡、排序優先度</div>
+          <div class="item-badges"><span class="badge badge-gray">待確認</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">♻️</span>
+        <div class="item-main">
+          <div class="item-title">桃園分會備用機冷媒回收時程</div>
+          <div class="item-detail">CHR-1（160RT R-22）靜置備用、CHR-3（60RT R-410a）靜置備用，逸散量每年仍計入 Scope 1，需確認冷媒回收退場時間</div>
+          <div class="item-badges"><span class="badge badge-orange">Scope1 仍計入</span><span class="badge badge-gray">待排程</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🔍</span>
+        <div class="item-main">
+          <div class="item-title">SGS 逸散性排放計算假設確認</div>
+          <div class="item-detail">各設施冷媒種類與洩漏率假設（目前用工程估算：運行 10%、備用 2%），需 SGS 2027 年初盤查正式確認，才能更新 Scope 1 精確數字</div>
+          <div class="item-badges"><span class="badge badge-gray">2027 年初可得</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">💡</span>
+        <div class="item-main">
+          <div class="item-title">LED 汰換各會所節電量明細</div>
+          <div class="item-detail">已換裝 LED 數量、功率差、使用時數，各分會/聯絡處需彙整提供。目前 Step 3 尚無此項量化數字</div>
+          <div class="item-badges"><span class="badge badge-gray">待蒐集</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">❄️</span>
+        <div class="item-main">
+          <div class="item-title">AI 空調系統節電量</div>
+          <div class="item-detail">導入 AI 空調控制的會所節電實測數據尚未彙整，建議優先蒐集已導入的會所 2024–2025 用電對比</div>
+          <div class="item-badges"><span class="badge badge-gray">待蒐集</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-icon">🚗</span>
+        <div class="item-main">
+          <div class="item-title">公務車 SGS 移動燃燒源實際油耗記錄</div>
+          <div class="item-detail">目前電動化減碳以 20,000 km/年估算（~41.1 tCO₂e），SGS 已有 2024 年移動源實際值（64.8 tCO₂e），需比對車輛清單與實際油耗數據</div>
+          <div class="item-badges"><span class="badge badge-gray">估算用，待SGS確認</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /card white -->
+
+  <!-- ── 分年度汰換路線圖（全寬）── -->
+  <div class="card green full">
+    <div class="card-head">
+      <span class="card-head-icon">🗓️</span>
+      冰水主機汰換路線圖（2026–2031）
+      <span class="card-head-count">22 所分六階段</span>
+    </div>
+    <div class="tl-mini">
+      <div class="tl-row">
+        <span class="tl-yr done">2026 ✅</span>
+        <div class="tl-items">
+          <span class="tl-chip done">✅ 花蓮靜思堂 500RT R1234ze 磁浮（314 tCO₂e/年）</span>
+          <span class="tl-chip done">✅ 桃園分會 160RT KLFW R-134a（90 tCO₂e/年）</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr urgent">2027 🚨</span>
+        <div class="tl-items">
+          <span class="tl-chip urgent">⚠️ 民權聯絡處 300RT R-22 往復式（34年！）</span>
+          <span class="tl-chip urgent">⚠️ 花蓮同心圓餐廳 500RT R-22（27年）</span>
+          <span class="tl-chip high">🔄 花蓮靜思堂舊機 1,550RT 退役確認</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr high">2027–28 ⚠️</span>
+        <div class="tl-items">
+          <span class="tl-chip high">三重志業園區 700RT R-22（19年）</span>
+          <span class="tl-chip high">臺南分會 440RT R-22（24年）</span>
+          <span class="tl-chip high">高雄分會 740RT R-134a（19年）</span>
+          <span class="tl-chip high">彰化分會 220RT R-22（26年）</span>
+          <span class="tl-chip high">萬華聯絡處 170RT R-22（26年）</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr mid">2028–29</span>
+        <div class="tl-items">
+          <span class="tl-chip mid">清水聯絡處 300RT R-22（19年）</span>
+          <span class="tl-chip mid">豐原聯絡處 240RT R-22（22年）</span>
+          <span class="tl-chip mid">蘆洲聯絡處 160RT R-22（18年）</span>
+          <span class="tl-chip mid">板橋志業園區 260RT R-134a（22年）</span>
+          <span class="tl-chip mid">臺中分會 400RT R-22（13年）</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr mid">2029–30</span>
+        <div class="tl-items">
+          <span class="tl-chip mid">臺北分會（新店）500RT R-22（屆時15年）</span>
+          <span class="tl-chip mid">雙和聯絡處 260RT R-22（16年）</span>
+          <span class="tl-chip mid">新竹聯絡處 240RT R-22（12年）</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr low">2031後</span>
+        <div class="tl-items">
+          <span class="tl-chip low">大安聯絡處 150RT R-134a（9年）</span>
+          <span class="tl-chip low">八德聯絡處 540RT R-134a（2020新機）</span>
+          <span class="tl-chip low">大里聯絡處 250RT R-134a（2020新機）</span>
+          <span class="tl-chip low">中正聯絡處 260RT R-134a（2023最新）</span>
+          <span class="tl-chip low">東區聯絡處 320RT（待確認年份）</span>
+        </div>
+      </div>
+    </div>
+    <div style="padding:10px 18px 14px;background:#fff;border-top:1px solid #E2E8F0;font-size:11.5px;color:var(--gray);">
+      ⚡ 全面汰換為 R1234ze 後 Scope 1+2 減碳潛力：<strong>4,632 tCO₂e/年</strong>（Scope1：1,453 + Scope2：3,179）｜
+      完整排序計畫：<a href="chiller-priority.html" style="color:var(--blue2);font-weight:700;">冰機汰換優先排序報告 →</a>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ╔══ FOOTER ══╗ -->
+<div class="footer">
+  <div>
+    <strong>財團法人中華民國佛教慈濟慈善事業基金會</strong>
+    ｜ SBTi 淨零減碳路徑 2026–2030
+    ｜ 資料截止：2026-06-09
+  </div>
+  <div>
+    <a href="index.html">董事會報告</a> ·
+    <a href="public-pathway.html">公眾溝通版</a> ·
+    <a href="chiller-priority.html">冰機汰換計畫</a>
+  </div>
+</div>
+
+</body>
+</html>
