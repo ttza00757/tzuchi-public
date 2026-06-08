@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慈濟慈善基金會｜冰水主機汰換優先排序計畫 2026–2031</title>
+<style>
+  :root {
+    --blue:   #003F7D;
+    --gold:   #C8A445;
+    --green:  #2A7A4B;
+    --red:    #C0392B;
+    --orange: #D35400;
+    --yellow: #F39C12;
+    --light:  #E8F0FA;
+    --mint:   #E8F5EE;
+    --gray:   #4A5568;
+    --gray100:#F5F7FA;
+    --gray300:#CDD5E0;
+    --white:  #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+    font-size: 13px; line-height: 1.7; color: #1A202C;
+    background: #EEF2F8;
+  }
+  .page { max-width: 1080px; margin: 0 auto; background: var(--white); box-shadow: 0 2px 20px rgba(0,0,0,.1); }
+
+  /* ── 封面 ── */
+  .cover {
+    background: linear-gradient(135deg, var(--blue) 55%, #00509E);
+    color: var(--white); padding: 52px 56px 40px; position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content:''; position:absolute; right:-80px; top:-80px;
+    width:320px; height:320px; border-radius:50%;
+    background: rgba(255,255,255,.05);
+  }
+  .cover-tag { font-size:11px; letter-spacing:3px; color:rgba(255,255,255,.7); margin-bottom:12px; }
+  .cover-title { font-size:28px; font-weight:900; line-height:1.3; margin-bottom:10px; }
+  .cover-title em { color:var(--gold); font-style:normal; }
+  .cover-sub { font-size:13px; color:rgba(255,255,255,.8); margin-bottom:24px; }
+  .cover-stats { display:flex; gap:24px; flex-wrap:wrap; }
+  .cstat { background:rgba(255,255,255,.12); border-radius:10px; padding:14px 20px; text-align:center; min-width:120px; }
+  .cstat-num { font-size:24px; font-weight:900; color:var(--gold); }
+  .cstat-lbl { font-size:10px; color:rgba(255,255,255,.75); margin-top:2px; }
+  .gold-bar { height:4px; background:linear-gradient(90deg,var(--gold),#E5C06A,var(--gold)); }
+
+  /* ── 通用 section ── */
+  .section { padding: 40px 56px; }
+  .section + .section { border-top: 1px solid var(--gray300); }
+  .section-label { font-size:10px; letter-spacing:3px; color:var(--gray); margin-bottom:6px; font-weight:700; }
+  .section-title { font-size:18px; font-weight:800; color:var(--blue); margin-bottom:4px; }
+  .section-sub { font-size:12px; color:var(--gray); margin-bottom:20px; }
+
+  /* ── KPI 磚 ── */
+  .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+  .kpi { border-radius:10px; padding:18px 16px; text-align:center; }
+  .kpi.blue   { background:var(--light); border-left:4px solid var(--blue); }
+  .kpi.green  { background:var(--mint);  border-left:4px solid var(--green); }
+  .kpi.gold   { background:#FDF5E0; border-left:4px solid var(--gold); }
+  .kpi.red    { background:#FEF0EE; border-left:4px solid var(--red); }
+  .kpi-num  { font-size:26px; font-weight:900; }
+  .kpi.blue .kpi-num  { color:var(--blue); }
+  .kpi.green .kpi-num { color:var(--green); }
+  .kpi.gold .kpi-num  { color:#9A7322; }
+  .kpi.red .kpi-num   { color:var(--red); }
+  .kpi-lbl  { font-size:11px; color:var(--gray); margin-top:4px; }
+
+  /* ── 緊急警示 ── */
+  .alert-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:8px; }
+  .alert-card { border-radius:10px; padding:14px 18px; display:flex; gap:14px; align-items:flex-start; }
+  .alert-card.crit  { background:#FEF0EE; border:1.5px solid #F1948A; }
+  .alert-card.warn  { background:#FDF5E0; border:1.5px solid #F0C040; }
+  .alert-icon { font-size:28px; flex-shrink:0; margin-top:2px; }
+  .alert-name { font-weight:800; font-size:14px; color:#1A202C; margin-bottom:4px; }
+  .alert-detail { font-size:11.5px; color:var(--gray); }
+  .alert-tag { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; margin-top:6px; }
+  .tag-crit { background:var(--red); color:#fff; }
+  .tag-warn { background:var(--orange); color:#fff; }
+
+  /* ── 排名表 ── */
+  .priority-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .priority-table th {
+    background:var(--blue); color:#fff; padding:10px 10px; text-align:center;
+    font-weight:700; border-bottom:2px solid #002D5A; position:sticky; top:0;
+  }
+  .priority-table td { padding:9px 10px; border-bottom:1px solid #E2E8F0; vertical-align:middle; }
+  .priority-table tr:hover td { background:#F7FAFF; }
+  .tr-done   { background:#F0FFF4; }
+  .tr-crit   { background:#FFF5F5; }
+  .tr-urgent { background:#FFFBEB; }
+  .tr-high   { background:#FEFCE8; }
+  .tr-medium { background:#EFF6FF; }
+  .tr-low    { background:#F9FAFB; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:10px; font-weight:700; }
+  .badge-done   { background:#C6F6D5; color:#22543D; }
+  .badge-crit   { background:#FED7D7; color:#822727; }
+  .badge-urgent { background:#FEFCBF; color:#744210; }
+  .badge-high   { background:#FED7AA; color:#7B341E; }
+  .badge-medium { background:#BEE3F8; color:#2A4365; }
+  .badge-low    { background:#E2E8F0; color:#4A5568; }
+  .scope1-bar { height:8px; background:#003F7D; border-radius:4px; display:inline-block; min-width:2px; }
+  .scope2-bar { height:8px; background:#2A7A4B; border-radius:4px; display:inline-block; margin-left:2px; min-width:2px; }
+  .rank-num { font-weight:900; font-size:16px; color:var(--blue); }
+
+  /* ── 分年度時間軸 ── */
+  .timeline { position:relative; padding-left:0; margin-top:16px; }
+  .tl-item { display:grid; grid-template-columns:110px 1fr; gap:0; margin-bottom:0; }
+  .tl-year-col { padding:16px 20px 16px 0; text-align:right; }
+  .tl-year-badge { display:inline-block; padding:6px 14px; border-radius:8px; font-weight:800; font-size:13px; color:#fff; }
+  .tl-content-col { border-left:3px solid var(--gray300); padding:16px 0 16px 24px; }
+  .tl-item:last-child .tl-content-col { border-left-color:transparent; }
+  .tl-dot { width:14px; height:14px; border-radius:50%; position:absolute; left:-8.5px; top:20px; border:2px solid #fff; }
+  .tl-content-col { position:relative; }
+  .tl-phase-title { font-weight:800; font-size:14px; margin-bottom:10px; }
+  .tl-chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .tl-chip { background:var(--gray100); border-radius:20px; padding:5px 14px; font-size:11.5px; border:1px solid var(--gray300); }
+  .tl-chip strong { color:var(--blue); }
+  .tl-chip.chip-done   { background:#C6F6D5; border-color:#9AE6B4; }
+  .tl-chip.chip-r22    { background:#FEF0EE; border-color:#F1948A; }
+  .tl-chip.chip-r134   { background:#EBF8FF; border-color:#90CDF4; }
+  .tl-chip.chip-urgent { background:#FEFCBF; border-color:#F6E05E; }
+
+  /* ── 冷媒圖 ── */
+  .ref-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .ref-card { border-radius:12px; padding:20px; text-align:center; }
+  .ref-card.r22    { background:#FEF0EE; border:2px solid #F1948A; }
+  .ref-card.r410   { background:#FFF8E1; border:2px solid #FFD54F; }
+  .ref-card.r134   { background:#E3F2FD; border:2px solid #90CAF9; }
+  .ref-name  { font-size:20px; font-weight:900; margin-bottom:4px; }
+  .ref-card.r22  .ref-name { color:var(--red); }
+  .ref-card.r410 .ref-name { color:#D97706; }
+  .ref-card.r134 .ref-name { color:#1D4ED8; }
+  .ref-gwp   { font-size:11px; color:var(--gray); margin-bottom:12px; }
+  .ref-stat  { font-size:13px; margin-bottom:4px; }
+  .ref-stat strong { font-size:18px; font-weight:900; }
+  .ref-arrow { font-size:24px; margin:8px 0; }
+  .ref-new   { font-size:11px; color:var(--green); font-weight:700; }
+
+  /* ── 底部 ── */
+  .footer { background:var(--blue); color:rgba(255,255,255,.7); padding:24px 56px; font-size:11px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+  .footer a { color:var(--gold); text-decoration:none; }
+
+  @media(max-width:768px){
+    .section { padding:28px 20px; }
+    .cover { padding:36px 20px 28px; }
+    .kpi-grid { grid-template-columns:repeat(2,1fr); }
+    .alert-grid { grid-template-columns:1fr; }
+    .ref-grid { grid-template-columns:1fr; }
+    .tl-item { grid-template-columns:90px 1fr; }
+    .priority-table { font-size:11px; }
+    .priority-table th, .priority-table td { padding:7px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ╔══ 封面 ══╗ -->
+<div class="cover">
+  <div class="cover-tag">CHILLER REPLACEMENT PLAN · 冰水主機汰換計畫</div>
+  <h1 class="cover-title">慈濟慈善基金會<br>冰水主機汰換<em>優先排序</em>計畫</h1>
+  <p class="cover-sub">23 會所 · 71 台冰水主機 · Scope 1+2 最大化減碳策略｜2026–2031</p>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-num">8,880</div><div class="cstat-lbl">待評估總冷凍噸數 (RT)</div></div>
+    <div class="cstat"><div class="cstat-num">71</div><div class="cstat-lbl">台冰水主機</div></div>
+    <div class="cstat"><div class="cstat-num">1,453</div><div class="cstat-lbl">Scope 1 年減碳潛力 (tCO₂e)</div></div>
+    <div class="cstat"><div class="cstat-num">3,179</div><div class="cstat-lbl">Scope 2 年減碳潛力 (tCO₂e)</div></div>
+    <div class="cstat"><div class="cstat-num">4,632</div><div class="cstat-lbl">Scope 1+2 合計潛力 (tCO₂e/年)</div></div>
+  </div>
+</div>
+<div class="gold-bar"></div>
+
+<!-- ╔══ 關鍵指標 ══╗ -->
+<div class="section">
+  <div class="section-label">KEY METRICS · 關鍵數據</div>
+  <div class="section-title">全面汰換為 R1234ze（GWP=1）後年減碳潛力</div>
+  <div class="section-sub">計算假設：充填量 1 kg/RT、運行洩漏率 10%、台電排放係數 0.494 kg CO₂/kWh、新機效率 0.48 kWh/RT-h、年冷房 2,000 RT-h</div>
+  <div class="kpi-grid">
+    <div class="kpi blue">
+      <div class="kpi-num">1,453</div>
+      <div class="kpi-lbl">Scope 1 冷媒逸散<br>年減碳潛力（tCO₂e）</div>
+    </div>
+    <div class="kpi green">
+      <div class="kpi-num">3,179</div>
+      <div class="kpi-lbl">Scope 2 節電效益<br>年減碳潛力（tCO₂e）</div>
+    </div>
+    <div class="kpi gold">
+      <div class="kpi-num">4,632</div>
+      <div class="kpi-lbl">Scope 1+2 合計<br>年減碳潛力（tCO₂e）</div>
+    </div>
+    <div class="kpi red">
+      <div class="kpi-num">48 台</div>
+      <div class="kpi-lbl">R-22 高 GWP 主機<br>（GWP=1,810，需優先汰換）</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--gray);background:var(--gray100);padding:10px 14px;border-radius:8px;">
+    ⚡ 2025 年 Scope 1+2 基準：9,175 tCO₂e｜冰機全面汰換潛力達 <strong>4,632 tCO₂e/年</strong>，相當於基準年碳排的 <strong>50.5%</strong>，足以與太陽能（2,748 tCO₂e）共同達成 2030 年 1.5°C 目標（需減至 6,863 tCO₂e）。
+  </p>
+</div>
+
+<!-- ╔══ 緊急警示 ══╗ -->
+<div class="section" style="background:#FFF8F7;">
+  <div class="section-label">URGENT ALERTS · 立即行動警示</div>
+  <div class="section-title">4 所設施需 2027 年前優先汰換</div>
+  <div class="section-sub">機齡超標、設備型式淘汰、R-22 料源風險三重緊急</div>
+  <div class="alert-grid">
+    <div class="alert-card crit">
+      <div class="alert-icon">🚨</div>
+      <div>
+        <div class="alert-name">民權聯絡處（台中中區）</div>
+        <div class="alert-detail">往復式壓縮機 × 3 台｜廠牌：中興｜1992 年啟用，<strong>機齡 34 年</strong><br>容量：300RT（130+130+40）｜R-22｜年保養 NT$163,400<br>往復式機型已停產逾 30 年，零件料源幾乎斷絕，隨時有停機風險</div>
+        <span class="alert-tag tag-crit">★★★ 最緊急</span>
+      </div>
+    </div>
+    <div class="alert-card crit">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="alert-name">花蓮同心圓餐廳（東區）</div>
+        <div class="alert-detail">螺旋式 × 2 台｜廠牌：江陵｜1999 年啟用，<strong>機齡 27 年</strong><br>容量：500RT（250+250）｜R-22｜年保養 NT$181,000<br>與花蓮靜思堂毗鄰，可合併施工減少搬運成本</div>
+        <span class="alert-tag tag-crit">★★★ 最緊急</span>
+      </div>
+    </div>
+    <div class="alert-card warn">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="alert-name">彰化分會 CH-2（中區）</div>
+        <div class="alert-detail">螺旋式 × 1 台｜廠牌：SINKO｜2000 年啟用，<strong>機齡 26 年</strong><br>容量：100RT｜R-22｜年保養含 CH-1 共 NT$153,800</div>
+        <span class="alert-tag tag-warn">★★★ 緊急</span>
+      </div>
+    </div>
+    <div class="alert-card warn">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="alert-name">萬華聯絡處 CH-1（北區）</div>
+        <div class="alert-detail">螺旋式 × 1 台｜廠牌：江陵｜2000 年啟用，<strong>機齡 26 年</strong><br>容量：120RT｜R-22｜年保養 NT$94,600</div>
+        <span class="alert-tag tag-warn">★★★ 緊急</span>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--gray);margin-top:12px;padding:8px 14px;background:#FFF0E8;border-radius:6px;border-left:3px solid var(--orange);">
+    📌 R-22（HCFC）臺灣已依蒙特婁議定書管制進口配額，2030 年前全面禁止。使用 R-22 機型每年維修費用攀升，建議優先汰換超過 20 年的 R-22 設備。
+  </div>
+</div>
+
+<!-- ╔══ 優先排序表 ══╗ -->
+<div class="section">
+  <div class="section-label">PRIORITY RANKING · 汰換優先排序</div>
+  <div class="section-title">22 所設施完整評分排名</div>
+  <div class="section-sub">優先分數 ＝（Scope 1 + Scope 2 減碳潛力）× 機齡緊迫係數｜顏色代表緊迫等級</div>
+
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;">
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#FFF5F5;border:1px solid #F1948A;border-radius:3px;display:inline-block;"></span>★★★ 最緊急</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#FFFBEB;border:1px solid #FBD38D;border-radius:3px;display:inline-block;"></span>★★★ 緊急</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#FEFCE8;border:1px solid #F6E05E;border-radius:3px;display:inline-block;"></span>★★ 高</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#EFF6FF;border:1px solid #BEE3F8;border-radius:3px;display:inline-block;"></span>★★ 中高</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#F0FFF4;border:1px solid #9AE6B4;border-radius:3px;display:inline-block;"></span>✅ 已完成</span>
+  </div>
+
+  <div style="overflow-x:auto;">
+  <table class="priority-table">
+    <thead>
+      <tr>
+        <th>排名</th><th>區域</th><th>設施名稱</th>
+        <th>容量<br>(RT)</th><th>冷媒</th><th>機齡<br>(年)</th>
+        <th>Scope1 減量<br>(tCO₂e/年)</th>
+        <th>Scope2 減量<br>(tCO₂e/年)</th>
+        <th>合計潛力<br>(tCO₂e/年)</th>
+        <th>優先分數</th><th>緊迫性</th><th>建議年度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 已完成 -->
+      <tr class="tr-done">
+        <td style="text-align:center;font-size:10px;color:var(--green);">✅</td>
+        <td>東區</td><td><strong>花蓮靜思堂</strong><br><span style="font-size:10px;color:var(--green);">新500RT R1234ze磁浮已啟用</span></td>
+        <td style="text-align:center;">500</td><td style="text-align:center;color:var(--green);font-weight:700;">R1234ze</td>
+        <td style="text-align:center;">—</td>
+        <td style="text-align:center;">71.4</td><td style="text-align:center;">243</td>
+        <td style="text-align:center;font-weight:700;color:var(--green);">314</td>
+        <td style="text-align:center;">—</td>
+        <td style="text-align:center;"><span class="badge badge-done">✅ 完成</span></td>
+        <td style="text-align:center;font-size:11px;">2026</td>
+      </tr>
+      <tr class="tr-done">
+        <td style="text-align:center;font-size:10px;color:var(--green);">✅</td>
+        <td>北區</td><td><strong>桃園分會</strong><br><span style="font-size:10px;color:var(--green);">新160RT KLFW R-134a啟用，舊機轉備用</span></td>
+        <td style="text-align:center;">160</td><td style="text-align:center;color:var(--green);font-weight:700;">R-134a</td>
+        <td style="text-align:center;">—</td>
+        <td style="text-align:center;">50.8</td><td style="text-align:center;">39.4</td>
+        <td style="text-align:center;font-weight:700;color:var(--green);">90</td>
+        <td style="text-align:center;">—</td>
+        <td style="text-align:center;"><span class="badge badge-done">✅ 完成</span></td>
+        <td style="text-align:center;font-size:11px;">2026</td>
+      </tr>
+      <!-- 排名1 -->
+      <tr class="tr-crit">
+        <td style="text-align:center;"><span class="rank-num">1</span></td>
+        <td>東區</td><td><strong>花蓮靜思堂</strong>（舊機4台）<br><span style="font-size:10px;color:var(--gray);">CH-1~4 McQuay，需確認退役時程</span></td>
+        <td style="text-align:center;">1,550</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;color:var(--red);font-weight:700;">27年</td>
+        <td style="text-align:center;">221.5</td><td style="text-align:center;">620.5</td>
+        <td style="text-align:center;font-weight:700;">842</td>
+        <td style="text-align:center;font-weight:700;color:var(--red);">1,684</td>
+        <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
+        <td style="text-align:center;font-size:11px;">確認退役時程</td>
+      </tr>
+      <tr class="tr-crit">
+        <td style="text-align:center;"><span class="rank-num">2</span></td>
+        <td>東區</td><td><strong>花蓮同心圓餐廳</strong><br><span style="font-size:10px;color:var(--gray);">江陵 CH-1/2，R-22，27年</span></td>
+        <td style="text-align:center;">500</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;color:var(--red);font-weight:700;">27年</td>
+        <td style="text-align:center;">90.5</td><td style="text-align:center;">256.9</td>
+        <td style="text-align:center;font-weight:700;">347</td>
+        <td style="text-align:center;font-weight:700;color:var(--red);">695</td>
+        <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
+        <td style="text-align:center;font-size:11px;color:var(--red);font-weight:700;">2027</td>
+      </tr>
+      <tr class="tr-high">
+        <td style="text-align:center;"><span class="rank-num">3</span></td>
+        <td>北區</td><td><strong>三重志業園區</strong><br><span style="font-size:10px;color:var(--gray);">SINKO CH-1~5，5台 R-22，19年</span></td>
+        <td style="text-align:center;">700</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;font-weight:700;">19年</td>
+        <td style="text-align:center;">126.6</td><td style="text-align:center;">238.5</td>
+        <td style="text-align:center;font-weight:700;">365</td>
+        <td style="text-align:center;font-weight:700;color:var(--orange);">511</td>
+        <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
+        <td style="text-align:center;font-size:11px;">2027–28</td>
+      </tr>
+      <tr class="tr-high">
+        <td style="text-align:center;"><span class="rank-num">4</span></td>
+        <td>南區</td><td><strong>高雄分會</strong><br><span style="font-size:10px;color:var(--gray);">堃霖 CH-1~4，740RT R-134a，19年</span></td>
+        <td style="text-align:center;">740</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;font-weight:700;">19年</td>
+        <td style="text-align:center;">105.7</td><td style="text-align:center;">248.8</td>
+        <td style="text-align:center;font-weight:700;">355</td>
+        <td style="text-align:center;font-weight:700;color:var(--orange);">425</td>
+        <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
+        <td style="text-align:center;font-size:11px;">2027–28</td>
+      </tr>
+      <tr class="tr-urgent">
+        <td style="text-align:center;"><span class="rank-num">5</span></td>
+        <td>南區</td><td><strong>臺南分會</strong><br><span style="font-size:10px;color:var(--gray);">國友 CH-1~3，440RT R-22，24年</span></td>
+        <td style="text-align:center;">440</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;color:var(--orange);font-weight:700;">24年</td>
+        <td style="text-align:center;">79.6</td><td style="text-align:center;">162.4</td>
+        <td style="text-align:center;font-weight:700;">242</td>
+        <td style="text-align:center;font-weight:700;color:var(--yellow);">411</td>
+        <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
+        <td style="text-align:center;font-size:11px;">2027–28</td>
+      </tr>
+      <tr class="tr-medium">
+        <td style="text-align:center;"><span class="rank-num">6</span></td>
+        <td>北區</td><td><strong>臺北分會（新店）</strong><br><span style="font-size:10px;color:var(--gray);">國友/鑫國 ACH-1~3，500RT 全R-22，10年</span></td>
+        <td style="text-align:center;">500</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;">10年</td>
+        <td style="text-align:center;">90.5</td><td style="text-align:center;">190.2</td>
+        <td style="text-align:center;font-weight:700;">281</td>
+        <td style="text-align:center;font-weight:700;">309</td>
+        <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
+        <td style="text-align:center;font-size:11px;">2029–30</td>
+      </tr>
+      <tr class="tr-high">
+        <td style="text-align:center;"><span class="rank-num">7</span></td>
+        <td>北區</td><td><strong>桃園分會</strong>（備用舊機）<br><span style="font-size:10px;color:var(--gray);">CHR-1/3 備用，待確認冷媒回收</span></td>
+        <td style="text-align:center;">220</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22/R-410a</td>
+        <td style="text-align:center;">19年</td>
+        <td style="text-align:center;">8.3</td><td style="text-align:center;">—</td>
+        <td style="text-align:center;font-weight:700;">—</td>
+        <td style="text-align:center;">—</td>
+        <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
+        <td style="text-align:center;font-size:11px;">確認冷媒回收</td>
+      </tr>
+      <tr class="tr-crit">
+        <td style="text-align:center;"><span class="rank-num">8</span></td>
+        <td>中區</td><td><strong>民權聯絡處</strong><br><span style="font-size:10px;color:var(--red);font-weight:700;">⚠️ 往復式！1992年，34年機齡</span></td>
+        <td style="text-align:center;">300</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;color:var(--red);font-weight:700;">34年</td>
+        <td style="text-align:center;">54.3</td><td style="text-align:center;">83.2</td>
+        <td style="text-align:center;font-weight:700;">138</td>
+        <td style="text-align:center;font-weight:700;color:var(--red);">275</td>
+        <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
+        <td style="text-align:center;font-size:11px;color:var(--red);font-weight:700;">2027</td>
+      </tr>
+      <tr class="tr-medium">
+        <td style="text-align:center;"><span class="rank-num">9</span></td>
+        <td>中區</td><td><strong>臺中分會</strong><br><span style="font-size:10px;color:var(--gray);">詮宏/國友 CH-1~3，400RT R-22，13年</span></td>
+        <td style="text-align:center;">400</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;">13年</td>
+        <td style="text-align:center;">72.4</td><td style="text-align:center;">158.3</td>
+        <td style="text-align:center;font-weight:700;">231</td>
+        <td style="text-align:center;font-weight:700;">254</td>
+        <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
+        <td style="text-align:center;font-size:11px;">2028–29</td>
+      </tr>
+      <tr class="tr-urgent">
+        <td style="text-align:center;"><span class="rank-num">10</span></td>
+        <td>中區</td><td><strong>彰化分會</strong><br><span style="font-size:10px;color:var(--gray);">國友/SINKO，CH-2 機齡26年，R-22</span></td>
+        <td style="text-align:center;">220</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;color:var(--orange);font-weight:700;">26年</td>
+        <td style="text-align:center;">39.8</td><td style="text-align:center;">78.1</td>
+        <td style="text-align:center;font-weight:700;">118</td>
+        <td style="text-align:center;font-weight:700;color:var(--yellow);">236</td>
+        <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
+        <td style="text-align:center;font-size:11px;">2027–28</td>
+      </tr>
+      <tr class="tr-medium">
+        <td style="text-align:center;"><span class="rank-num">11</span></td>
+        <td>北區</td><td><strong>板橋志業園區</strong><br><span style="font-size:10px;color:var(--gray);">國友 CH-1/2，260RT R-134a，22年</span></td>
+        <td style="text-align:center;">260</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;font-weight:700;">22年</td>
+        <td style="text-align:center;">37.2</td><td style="text-align:center;">116.4</td>
+        <td style="text-align:center;font-weight:700;">154</td>
+        <td style="text-align:center;font-weight:700;">230</td>
+        <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
+        <td style="text-align:center;font-size:11px;">2028–29</td>
+      </tr>
+      <tr class="tr-high">
+        <td style="text-align:center;"><span class="rank-num">12</span></td>
+        <td>中區</td><td><strong>清水聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">國友 CH-1~3，300RT R-22，19年</span></td>
+        <td style="text-align:center;">300</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;">19年</td>
+        <td style="text-align:center;">54.3</td><td style="text-align:center;">51.0</td>
+        <td style="text-align:center;font-weight:700;">105</td>
+        <td style="text-align:center;font-weight:700;">147</td>
+        <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
+        <td style="text-align:center;font-size:11px;">2028–29</td>
+      </tr>
+      <tr class="tr-urgent">
+        <td style="text-align:center;"><span class="rank-num">13</span></td>
+        <td>中區</td><td><strong>豐原聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">中興 CH-1/2，240RT R-22，22年</span></td>
+        <td style="text-align:center;">240</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;color:var(--orange);font-weight:700;">22年</td>
+        <td style="text-align:center;">43.4</td><td style="text-align:center;">47.9</td>
+        <td style="text-align:center;font-weight:700;">91</td>
+        <td style="text-align:center;font-weight:700;">137</td>
+        <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
+        <td style="text-align:center;font-size:11px;">2028–29</td>
+      </tr>
+      <tr class="tr-high">
+        <td style="text-align:center;"><span class="rank-num">14</span></td>
+        <td>北區</td><td><strong>蘆洲聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">國友 CH-1/2，160RT R-22，18年</span></td>
+        <td style="text-align:center;">160</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;">18年</td>
+        <td style="text-align:center;">29.0</td><td style="text-align:center;">82.7</td>
+        <td style="text-align:center;font-weight:700;">112</td>
+        <td style="text-align:center;font-weight:700;">134</td>
+        <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
+        <td style="text-align:center;font-size:11px;">2028–29</td>
+      </tr>
+      <tr class="tr-medium">
+        <td style="text-align:center;"><span class="rank-num">15</span></td>
+        <td>北區</td><td><strong>雙和聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">弘旭/詮宏 CH-1/2，260RT R-22，15年</span></td>
+        <td style="text-align:center;">260</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;">16年</td>
+        <td style="text-align:center;">47.1</td><td style="text-align:center;">82.7</td>
+        <td style="text-align:center;font-weight:700;">130</td>
+        <td style="text-align:center;font-weight:700;">130</td>
+        <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
+        <td style="text-align:center;font-size:11px;">2029–30</td>
+      </tr>
+      <tr class="tr-medium">
+        <td style="text-align:center;"><span class="rank-num">16</span></td>
+        <td>北區</td><td><strong>新竹聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">國友 CH-1/2，240RT R-22，12年</span></td>
+        <td style="text-align:center;">240</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;">12年</td>
+        <td style="text-align:center;">43.4</td><td style="text-align:center;">65.4</td>
+        <td style="text-align:center;font-weight:700;">109</td>
+        <td style="text-align:center;font-weight:700;">120</td>
+        <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
+        <td style="text-align:center;font-size:11px;">2029–30</td>
+      </tr>
+      <tr class="tr-urgent">
+        <td style="text-align:center;"><span class="rank-num">17</span></td>
+        <td>北區</td><td><strong>萬華聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">江陵/SINKO CH-1/2，170RT R-22，CH-1機齡26年</span></td>
+        <td style="text-align:center;">170</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
+        <td style="text-align:center;color:var(--orange);font-weight:700;">26年</td>
+        <td style="text-align:center;">30.7</td><td style="text-align:center;">47.3</td>
+        <td style="text-align:center;font-weight:700;">78</td>
+        <td style="text-align:center;font-weight:700;">117</td>
+        <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
+        <td style="text-align:center;font-size:11px;">2028</td>
+      </tr>
+      <tr class="tr-low">
+        <td style="text-align:center;"><span class="rank-num">18</span></td>
+        <td>中區</td><td><strong>東區聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/2，320RT R-134a，啟用年不詳</span></td>
+        <td style="text-align:center;">320</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;">—</td>
+        <td style="text-align:center;">45.8</td><td style="text-align:center;">47.8</td>
+        <td style="text-align:center;font-weight:700;">94</td>
+        <td style="text-align:center;">94</td>
+        <td style="text-align:center;"><span class="badge badge-low">確認年份</span></td>
+        <td style="text-align:center;font-size:11px;">待確認後排程</td>
+      </tr>
+      <tr class="tr-low">
+        <td style="text-align:center;"><span class="rank-num">19</span></td>
+        <td>北區</td><td><strong>大安聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">鑫國 M-CH，150RT R-134a，機齡約9年</span></td>
+        <td style="text-align:center;">150</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;">9年</td>
+        <td style="text-align:center;">21.5</td><td style="text-align:center;">23.8</td>
+        <td style="text-align:center;font-weight:700;">45</td>
+        <td style="text-align:center;">32</td>
+        <td style="text-align:center;"><span class="badge badge-low">★ 低</span></td>
+        <td style="text-align:center;font-size:11px;">2030後</td>
+      </tr>
+      <tr class="tr-low">
+        <td style="text-align:center;"><span class="rank-num">20</span></td>
+        <td>北區</td><td><strong>八德聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">鑫國 CH-1/2，540RT R-134a，2020年新機</span></td>
+        <td style="text-align:center;">540</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;">6年</td>
+        <td style="text-align:center;">77.2</td><td style="text-align:center;">69.1</td>
+        <td style="text-align:center;font-weight:700;">146</td>
+        <td style="text-align:center;">117</td>
+        <td style="text-align:center;"><span class="badge badge-low">★ 低</span></td>
+        <td style="text-align:center;font-size:11px;">2030後</td>
+      </tr>
+      <tr class="tr-low">
+        <td style="text-align:center;"><span class="rank-num">21</span></td>
+        <td>中區</td><td><strong>大里聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/2，250RT R-134a，2020年新機</span></td>
+        <td style="text-align:center;">250</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;">6年</td>
+        <td style="text-align:center;">35.8</td><td style="text-align:center;">41.5</td>
+        <td style="text-align:center;font-weight:700;">77</td>
+        <td style="text-align:center;">62</td>
+        <td style="text-align:center;"><span class="badge badge-low">★ 低</span></td>
+        <td style="text-align:center;font-size:11px;">2030後</td>
+      </tr>
+      <tr class="tr-low">
+        <td style="text-align:center;"><span class="rank-num">22</span></td>
+        <td>北區</td><td><strong>中正聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">ACH-1/2，260RT R-134a，2023年最新</span></td>
+        <td style="text-align:center;">260</td><td style="text-align:center;">R-134a</td>
+        <td style="text-align:center;">3年</td>
+        <td style="text-align:center;">37.2</td><td style="text-align:center;">35.8</td>
+        <td style="text-align:center;font-weight:700;">73</td>
+        <td style="text-align:center;">29</td>
+        <td style="text-align:center;"><span class="badge badge-low">— 暫緩</span></td>
+        <td style="text-align:center;font-size:11px;">2033後</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--gray);margin-top:10px;">
+    ※ 優先分數 =（Scope 1 + Scope 2 年減碳潛力）× 機齡緊迫係數（往復式≥25yr:2.0；R-22≥20yr:1.7；R-22 15-19yr:1.4；其他遞減）<br>
+    ※ Scope 2 潛力採 RT基礎估算與電耗基礎估算之平均值（保守情境）
+  </p>
+</div>
+
+<!-- ╔══ 冷媒結構 ══╗ -->
+<div class="section" style="background:var(--gray100);">
+  <div class="section-label">REFRIGERANT BREAKDOWN · 冷媒結構分析</div>
+  <div class="section-title">全院所冷媒組成與汰換效益</div>
+  <div class="section-sub">新機一律採用 R1234ze（GWP=1，歐盟 F-Gas 認可低暖化冷媒）</div>
+  <div class="ref-grid">
+    <div class="ref-card r22">
+      <div class="ref-name">R-22</div>
+      <div class="ref-gwp">GWP = 1,810｜蒙特婁議定書管制 HCFC</div>
+      <div class="ref-stat"><strong>48</strong> 台機組</div>
+      <div class="ref-stat"><strong>6,290</strong> RT 總容量</div>
+      <div class="ref-stat">年逸散：<strong>1,138.5</strong> tCO₂e</div>
+      <div class="ref-arrow">↓</div>
+      <div class="ref-new">換 R1234ze 後年減量：<strong>1,137.4 tCO₂e</strong></div>
+    </div>
+    <div class="ref-card r410">
+      <div class="ref-name">R-410a</div>
+      <div class="ref-gwp">GWP = 2,088｜HFC，Kigali 修正案管制</div>
+      <div class="ref-stat"><strong>1</strong> 台機組（桃園 CHR-3 備用中）</div>
+      <div class="ref-stat"><strong>60</strong> RT 容量</div>
+      <div class="ref-stat">年逸散（備用2%）：<strong>2.5</strong> tCO₂e</div>
+      <div class="ref-arrow">↓</div>
+      <div class="ref-new">確認冷媒回收後歸零</div>
+    </div>
+    <div class="ref-card r134">
+      <div class="ref-name">R-134a</div>
+      <div class="ref-gwp">GWP = 1,430｜HFC，中長期仍需汰換</div>
+      <div class="ref-stat"><strong>22</strong> 台機組</div>
+      <div class="ref-stat"><strong>2,530</strong> RT 總容量</div>
+      <div class="ref-stat">年逸散：<strong>361.8</strong> tCO₂e</div>
+      <div class="ref-arrow">↓</div>
+      <div class="ref-new">換 R1234ze 後年減量：<strong>303.5 tCO₂e</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══ 分年度計畫 ══╗ -->
+<div class="section">
+  <div class="section-label">PHASED PLAN · 分年度汰換計畫</div>
+  <div class="section-title">2026–2031 六年汰換路線圖</div>
+  <div class="section-sub">以預算與施工能力為限，建議每年汰換 200–500 RT；優先 R-22 老機及往復式設備</div>
+  <div class="timeline">
+    <!-- 2026 -->
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <span class="tl-year-badge" style="background:var(--green);">2026 ✅</span>
+      </div>
+      <div class="tl-content-col">
+        <div style="position:relative;">
+          <span class="tl-dot" style="background:var(--green);"></span>
+          <div class="tl-phase-title" style="color:var(--green);">已完成：花蓮 + 桃園 Scope 1+2 雙效減碳</div>
+          <div class="tl-chips">
+            <span class="tl-chip chip-done">✅ 花蓮靜思堂 <strong>500RT 磁浮 R1234ze</strong>（+71.4 tCO₂e/年 Scope1）</span>
+            <span class="tl-chip chip-done">✅ 桃園分會 <strong>160RT KLFW R-134a</strong> 主機啟用（+50.8 tCO₂e/年 Scope1）</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 2027 -->
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <span class="tl-year-badge" style="background:var(--red);">2027 🚨</span>
+      </div>
+      <div class="tl-content-col">
+        <div style="position:relative;">
+          <span class="tl-dot" style="background:var(--red);"></span>
+          <div class="tl-phase-title" style="color:var(--red);">最緊急：往復式、27年老機優先退場</div>
+          <div class="tl-chips">
+            <span class="tl-chip chip-r22">⚠️ <strong>民權聯絡處</strong>｜300RT R-22 往復式 1992年（34年！）</span>
+            <span class="tl-chip chip-r22">⚠️ <strong>花蓮同心圓餐廳</strong>｜500RT R-22 江陵 1999年（27年）</span>
+            <span class="tl-chip chip-r134">🔄 <strong>花蓮靜思堂舊機</strong>｜確認1,550RT McQuay退役時程</span>
+          </div>
+          <div style="margin-top:8px;font-size:11px;color:var(--gray);">預估 2027 新增 Scope 1 減量：<strong>~145 tCO₂e/年</strong></div>
+        </div>
+      </div>
+    </div>
+    <!-- 2027-2028 -->
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <span class="tl-year-badge" style="background:var(--orange);">2027–28 ⚠️</span>
+      </div>
+      <div class="tl-content-col">
+        <div style="position:relative;">
+          <span class="tl-dot" style="background:var(--orange);"></span>
+          <div class="tl-phase-title" style="color:var(--orange);">高優先：大容量 R-22 老機汰換（Scope 1+2 最大效益）</div>
+          <div class="tl-chips">
+            <span class="tl-chip chip-r22"><strong>三重志業園區</strong>｜700RT SINKO 5台 R-22 19年</span>
+            <span class="tl-chip chip-r22"><strong>臺南分會</strong>｜440RT 國友3台 R-22 24年</span>
+            <span class="tl-chip chip-r134"><strong>高雄分會</strong>｜740RT 堃霖4台 R-134a 19年</span>
+            <span class="tl-chip chip-r22"><strong>彰化分會</strong>｜220RT R-22 CH-2機齡26年</span>
+            <span class="tl-chip chip-r22"><strong>萬華聯絡處</strong>｜170RT R-22 CH-1機齡26年</span>
+          </div>
+          <div style="margin-top:8px;font-size:11px;color:var(--gray);">預估新增 Scope 1+2 減量：<strong>~900 tCO₂e/年</strong>（含三重+臺南+高雄）</div>
+        </div>
+      </div>
+    </div>
+    <!-- 2028-2029 -->
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <span class="tl-year-badge" style="background:var(--yellow);">2028–29</span>
+      </div>
+      <div class="tl-content-col">
+        <div style="position:relative;">
+          <span class="tl-dot" style="background:var(--yellow);"></span>
+          <div class="tl-phase-title">中高優先：中型 R-22 設備全面清理</div>
+          <div class="tl-chips">
+            <span class="tl-chip chip-r22"><strong>清水聯絡處</strong>｜300RT R-22 19年</span>
+            <span class="tl-chip chip-r22"><strong>豐原聯絡處</strong>｜240RT R-22 22年</span>
+            <span class="tl-chip chip-r22"><strong>蘆洲聯絡處</strong>｜160RT R-22 18年</span>
+            <span class="tl-chip chip-r134"><strong>板橋志業園區</strong>｜260RT R-134a 22年</span>
+            <span class="tl-chip chip-r22"><strong>臺中分會</strong>｜400RT R-22 13年</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 2029-2030 -->
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <span class="tl-year-badge" style="background:var(--blue);">2029–30</span>
+      </div>
+      <div class="tl-content-col">
+        <div style="position:relative;">
+          <span class="tl-dot" style="background:var(--blue);"></span>
+          <div class="tl-phase-title">中優先：中小型 R-22 設備收尾</div>
+          <div class="tl-chips">
+            <span class="tl-chip chip-urgent"><strong>臺北分會（新店）</strong>｜500RT R-22 10年（屆時15年）</span>
+            <span class="tl-chip chip-r22"><strong>雙和聯絡處</strong>｜260RT R-22 16年</span>
+            <span class="tl-chip chip-r22"><strong>新竹聯絡處</strong>｜240RT R-22 12年</span>
+          </div>
+          <div style="margin-top:8px;font-size:11px;color:var(--green);">
+            🎯 <strong>2030 年目標達成</strong>：R-22 全面清零，Scope 1+2 降至 6,863 tCO₂e 以下（1.5°C 路徑）
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 2031後 -->
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <span class="tl-year-badge" style="background:var(--gray);">2031後</span>
+      </div>
+      <div class="tl-content-col">
+        <div style="position:relative;">
+          <span class="tl-dot" style="background:var(--gray);"></span>
+          <div class="tl-phase-title" style="color:var(--gray);">低優先：新機 R-134a 設備長期規劃</div>
+          <div class="tl-chips">
+            <span class="tl-chip"><strong>大安聯絡處</strong>｜150RT R-134a 9年</span>
+            <span class="tl-chip"><strong>八德聯絡處</strong>｜540RT R-134a 2020年新機</span>
+            <span class="tl-chip"><strong>大里聯絡處</strong>｜250RT R-134a 2020年新機</span>
+            <span class="tl-chip"><strong>中正聯絡處</strong>｜260RT R-134a 2023年最新</span>
+            <span class="tl-chip">東區聯絡處｜待確認啟用年份</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══ 假設說明 ══╗ -->
+<div class="section" style="background:var(--gray100);">
+  <div class="section-label">METHODOLOGY · 計算方法說明</div>
+  <div class="section-title">分析假設與資料限制</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px;">
+    <div>
+      <p style="font-weight:700;margin-bottom:8px;color:var(--blue);">Scope 1（冷媒逸散）計算假設</p>
+      <ul style="font-size:12px;color:var(--gray);padding-left:16px;line-height:2;">
+        <li>充填量：1.0 kg/RT（水冷螺旋/離心式標準估算）</li>
+        <li>年洩漏率：運行中 10%、備用靜置 2%、新機 5%</li>
+        <li>新機全部換用 R1234ze（GWP=1）</li>
+        <li>實際數字需待 SGS 年度盤查確認（2027年初）</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-weight:700;margin-bottom:8px;color:var(--green);">Scope 2（節電）計算假設</p>
+      <ul style="font-size:12px;color:var(--gray);padding-left:16px;line-height:2;">
+        <li>舊機平均效率：1.0 kWh/RT-h</li>
+        <li>新高效機效率：0.48 kWh/RT-h（磁浮/離心）</li>
+        <li>年冷房需求：2,000 RT-h（台灣亞熱帶氣候）</li>
+        <li>台電排放係數：0.494 kg CO₂/kWh（2024年）</li>
+        <li>Scope 2 採 RT 基礎與電耗基礎估算之平均值</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:14px;padding:10px 14px;background:#FFF8E1;border-radius:8px;border-left:3px solid var(--gold);font-size:11.5px;color:#744210;">
+    ⚠️ 本報告為工程估算，用於制定汰換優先順序決策參考。實際節能效益須待新機啟用後進行 M&V（量測與驗證）確認，冷媒逸散減量須待次年度 SGS 第三方盤查反映於正式報告。
+  </div>
+</div>
+
+<!-- ╔══ 頁尾 ══╗ -->
+<div class="footer">
+  <div>
+    <strong>財團法人中華民國佛教慈濟慈善事業基金會</strong>
+    ｜ 淨零排放路徑規劃 2026–2031
+    ｜ 資料截止：2026-06-08
+  </div>
+  <div>
+    SBTi 1.5°C 路徑 ·
+    <a href="index.html">董事會報告</a> ·
+    <a href="public-pathway.html">公眾版路徑圖</a>
+  </div>
+</div>
+
+</div><!-- /.page -->
+</body>
+</html>
