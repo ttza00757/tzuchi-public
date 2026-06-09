@@ -320,6 +320,22 @@
     margin-top: 4px;
   }
 
+  /* ── 返回儀表板 ── */
+  .back-nav {
+    background: #003F7D; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+    color: #fff; border-radius: 20px; padding: 4px 14px;
+    font-size: 11px; font-weight: 700; text-decoration: none;
+    transition: background .2s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,.28); }
+  .back-nav-label { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: 1px; }
+
   /* ── 頁尾 ── */
   .footer {
     background: #F0F4FA;
@@ -335,6 +351,10 @@
 </style>
 </head>
 <body>
+<div class="back-nav">
+  <a class="back-btn" href="dashboard.html">← 執行進度儀表板</a>
+  <span class="back-nav-label">慈濟 SBTi 淨零減碳 · 公眾溝通版</span>
+</div>
 <div class="card">
 
   <!-- ╔═══ HERO ═══╗ -->
@@ -572,6 +592,9 @@
     </div>
     <div>
       資料來源：SGS 第三方碳盤查認證　｜　方法論：SBTi 1.5°C 科學基礎目標　｜　排放係數：台電 0.494 kgCO₂/kWh
+    </div>
+    <div>
+      <a href="dashboard.html" style="color:var(--blue);font-weight:700;">← 回執行進度儀表板</a>　·　<a href="index.html" style="color:var(--blue);">董事會報告</a>　·　<a href="chiller-priority.html" style="color:var(--blue);">冰機汰換計畫</a>
     </div>
   </div>
 

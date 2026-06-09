@@ -332,6 +332,22 @@
   }
   .footer strong { color: var(--tzu-blue); }
 
+  /* ── 返回儀表板 ── */
+  .back-nav {
+    background: #003F7D; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+    color: #fff; border-radius: 20px; padding: 4px 14px;
+    font-size: 11px; font-weight: 700; text-decoration: none;
+    transition: background .2s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,.28); }
+  .back-nav-label { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: 1px; }
+
   /* 列印優化 */
   @media print {
     body { background: white; }
@@ -342,6 +358,11 @@
 </head>
 <body>
 <div class="page-wrap">
+  <!-- 返回儀表板 -->
+  <div class="back-nav">
+    <a class="back-btn" href="dashboard.html">← 執行進度儀表板</a>
+    <span class="back-nav-label">慈濟 SBTi 淨零減碳 · 董事會報告</span>
+  </div>
 
   <!-- ╔═══ 封面 ═══╗ -->
   <div class="cover">
@@ -721,6 +742,7 @@
   <div class="footer">
     <div><strong>慈濟慈善基金會</strong>｜淨零排放路徑報告 2026｜機密文件</div>
     <div>排放係數：台電 0.494 kgCO₂/kWh｜方法論：SBTi Corporate Standard 1.5°C ACA｜認證：SGS</div>
+    <div><a href="dashboard.html" style="color:var(--tzu-blue);font-weight:700;">← 回執行進度儀表板</a>　·　<a href="public-pathway.html" style="color:var(--tzu-blue);">公眾溝通版</a>　·　<a href="chiller-priority.html" style="color:var(--tzu-blue);">冰機汰換計畫</a></div>
   </div>
 
 </div><!-- /page-wrap -->

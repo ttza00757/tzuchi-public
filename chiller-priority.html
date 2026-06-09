@@ -139,6 +139,22 @@
   .ref-arrow { font-size:24px; margin:8px 0; }
   .ref-new   { font-size:11px; color:var(--green); font-weight:700; }
 
+  /* ── 返回儀表板 ── */
+  .back-nav {
+    background: #002D5A; padding: 8px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+    color: #fff; border-radius: 20px; padding: 4px 14px;
+    font-size: 11px; font-weight: 700; text-decoration: none;
+    transition: background .2s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,.28); }
+  .back-nav-label { font-size: 11px; color: rgba(255,255,255,.45); letter-spacing: 1px; }
+
   /* ── 底部 ── */
   .footer { background:var(--blue); color:rgba(255,255,255,.7); padding:24px 56px; font-size:11px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
   .footer a { color:var(--gold); text-decoration:none; }
@@ -157,6 +173,12 @@
 </head>
 <body>
 <div class="page">
+
+<!-- 返回儀表板 -->
+<div class="back-nav">
+  <a class="back-btn" href="dashboard.html">← 執行進度儀表板</a>
+  <span class="back-nav-label">慈濟 SBTi 淨零減碳 · 冰水主機汰換計畫</span>
+</div>
 
 <!-- ╔══ 封面 ══╗ -->
 <div class="cover">
@@ -742,6 +764,7 @@
     ｜ 資料截止：2026-06-08
   </div>
   <div>
+    <a href="dashboard.html" style="color:#FCD34D;font-weight:700;">← 執行儀表板</a> ·
     SBTi 1.5°C 路徑 ·
     <a href="index.html">董事會報告</a> ·
     <a href="public-pathway.html">公眾版路徑圖</a>
