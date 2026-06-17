@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 48px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 22px; }
+  .body-area { flex: 1; display: flex; padding: 30px 100px 18px; gap: 40px; }
+
+  .loc-col { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+  .loc-head { display: flex; align-items: center; gap: 14px; padding: 16px 24px; border-radius: 12px; }
+  .loc-head.a { background: #FFEEE3; border-left: 5px solid #D4713B; }
+  .loc-head.b { background: #FFF3EA; border-left: 5px solid #E8956D; }
+  .loc-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .a .loc-dot { background: #D4713B; }
+  .b .loc-dot { background: #E8956D; }
+  .loc-name { font-size: 24px; font-weight: 700; color: #2C1505; }
+  .loc-type { font-size: 16px; color: #6A4028; margin-left: auto; background: #FFF8F3; border: 1px solid #F0DDD0; border-radius: 18px; padding: 6px 16px; }
+
+  /* highlight COP */
+  .cop-card { border-radius: 14px; padding: 22px 26px; display: flex; align-items: center; gap: 22px; }
+  .cop-card.a { background: linear-gradient(135deg, #D4713B, #B85A20); }
+  .cop-card.b { background: linear-gradient(135deg, #E8956D, #CF6535); }
+  .cop-k { font-size: 16px; color: rgba(255,255,255,0.85); letter-spacing: 0.05em; }
+  .cop-v { font-family: 'Georgia',serif; font-size: 40px; font-weight: 700; color: #fff; line-height: 1.1; }
+  .cop-v small { font-size: 22px; opacity: 0.8; }
+  .cop-badge { margin-left: auto; text-align: center; background: rgba(255,255,255,0.18); border-radius: 12px; padding: 12px 20px; }
+  .cop-badge .n { font-family: 'Georgia',serif; font-size: 34px; font-weight: 700; color: #fff; line-height: 1; }
+  .cop-badge .l { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+  .metric { background: #FFEEE3; border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; justify-content: center; }
+  .metric.wide { grid-column: 1 / -1; }
+  .m-n { font-family: 'Georgia',serif; font-size: 36px; font-weight: 700; color: #D4713B; line-height: 1; }
+  .b .m-n { color: #CF6535; }
+  .m-n small { font-size: 18px; color: #9A6848; font-family: 'Microsoft JhengHei'; font-weight: 400; }
+  .m-l { font-size: 16px; color: #6A4028; margin-top: 8px; line-height: 1.35; }
+
+  .footnote { flex-shrink: 0; padding: 12px 100px 0; font-size: 14px; color: #9A6848; letter-spacing: 0.03em; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">成果 · AI 代理人分析</div>
+    <div class="hdr-title">AI 分析成果：新店 × 桃園 雙場域</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="body-area">
+    <!-- 新店 -->
+    <div class="loc-col a">
+      <div class="loc-head a">
+        <div class="loc-dot"></div>
+        <div class="loc-name">新店靜思堂</div>
+        <div class="loc-type">機房管路 + 控制優化</div>
+      </div>
+      <div class="cop-card a">
+        <div>
+          <div class="cop-k">冰機-3 主機 COP</div>
+          <div class="cop-v">3.24 <small>→</small> 3.85</div>
+        </div>
+        <div class="cop-badge">
+          <div class="n">▼15.9%</div>
+          <div class="l">用電率改善</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="m-n">12,104 <small>度/年</small></div>
+          <div class="m-l">全年推估節電量</div>
+        </div>
+        <div class="metric">
+          <div class="m-n">5.74 <small>公噸/年</small></div>
+          <div class="m-l">年減碳 CO₂e（≈261 棵樹）</div>
+        </div>
+        <div class="metric wide">
+          <div class="m-n">約 6.3 <small>萬元/年</small></div>
+          <div class="m-l">年節省電費（既有冰機效率提升，無汰換成本）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 桃園 -->
+    <div class="loc-col b">
+      <div class="loc-head b">
+        <div class="loc-dot"></div>
+        <div class="loc-name">桃園靜思堂</div>
+        <div class="loc-type">主機汰換　舊3台→新1台</div>
+      </div>
+      <div class="cop-card b">
+        <div>
+          <div class="cop-k">新主機 COP（穩態實測）</div>
+          <div class="cop-v">3.85 <small>→</small> 5.08</div>
+        </div>
+        <div class="cop-badge">
+          <div class="n">24.1%</div>
+          <div class="l">實測節能率</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="m-n">21,757 <small>度/年</small></div>
+          <div class="m-l">年化推估節電量</div>
+        </div>
+        <div class="metric">
+          <div class="m-n">10.31 <small>公噸/年</small></div>
+          <div class="m-l">年減碳 CO₂e（R-22→R-134a）</div>
+        </div>
+        <div class="metric wide">
+          <div class="m-n">約 11.9 <small>萬元/年</small></div>
+          <div class="m-l">年節省電費（380RT 舊機 → 160RT 高效主機）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote">註：數據由 AI 代理人依 EMS 逐時實測、以等效制冷量標準化比較法分析；115 年盛夏旺季數據出爐後另行複核確認。</div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

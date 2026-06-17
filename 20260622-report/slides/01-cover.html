@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; position: relative;
+  }
+  .left-panel {
+    width: 660px; height: 100%;
+    background: linear-gradient(160deg, #D4713B 0%, #B85A20 100%);
+    flex-shrink: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-end;
+    padding: 0 72px 0 64px;
+    position: relative; overflow: hidden;
+  }
+  .lp-circle { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); }
+  .lp-circle.c1 { width: 600px; height: 600px; top: -180px; left: -160px; }
+  .lp-circle.c2 { width: 360px; height: 360px; bottom: -80px; left: 160px; }
+  .lp-content { position: relative; z-index: 2; text-align: right; }
+  .lp-icon {
+    width: 80px; height: 80px; margin: 0 0 32px auto;
+    background: rgba(255,255,255,0.15); border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .lp-org { font-size: 17px; letter-spacing: 0.2em; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 40px; }
+  .lp-date-label { font-size: 14px; color: rgba(255,255,255,0.45); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .lp-date { font-family: 'Georgia',serif; font-size: 46px; font-weight: 700; color: rgba(255,255,255,0.92); }
+
+  .right-panel { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 96px; }
+  .tag {
+    display: inline-block; background: #FFEEE3; color: #D4713B;
+    font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+    padding: 6px 18px; border-radius: 20px; margin-bottom: 40px; align-self: flex-start;
+  }
+  .title-main {
+    font-family: 'Georgia','Microsoft JhengHei',serif;
+    font-size: 101px; font-weight: 700; color: #1E0C04;
+    line-height: 1.12; letter-spacing: -0.01em;
+  }
+  .title-sub {
+    font-family: 'Georgia','Microsoft JhengHei',serif;
+    font-size: 58px; font-weight: 400; color: #D4713B;
+    line-height: 1.3; margin-top: 10px; margin-bottom: 52px;
+  }
+  .rule { width: 56px; height: 3px; background: #F0DDD0; border-radius: 2px; margin-bottom: 36px; }
+  .meta-grid { display: flex; gap: 52px; }
+  .meta-key { font-size: 14px; letter-spacing: 0.2em; color: #9A6848; text-transform: uppercase; margin-bottom: 8px; }
+  .meta-val { font-size: 24px; font-weight: 600; color: #2C1505; }
+</style>
+</head>
+<body>
+  <div class="left-panel">
+    <div class="lp-circle c1"></div>
+    <div class="lp-circle c2"></div>
+    <div class="lp-content">
+      <div class="lp-icon">⚡</div>
+      <div class="lp-org">慈濟慈善事業基金會<br>能源管理委員會</div>
+      <div class="lp-date-label">報告日期</div>
+      <div class="lp-date">2026.06.22</div>
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="tag">Energy Management · AI Integration</div>
+    <div class="title-main">結合 AI 與 EMS</div>
+    <div class="title-sub">能源效率分析邏輯分享</div>
+    <div class="rule"></div>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <div class="meta-key">報告單位</div>
+        <div class="meta-val">能源管理團隊</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-key">對象</div>
+        <div class="meta-val">執行長室</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-key">本次報告</div>
+        <div class="meta-val">四大章節 · 16 頁</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 48px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 22px; }
+  .body-area { flex: 1; display: flex; padding: 32px 100px 40px; gap: 40px; }
+
+  .left-col { width: 480px; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; }
+  .insight-box { background: #2C1505; border-radius: 14px; padding: 26px 28px; }
+  .ib-label { font-size: 13px; letter-spacing: 0.2em; color: rgba(249,206,172,0.65); text-transform: uppercase; margin-bottom: 10px; }
+  .ib-text { font-size: 19px; color: rgba(255,255,255,0.85); line-height: 1.7; }
+
+  .vs-cards { display: flex; flex-direction: column; gap: 10px; }
+  .vs-card { background: #FFEEE3; border-radius: 11px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+  .vs-badge { padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; flex-shrink: 0; }
+  .vs-badge.before { background: rgba(44,21,5,0.12); color: #6A4028; }
+  .vs-badge.after  { background: #D4713B; color: white; }
+  .vs-content { flex: 1; }
+  .vs-title { font-size: 17px; font-weight: 700; color: #2C1505; margin-bottom: 3px; }
+  .vs-desc { font-size: 14px; color: #6A4028; line-height: 1.4; }
+  .vs-arrow { font-size: 22px; color: #E8956D; flex-shrink: 0; }
+
+  .bar-area { background: #FFF3EA; border-radius: 12px; padding: 18px 22px; flex: 1; }
+  .bar-label { font-size: 14px; letter-spacing: 0.15em; color: #9A6848; text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-name { font-size: 16px; color: #2C1505; width: 80px; flex-shrink: 0; font-weight: 600; }
+  .bar-track { flex: 1; height: 20px; background: rgba(44,21,5,0.08); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(to right, #D4713B, #E8956D); }
+  .bar-val { font-size: 16px; color: #D4713B; font-weight: 700; width: 52px; text-align: right; }
+
+  .right-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .screen-wrap { width: 100%; aspect-ratio: 2047 / 1142; max-height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(44,21,5,0.12); position: relative; background: #1E0C04; }
+  .screen-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .screen-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30,12,4,0.88), transparent); padding: 22px 18px 12px; font-size: 17px; color: rgba(255,255,255,0.8); }
+  .screen-label strong { color: #F9CEAC; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">四、電表數位化 · 分析</div>
+    <div class="hdr-title">電力分配分析與實測驗證</div>
+    <div class="rule"></div>
+  </div>
+  <div class="body-area">
+    <div class="left-col">
+      <div class="insight-box">
+        <div class="ib-label">分析價值</div>
+        <div class="ib-text">電表數位化後，電力分配數據精細度大幅提升，AI 可識別潛藏的用電浪費點，精準驅動節能行動。</div>
+      </div>
+      <div class="vs-cards">
+        <div class="vs-card">
+          <div class="vs-badge before">導入前</div>
+          <div class="vs-content">
+            <div class="vs-title">人工抄表 · 月度數據</div>
+            <div class="vs-desc">無法識別短時尖峰，需量費用難以優化</div>
+          </div>
+        </div>
+        <div class="vs-card">
+          <div class="vs-badge after">導入後</div>
+          <div class="vs-content">
+            <div class="vs-title">智慧電表 · 15 分鐘間隔</div>
+            <div class="vs-desc">精準掌握需量尖峰，主動調控降低費用</div>
+          </div>
+        </div>
+        <div class="vs-card">
+          <div class="vs-badge after">實測</div>
+          <div class="vs-content">
+            <div class="vs-title">新店電力分配實測</div>
+            <div class="vs-desc">驗證各設備用電比例，確認節能潛力</div>
+          </div>
+        </div>
+      </div>
+      <div class="bar-area">
+        <div class="bar-label">新店 · 設備用電比例</div>
+        <div class="bar-row">
+          <div class="bar-name">空調冷凍</div>
+          <div class="bar-track"><div class="bar-fill" style="width:62%;"></div></div>
+          <div class="bar-val">62%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">照明插座</div>
+          <div class="bar-track"><div class="bar-fill" style="width:22%; opacity:0.7;"></div></div>
+          <div class="bar-val">22%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">電梯動力</div>
+          <div class="bar-track"><div class="bar-fill" style="width:10%; opacity:0.5;"></div></div>
+          <div class="bar-val">10%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">其他設備</div>
+          <div class="bar-track"><div class="bar-fill" style="width:6%; opacity:0.35;"></div></div>
+          <div class="bar-val">6%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide50_img45.png" alt="新店電力分析" />
+        <div class="screen-label"><strong>新店電力分析</strong>　AI 識別用電分佈與節能潛力</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

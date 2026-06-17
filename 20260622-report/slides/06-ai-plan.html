@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 48px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 22px; }
+  .body-area { flex: 1; display: flex; padding: 32px 100px 40px; gap: 40px; }
+
+  /* Left: flow + insight */
+  .left-col { width: 560px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; }
+  .col-title { font-size: 17px; letter-spacing: 0.15em; color: #9A6848; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+
+  .flow { display: flex; align-items: center; background: #FFEEE3; border-radius: 14px; padding: 24px 20px; }
+  .flow-step { flex: 1; text-align: center; }
+  .flow-icon { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700; color: white; margin: 0 auto 10px; }
+  .flow-name { font-size: 18px; font-weight: 700; color: #2C1505; margin-bottom: 4px; }
+  .flow-desc { font-size: 14px; color: #6A4028; line-height: 1.4; }
+  .flow-arrow { font-size: 22px; color: #E8956D; flex-shrink: 0; padding: 0 6px; margin-bottom: 20px; }
+
+  .insight-box { background: #2C1505; border-radius: 14px; padding: 24px 28px; color: white; }
+  .ib-label { font-size: 14px; letter-spacing: 0.2em; color: rgba(249,206,172,0.7); text-transform: uppercase; margin-bottom: 10px; }
+  .ib-text { font-size: 20px; color: rgba(255,255,255,0.85); line-height: 1.7; }
+
+  .spec-card { background: #FFEEE3; border-radius: 14px; padding: 24px 28px; flex: 1; }
+  .spec-label { font-size: 14px; letter-spacing: 0.2em; color: #9A6848; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+  .spec-items { display: flex; flex-direction: column; gap: 10px; }
+  .spec-item { display: flex; align-items: flex-start; gap: 10px; font-size: 18px; color: #3E2010; line-height: 1.5; }
+  .spec-check { width: 20px; height: 20px; border-radius: 4px; background: #D4713B; display: flex; align-items: center; justify-content: center; font-size: 13px; color: white; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+  /* Right: screenshots */
+  .right-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .screen-wrap { width: 100%; aspect-ratio: 1920 / 1080; max-height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(44,21,5,0.15); position: relative; background: #1E0C04; }
+  .screen-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .screen-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30,12,4,0.88), transparent); padding: 22px 18px 12px; font-size: 17px; color: rgba(255,255,255,0.8); }
+  .screen-label strong { color: #F9CEAC; }
+  .screens-row { display: flex; gap: 16px; flex: 1; }
+  .screens-row .screen-wrap { flex: 1; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">成果 · AI 計畫擬定</div>
+    <div class="hdr-title">運用 AI 擬定計畫與效能推估</div>
+    <div class="rule"></div>
+  </div>
+  <div class="body-area">
+    <div class="left-col">
+      <div>
+        <div class="col-title">2026/05 · AI 分析流程</div>
+        <div class="flow" style="margin-top:10px;">
+          <div class="flow-step">
+            <div class="flow-icon" style="background:#2C1505;">EMS</div>
+            <div class="flow-name">運轉數據</div>
+            <div class="flow-desc">冰機即時<br>監測數據</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon" style="background:#D4713B;">AI</div>
+            <div class="flow-name">效率分析</div>
+            <div class="flow-desc">COP 值<br>量化評估</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon" style="background:#E8956D;">推</div>
+            <div class="flow-name">效能推估</div>
+            <div class="flow-desc">優化效益<br>預測模型</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon" style="background:#CF6535;">計</div>
+            <div class="flow-name">計畫擬定</div>
+            <div class="flow-desc">全省推展<br>優先序排定</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-box">
+        <div class="ib-label">核心價值</div>
+        <div class="ib-text">AI 將過去需要人工數月才能完成的效益評估，壓縮為數天內可產出分析報告，並直接轉化為招標規格。</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-label">AI 輔助招標文件製作</div>
+        <div class="spec-items">
+          <div class="spec-item"><div class="spec-check">✓</div><span>AI 分析結果直接輸出技術規格草稿</span></div>
+          <div class="spec-item"><div class="spec-check">✓</div><span>效能基線數據自動嵌入招標條件</span></div>
+          <div class="spec-item"><div class="spec-check">✓</div><span>節省人力，提升文件準確性與一致性</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide26_img23.png" alt="AI 擬定計畫成果" />
+        <div class="screen-label"><strong>2026/05</strong>　以新店及桃園成果 AI 擬定全省推展計畫</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

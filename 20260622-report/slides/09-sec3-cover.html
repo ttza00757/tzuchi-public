@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: linear-gradient(150deg, #FFF3EA 0%, #FFE3D1 55%, #FAD0B5 100%);
+    display: flex; align-items: center;
+    font-family: 'Microsoft JhengHei','PingFang TC',sans-serif;
+    position: relative;
+  }
+  .geo { position: absolute; border-radius: 50%; border: 1px solid rgba(212,113,59,0.18); }
+  .geo.g1 { width: 800px; height: 800px; right: -100px; top: -100px; }
+  .geo.g2 { width: 500px; height: 500px; right: 150px; top: 80px; }
+
+  .left-panel {
+    width: 480px; height: 100%;
+    background: rgba(255,255,255,0.5);
+    border-right: 1px solid rgba(212,113,59,0.2);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 64px; flex-shrink: 0; position: relative; z-index: 2;
+  }
+  .chapter-num-bg {
+    font-family: 'Georgia',serif; font-size: 240px; font-weight: 700;
+    color: rgba(44,21,5,0.05); line-height: 1;
+    position: absolute; bottom: -20px; left: 20px; letter-spacing: -0.06em;
+  }
+  .chapter-label { font-size: 16px; letter-spacing: 0.3em; color: #9A6848; text-transform: uppercase; margin-bottom: 20px; }
+  .chapter-index { font-family: 'Georgia',serif; font-size: 86px; font-weight: 700; color: #2C1505; line-height: 1; }
+
+  .right-panel { flex: 1; padding: 0 100px; position: relative; z-index: 2; }
+  .main-title {
+    font-family: 'Georgia','Microsoft JhengHei',serif;
+    font-size: 96px; font-weight: 700; color: #2C1505;
+    line-height: 1.15; margin-bottom: 32px;
+  }
+  .sub-text { font-size: 26px; color: #4E2E18; line-height: 1.8; max-width: 780px; }
+
+  .tag-row { display: flex; gap: 16px; margin-top: 48px; flex-wrap: wrap; }
+  .tag {
+    background: rgba(212,113,59,0.12);
+    border: 1px solid rgba(212,113,59,0.3);
+    color: #4E2E18;
+    font-size: 19px; padding: 10px 24px;
+    border-radius: 24px; letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="geo g1"></div>
+  <div class="geo g2"></div>
+
+  <div class="left-panel">
+    <div class="chapter-num-bg">三</div>
+    <div class="chapter-label">Chapter 03</div>
+    <div class="chapter-index">三</div>
+  </div>
+
+  <div class="right-panel">
+    <div class="main-title">節能專案<br>補助申請</div>
+    <div class="sub-text">
+      善用政府節能補助資源，降低設備汰換門檻，<br>
+      加速全省道場空調系統優化進程
+    </div>
+    <div class="tag-row">
+      <div class="tag">政府節能補助計畫</div>
+      <div class="tag">設備汰換補助</div>
+      <div class="tag">申請進度追蹤</div>
+    </div>
+  </div>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = document.body.style.background || getComputedStyle(b).background;
+})();
+</script>
+</body>
+</html>

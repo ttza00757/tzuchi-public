@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 52px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 24px; }
+
+  .body-area { flex: 1; display: flex; padding: 36px 100px 40px; gap: 48px; }
+
+  /* KPI column */
+  .kpi-col {
+    width: 320px; flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .kpi-card { background: #FFEEE3; border-radius: 14px; padding: 28px 28px; }
+  .kpi-n { font-family: 'Georgia',serif; font-size: 67px; font-weight: 700; color: #D4713B; line-height: 1; letter-spacing: -0.02em; }
+  .kpi-u { font-size: 24px; color: #E8956D; }
+  .kpi-l { font-size: 18px; color: #6A4028; margin-top: 8px; line-height: 1.4; }
+
+  .milestone-tags { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+  .m-tag {
+    display: flex; align-items: center; gap: 10px;
+    background: #FFF8F3; border-radius: 10px; padding: 12px 16px;
+    border-left: 3px solid #D4713B;
+  }
+  .m-dot { width: 8px; height: 8px; border-radius: 50%; background: #D4713B; flex-shrink: 0; }
+  .m-text { font-size: 17px; color: #3E2010; line-height: 1.4; }
+  .m-date { font-size: 14px; color: #9A6848; margin-top: 2px; letter-spacing: 0.05em; }
+
+  /* 截圖面板（完整顯示） */
+  .screens-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+
+  .screen-wrap {
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(44,21,5,0.12);
+    position: relative;
+    width: 100%; aspect-ratio: 1890 / 859; max-height: 100%;
+    background: #1E0C04;
+  }
+  .screen-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .screen-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(30,12,4,0.85), transparent);
+    padding: 20px 20px 14px;
+    font-size: 17px; color: rgba(255,255,255,0.85);
+    letter-spacing: 0.05em;
+  }
+  .screen-label strong { color: #F9CEAC; }
+
+  .screens-row { display: flex; gap: 20px; flex: 1; }
+  .screens-row .screen-wrap { flex: 1; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">成果 · EMS 建置</div>
+    <div class="hdr-title">能源管理系統建置成果</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="body-area">
+    <div class="kpi-col">
+      <div class="kpi-card">
+        <div class="kpi-n">全省<span class="kpi-u"></span></div>
+        <div class="kpi-l">2024/10 完成全省 EMS 推展建置</div>
+      </div>
+      <div class="kpi-card" style="background:#FFF3EA;">
+        <div class="kpi-n">冰機<span class="kpi-u">數據</span></div>
+        <div class="kpi-l">即時監控，奠定 AI 分析基礎</div>
+      </div>
+      <div class="milestone-tags">
+        <div class="m-tag">
+          <div class="m-dot"></div>
+          <div>
+            <div class="m-date">2024 / 02</div>
+            <div class="m-text">植境 EMS 建置啟用（台達智慧園區）</div>
+          </div>
+        </div>
+        <div class="m-tag">
+          <div class="m-dot"></div>
+          <div>
+            <div class="m-date">2024 / 08</div>
+            <div class="m-text">植境 EMS 顧問服務，建立效能基線</div>
+          </div>
+        </div>
+        <div class="m-tag">
+          <div class="m-dot"></div>
+          <div>
+            <div class="m-date">2024 / 10</div>
+            <div class="m-text">全省道場 EMS 統一平台建置完成</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screens-col">
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide12_img09.png" alt="能源管理儀表板" />
+        <div class="screen-label"><strong>能源管理儀表板</strong>　企業即時用電總覽</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

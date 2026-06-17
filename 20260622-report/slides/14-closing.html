@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: linear-gradient(150deg, #FFF3EA 0%, #FFE3D1 55%, #FAD0B5 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Microsoft JhengHei','PingFang TC',sans-serif;
+    position: relative;
+  }
+  .geo { position: absolute; border-radius: 50%; border: 1px solid rgba(212,113,59,0.18); }
+  .geo.g1 { width: 900px; height: 900px; right: -200px; bottom: -200px; }
+  .geo.g2 { width: 550px; height: 550px; right: 50px; bottom: 20px; }
+  .geo.g3 { width: 280px; height: 280px; left: 100px; top: 80px; border-color: rgba(212,113,59,0.12); }
+
+  .content {
+    text-align: center;
+    position: relative; z-index: 2;
+    max-width: 1200px;
+  }
+
+  .closing-tag {
+    font-size: 17px; letter-spacing: 0.3em;
+    color: #9A6848; text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .closing-title {
+    font-family: 'Georgia','Microsoft JhengHei',serif;
+    font-size: 115px; font-weight: 700;
+    color: #2C1505;
+    line-height: 1.1; margin-bottom: 48px;
+    letter-spacing: 0.05em;
+  }
+
+  .divider {
+    width: 80px; height: 3px;
+    background: #D4713B;
+    margin: 0 auto 48px;
+    border-radius: 2px;
+  }
+
+  .summary {
+    font-size: 26px; color: #5C3A20;
+    line-height: 1.9; margin-bottom: 64px;
+  }
+
+  .pillars {
+    display: flex; gap: 48px; justify-content: center;
+    margin-bottom: 72px;
+  }
+  .pillar {
+    text-align: center;
+  }
+  .pillar-num {
+    font-family: 'Georgia',serif;
+    font-size: 58px; font-weight: 700;
+    color: #B85A20; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .pillar-label {
+    font-size: 19px; color: #9A6848;
+    letter-spacing: 0.05em;
+  }
+  .pillar-sep {
+    width: 1px; background: rgba(212,113,59,0.3);
+    align-self: stretch; margin: 8px 0;
+  }
+
+  .meta-footer {
+    font-size: 19px; color: #A07A5C;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+  <div class="geo g1"></div>
+  <div class="geo g2"></div>
+  <div class="geo g3"></div>
+
+  <div class="content">
+    <div class="closing-tag">慈濟慈善事業基金會 · 能源管理委員會</div>
+    <div class="closing-title">敬請指導</div>
+    <div class="divider"></div>
+    <div class="summary">
+      EMS 數據 × AI 分析 = 精準節能決策<br>
+      持續推進智慧能源管理，邁向淨零目標
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">EMS</div>
+        <div class="pillar-label">全省能源監控</div>
+      </div>
+      <div class="pillar-sep"></div>
+      <div class="pillar">
+        <div class="pillar-num">AI</div>
+        <div class="pillar-label">效率分析決策</div>
+      </div>
+      <div class="pillar-sep"></div>
+      <div class="pillar">
+        <div class="pillar-num">數位</div>
+        <div class="pillar-label">電表精準計量</div>
+      </div>
+      <div class="pillar-sep"></div>
+      <div class="pillar">
+        <div class="pillar-num">補助</div>
+        <div class="pillar-label">節能加速推展</div>
+      </div>
+    </div>
+    <div class="meta-footer">2026 / 06 / 22　　能源管理團隊</div>
+  </div>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = document.body.style.background || getComputedStyle(b).background;
+})();
+</script>
+</body>
+</html>

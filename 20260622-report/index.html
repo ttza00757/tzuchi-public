@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>結合AI與EMS — 能源效率分析邏輯分享 | 2026.06.22</title>
+<script>
+  window.DECK_MANIFEST = [
+    { file: "slides/01-cover.html",       label: "封面" },
+    { file: "slides/02-overview.html",    label: "今日架構" },
+    { file: "slides/03-sec1-cover.html",  label: "一、成果" },
+    { file: "slides/04-ems-results.html", label: "EMS 建置成果" },
+    { file: "slides/05-ai-results.html",  label: "AI 效率分析" },
+    { file: "slides/06-ai-plan.html",     label: "AI 計畫擬定" },
+    { file: "slides/15-ai-agent.html",    label: "AI 代理人" },
+    { file: "slides/16-ai-agent-data.html", label: "新店×桃園分析" },
+    { file: "slides/07-sec2-cover.html",  label: "二、歷程" },
+    { file: "slides/08-timeline.html",    label: "歷程時間軸" },
+    { file: "slides/09-sec3-cover.html",  label: "三、節能補助" },
+    { file: "slides/10-subsidy.html",     label: "補助申請說明" },
+    { file: "slides/11-sec4-cover.html",  label: "四、電表數位化" },
+    { file: "slides/12-dashboard.html",   label: "儀表板成果" },
+    { file: "slides/13-meter-analysis.html", label: "電力分配分析" },
+    { file: "slides/14-closing.html",     label: "敬請指導" },
+  ];
+  window.DECK_WIDTH  = 1920;
+  window.DECK_HEIGHT = 1080;
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif; }
+
+  /* ── Overview ── */
+  #overview {
+    position: fixed; inset: 0; display: flex; flex-direction: column;
+  }
+  body[data-mode="present"] #overview { display: none; }
+
+  .ov-header {
+    padding: 28px 48px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(44,21,5,0.1);
+    flex-shrink: 0;
+  }
+  .ov-title {
+    font-size: 16px; color: #6A4028;
+    letter-spacing: 0.1em;
+  }
+  .ov-title strong { color: #2C1505; font-weight: 600; }
+  .ov-meta { font-size: 13px; color: #9A6848; letter-spacing: 0.08em; }
+  .start-btn {
+    background: #D4713B; color: white;
+    border: none; cursor: pointer;
+    padding: 10px 28px; border-radius: 6px;
+    font-size: 14px; font-family: inherit;
+    letter-spacing: 0.05em;
+    transition: background .2s;
+  }
+  .start-btn:hover { background: #E8956D; }
+
+  .grid-wrap {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    padding: 36px 48px 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    position: relative; aspect-ratio: 16/9;
+    border-radius: 8px; overflow: hidden;
+    background: #FFEEE3; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(44,21,5,0.15);
+    transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s;
+  }
+  .card:hover {
+    transform: scale(1.04) translateY(-3px);
+    box-shadow: 0 16px 48px rgba(44,21,5,0.25);
+    z-index: 10;
+  }
+  .card iframe {
+    width: 1920px; height: 1080px;
+    border: none; pointer-events: none;
+    transform-origin: top left;
+  }
+  .card-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 8px 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    font-size: 12px; color: rgba(255,255,255,0.75);
+    letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-num {
+    background: rgba(212,113,59,0.3); color: #FFD9BE;
+    width: 22px; height: 22px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+  }
+
+  /* ── Present ── */
+  #present-ui {
+    position: fixed; inset: 0;
+    background: #FFF8F3;
+    display: flex; flex-direction: column;
+  }
+  body[data-mode="overview"] #present-ui { display: none; }
+
+  #present-stage {
+    flex: 1; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #present-stage iframe {
+    border: none; position: absolute;
+    width: 1920px; height: 1080px;
+    transform-origin: top left;
+    pointer-events: none;
+  }
+
+  #present-chrome {
+    height: 52px; flex-shrink: 0;
+    background: #FBEFE6;
+    border-top: 1px solid rgba(44,21,5,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px;
+    user-select: none;
+  }
+  .chrome-btn {
+    background: rgba(44,21,5,0.05); border: 1px solid rgba(44,21,5,0.15);
+    color: #6A4028; cursor: pointer;
+    padding: 6px 20px; border-radius: 5px; font-size: 13px; font-family: inherit;
+    transition: background .15s;
+  }
+  .chrome-btn:hover { background: rgba(44,21,5,0.1); }
+  #slide-counter { font-size: 14px; color: #B85A20; letter-spacing: 0.1em; }
+  #slide-title-bar { font-size: 14px; color: #9A6848; }
+
+  .chrome-nav { display: flex; gap: 10px; }
+</style>
+</head>
+<body data-mode="overview">
+
+<!-- Overview -->
+<div id="overview">
+  <div class="ov-header">
+    <div>
+      <div class="ov-title"><strong>結合 AI 與 EMS</strong>　能源效率分析邏輯分享</div>
+      <div class="ov-meta">能源管理委員會　｜　2026 / 06 / 22　｜　共 16 頁</div>
+    </div>
+    <button class="start-btn" onclick="present(0)">▶ 開始簡報</button>
+  </div>
+  <div class="grid-wrap">
+    <div class="grid" id="card-grid"></div>
+  </div>
+</div>
+
+<!-- Present -->
+<div id="present-ui">
+  <div id="present-stage">
+    <iframe id="present-frame" src=""></iframe>
+  </div>
+  <div id="present-chrome">
+    <button class="chrome-btn" onclick="exitPresent()">⊞ 概覽</button>
+    <div id="slide-title-bar">—</div>
+    <div id="slide-counter">1 / 14</div>
+    <div class="chrome-nav">
+      <button class="chrome-btn" onclick="navigate(-1)">← 上一頁</button>
+      <button class="chrome-btn" onclick="navigate(1)">下一頁 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const MANIFEST = window.DECK_MANIFEST;
+const W = window.DECK_WIDTH  || 1920;
+const H = window.DECK_HEIGHT || 1080;
+let currentIdx = 0;
+
+/* Build grid */
+function buildGrid() {
+  const grid = document.getElementById('card-grid');
+  MANIFEST.forEach((slide, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = () => present(i);
+
+    const iframe = document.createElement('iframe');
+    iframe.src = slide.file;
+    iframe.loading = 'lazy';
+    card.appendChild(iframe);
+
+    const label = document.createElement('div');
+    label.className = 'card-label';
+    label.innerHTML = `<span class="card-num">${i+1}</span><span>${slide.label}</span>`;
+    card.appendChild(label);
+
+    grid.appendChild(card);
+  });
+}
+
+/* Scale iframes in cards */
+function scaleCards() {
+  document.querySelectorAll('.card').forEach(card => {
+    const cw = card.clientWidth;
+    const scale = cw / W;
+    const iframe = card.querySelector('iframe');
+    if (iframe) iframe.style.transform = `scale(${scale})`;
+  });
+}
+
+/* Present mode */
+function present(idx) {
+  currentIdx = Math.max(0, Math.min(idx, MANIFEST.length - 1));
+  document.body.dataset.mode = 'present';
+  loadSlide();
+  // 雙層 rAF：確保 display:flex 已生效、尺寸可讀
+  requestAnimationFrame(() => requestAnimationFrame(() => scalePresent()));
+}
+
+function loadSlide() {
+  const slide = MANIFEST[currentIdx];
+  document.getElementById('present-frame').src = slide.file;
+  document.getElementById('slide-counter').textContent = `${currentIdx+1} / ${MANIFEST.length}`;
+  document.getElementById('slide-title-bar').textContent = slide.label;
+}
+
+function navigate(dir) {
+  present(currentIdx + dir);
+}
+
+function exitPresent() {
+  document.body.dataset.mode = 'overview';
+}
+
+function scalePresent() {
+  const stage = document.getElementById('present-stage');
+  const iframe = document.getElementById('present-frame');
+  const sw = stage.clientWidth;
+  const sh = stage.clientHeight;
+  const scale = Math.min(sw / W, sh / H);
+  const tx = (sw - W * scale) / 2;
+  const ty = (sh - H * scale) / 2;
+  iframe.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`;
+}
+
+/* Keyboard */
+document.addEventListener('keydown', e => {
+  if (document.body.dataset.mode !== 'present') return;
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); navigate(1); }
+  if (e.key === 'ArrowLeft'  || e.key === 'PageUp')  { e.preventDefault(); navigate(-1); }
+  if (e.key === 'Escape') exitPresent();
+  if (e.key === 'Home') present(0);
+  if (e.key === 'End')  present(MANIFEST.length - 1);
+});
+
+window.addEventListener('resize', () => {
+  scaleCards();
+  if (document.body.dataset.mode === 'present') scalePresent();
+});
+
+buildGrid();
+requestAnimationFrame(() => { scaleCards(); scalePresent(); });
+</script>
+</body>
+</html>

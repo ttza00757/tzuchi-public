@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 48px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 22px; }
+  .body-area { flex: 1; display: flex; padding: 32px 100px 40px; gap: 40px; }
+
+  .left-col { width: 480px; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; }
+
+  .strategy-box { background: #2C1505; border-radius: 14px; padding: 26px 28px; }
+  .sb-label { font-size: 13px; letter-spacing: 0.25em; color: rgba(249,206,172,0.65); text-transform: uppercase; margin-bottom: 10px; }
+  .sb-text { font-size: 19px; color: rgba(255,255,255,0.85); line-height: 1.7; }
+
+  .steps { display: flex; flex-direction: column; gap: 10px; }
+  .step-item { display: flex; gap: 14px; align-items: flex-start; background: #FFEEE3; border-radius: 10px; padding: 14px 18px; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: #D4713B; color: white; font-size: 17px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 18px; font-weight: 700; color: #2C1505; margin-bottom: 3px; }
+  .step-desc { font-size: 16px; color: #6A4028; line-height: 1.4; }
+
+  .kpi-row { display: flex; gap: 12px; }
+  .kpi-chip { flex: 1; background: #FFF3EA; border-radius: 10px; padding: 14px 16px; text-align: center; }
+  .kpi-n { font-family: 'Georgia',serif; font-size: 34px; font-weight: 700; color: #D4713B; }
+  .kpi-l { font-size: 14px; color: #6A4028; margin-top: 4px; line-height: 1.3; }
+
+  .right-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .screen-wrap { width: 100%; aspect-ratio: 1805 / 857; max-height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(44,21,5,0.12); position: relative; background: #1E0C04; }
+  .screen-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .screen-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30,12,4,0.88), transparent); padding: 22px 18px 12px; font-size: 17px; color: rgba(255,255,255,0.8); }
+  .screen-label strong { color: #F9CEAC; }
+  .screens-row { display: flex; gap: 16px; flex: 1; }
+  .screens-row .screen-wrap { flex: 1; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">三、節能補助</div>
+    <div class="hdr-title">節能補助申請策略與執行</div>
+    <div class="rule"></div>
+  </div>
+  <div class="body-area">
+    <div class="left-col">
+      <div class="strategy-box">
+        <div class="sb-label">核心策略</div>
+        <div class="sb-text">結合 EMS 數據與 AI 分析成果，精準匹配補助條件，提升申請成功率。</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-chip">
+          <div class="kpi-n">節能</div>
+          <div class="kpi-l">補助申請<br>量化佐證</div>
+        </div>
+        <div class="kpi-chip">
+          <div class="kpi-n">效益</div>
+          <div class="kpi-l">AI 推估<br>預期報酬</div>
+        </div>
+        <div class="kpi-chip">
+          <div class="kpi-n">文件</div>
+          <div class="kpi-l">系統化<br>申請規格</div>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">EMS 數據蒐集</div>
+            <div class="step-desc">取得冰機即時用電與效率基線數據</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">AI 效益量化</div>
+            <div class="step-desc">推估汰換後節能潛力，產出量化報告</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">補助條件比對</div>
+            <div class="step-desc">確認符合經濟部、台電節能補助項目</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">申請文件製作</div>
+            <div class="step-desc">AI 輔助生成技術說明與效益佐證文件</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide31_img28.png" alt="節能補助申請" />
+        <div class="screen-label"><strong>節能補助</strong>　EMS 數據支撐補助申請文件</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

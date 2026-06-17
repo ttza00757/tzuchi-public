@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 42px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 20px; }
+  .body-area { flex: 1; display: flex; padding: 28px 100px 36px; gap: 32px; }
+
+  .left-col { width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px; }
+  .desc-box { background: #2C1505; border-radius: 12px; padding: 22px 24px; }
+  .db-label { font-size: 13px; letter-spacing: 0.2em; color: rgba(249,206,172,0.65); text-transform: uppercase; margin-bottom: 8px; }
+  .db-text { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.7; }
+
+  .feat-list { display: flex; flex-direction: column; gap: 8px; }
+  .feat { display: flex; align-items: flex-start; gap: 10px; background: #FFEEE3; border-radius: 9px; padding: 12px 16px; }
+  .feat-icon { width: 28px; height: 28px; border-radius: 6px; background: #D4713B; display: flex; align-items: center; justify-content: center; font-size: 16px; color: white; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .feat-body { flex: 1; }
+  .feat-title { font-size: 17px; font-weight: 700; color: #2C1505; }
+  .feat-desc { font-size: 14px; color: #6A4028; margin-top: 2px; line-height: 1.4; }
+
+  .right-col { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; }
+  .screen-wrap { border-radius: 11px; overflow: hidden; box-shadow: 0 4px 18px rgba(44,21,5,0.12); position: relative; background: #1E0C04; }
+  .screen-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .screen-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30,12,4,0.88), transparent); padding: 20px 16px 10px; font-size: 16px; color: rgba(255,255,255,0.8); }
+  .screen-label strong { color: #F9CEAC; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">四、電表數位化</div>
+    <div class="hdr-title">智慧儀表板建置成果</div>
+    <div class="rule"></div>
+  </div>
+  <div class="body-area">
+    <div class="left-col">
+      <div class="desc-box">
+        <div class="db-label">成果概述</div>
+        <div class="db-text">建置涵蓋主儀表板、各大會所、太陽能監控及智慧電表的全方位數位化監測體系。</div>
+      </div>
+      <div class="feat-list">
+        <div class="feat">
+          <div class="feat-icon">主</div>
+          <div class="feat-body">
+            <div class="feat-title">主儀表板</div>
+            <div class="feat-desc">全省用電即時彙整，異常告警自動推播</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">所</div>
+          <div class="feat-body">
+            <div class="feat-title">23 大會所監控</div>
+            <div class="feat-desc">各場域分層用電數據，細緻到設備層級</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">☀</div>
+          <div class="feat-body">
+            <div class="feat-title">太陽能監控</div>
+            <div class="feat-desc">太陽能發電與用電對比，優化自用比率</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">電</div>
+          <div class="feat-body">
+            <div class="feat-title">智慧電表</div>
+            <div class="feat-desc">15 分鐘間隔細緻計量，支援需量管理</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide34_img30.png" alt="主儀表板" />
+        <div class="screen-label"><strong>主儀表板</strong>　全省用電總覽</div>
+      </div>
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide35_img31.png" alt="23大會所" />
+        <div class="screen-label"><strong>23 大會所</strong>　場域分層監控</div>
+      </div>
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide36_img32.png" alt="太陽能監控" />
+        <div class="screen-label"><strong>太陽能監控</strong>　發電用電對比</div>
+      </div>
+      <div class="screen-wrap">
+        <img src="../assets/imgs/slide37_img33.png" alt="智慧電表" />
+        <div class="screen-label"><strong>智慧電表</strong>　15 分鐘細緻計量</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>

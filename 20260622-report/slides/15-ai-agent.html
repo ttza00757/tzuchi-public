@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #FFF8F3;
+    font-family: 'Microsoft JhengHei','PingFang TC','Helvetica Neue',sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .hdr { padding: 48px 100px 0; flex-shrink: 0; }
+  .hdr-label { font-size: 16px; letter-spacing: 0.25em; color: #9A6848; text-transform: uppercase; margin-bottom: 10px; }
+  .hdr-title { font-family: 'Georgia','Microsoft JhengHei',serif; font-size: 48px; font-weight: 700; color: #2C1505; }
+  .rule { height: 1px; background: #F0DDD0; margin-top: 22px; }
+  .body-area { flex: 1; display: flex; padding: 34px 100px 44px; gap: 44px; }
+
+  /* Left */
+  .left-col { width: 620px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; }
+  .lead-box { background: #2C1505; border-radius: 14px; padding: 26px 30px; }
+  .lead-label { font-size: 14px; letter-spacing: 0.2em; color: rgba(249,206,172,0.7); text-transform: uppercase; margin-bottom: 10px; }
+  .lead-text { font-size: 21px; color: rgba(255,255,255,0.9); line-height: 1.7; }
+
+  .vlist { display: flex; flex-direction: column; gap: 12px; }
+  .vitem { display: flex; gap: 14px; align-items: flex-start; background: #FFEEE3; border-radius: 12px; padding: 18px 22px; }
+  .vicon { width: 36px; height: 36px; border-radius: 9px; background: #D4713B; color: #fff; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vbody { flex: 1; }
+  .vtitle { font-size: 19px; font-weight: 700; color: #2C1505; margin-bottom: 3px; }
+  .vdesc { font-size: 16px; color: #6A4028; line-height: 1.45; }
+
+  /* Right: flow + agents */
+  .right-col { flex: 1; display: flex; flex-direction: column; gap: 22px; }
+  .col-title { font-size: 17px; letter-spacing: 0.15em; color: #9A6848; text-transform: uppercase; font-weight: 600; }
+
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .stage { background: #FFF3EA; border: 2px solid #F0DDD0; border-radius: 14px; padding: 20px 26px; display: flex; align-items: center; gap: 20px; }
+  .stage.mid { background: #D4713B; border-color: #D4713B; }
+  .stage-ic { width: 54px; height: 54px; border-radius: 12px; background: #FFEEE3; color: #B85A20; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .stage.mid .stage-ic { background: rgba(255,255,255,0.18); color: #fff; }
+  .stage-tt { font-size: 21px; font-weight: 700; color: #2C1505; }
+  .stage.mid .stage-tt { color: #fff; }
+  .stage-ds { font-size: 15px; color: #6A4028; margin-top: 3px; line-height: 1.4; }
+  .stage.mid .stage-ds { color: rgba(255,255,255,0.85); }
+  .arrow { text-align: center; color: #E8956D; font-size: 26px; line-height: 1; padding: 7px 0; }
+
+  .agents { background: #FFEEE3; border-radius: 14px; padding: 20px 24px; }
+  .agents-label { font-size: 14px; letter-spacing: 0.18em; color: #9A6848; text-transform: uppercase; font-weight: 600; margin-bottom: 14px; }
+  .chips { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chip { display: flex; align-items: center; gap: 9px; background: #FFF8F3; border: 1px solid #F0DDD0; border-radius: 24px; padding: 9px 18px; font-size: 16px; color: #3E2010; font-weight: 600; }
+  .chip-dot { width: 9px; height: 9px; border-radius: 50%; background: #D4713B; flex-shrink: 0; }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="hdr-label">成果 · AI 代理人</div>
+    <div class="hdr-title">在 Claude 運用 AI 代理人協助能源分析</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="body-area">
+    <div class="left-col">
+      <div class="lead-box">
+        <div class="lead-label">核心做法</div>
+        <div class="lead-text">為各場域建置專屬 AI 代理人，封裝設備參數、分析方法與審查紅線，將 EMS 數據自動轉化為可決策的分析報告。</div>
+      </div>
+      <div class="vlist">
+        <div class="vitem">
+          <div class="vicon">✓</div>
+          <div class="vbody">
+            <div class="vtitle">場域專屬代理人</div>
+            <div class="vdesc">新店、桃園各建獨立 AI 代理人，內建冰機參數與分析規則，確保口徑一致</div>
+          </div>
+        </div>
+        <div class="vitem">
+          <div class="vicon">✓</div>
+          <div class="vbody">
+            <div class="vtitle">自動標準化分析</div>
+            <div class="vdesc">讀取 EMS 逐時數據，以「等效制冷量標準化比較法」計算效率、節電與減碳</div>
+          </div>
+        </div>
+        <div class="vitem">
+          <div class="vicon">✓</div>
+          <div class="vbody">
+            <div class="vtitle">一鍵產出交付</div>
+            <div class="vdesc">自動生成分析報告（Word）、簡報（PPT）與線上儀表板，大幅縮短人力</div>
+          </div>
+        </div>
+        <div class="vitem">
+          <div class="vicon">✓</div>
+          <div class="vbody">
+            <div class="vtitle">數據紅線控管</div>
+            <div class="vdesc">數字不自動更動、計算式可追溯、感測異常自動標記提醒核對</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="col-title">AI 代理人運作流程</div>
+      <div class="flow">
+        <div class="stage">
+          <div class="stage-ic">📊</div>
+          <div>
+            <div class="stage-tt">EMS 逐時數據</div>
+            <div class="stage-ds">冰機效率、用電量、制冷量逐時紀錄</div>
+          </div>
+        </div>
+        <div class="arrow">▼</div>
+        <div class="stage mid">
+          <div class="stage-ic">🤖</div>
+          <div>
+            <div class="stage-tt">Claude AI 代理人 · 標準化分析</div>
+            <div class="stage-ds">等效制冷量比較、效率／節電／減碳計算，並套用審查紅線</div>
+          </div>
+        </div>
+        <div class="arrow">▼</div>
+        <div class="stage">
+          <div class="stage-ic">📑</div>
+          <div>
+            <div class="stage-tt">報告 · 簡報 · 儀表板</div>
+            <div class="stage-ds">自動產出可呈報的決策成果</div>
+          </div>
+        </div>
+      </div>
+      <div class="agents">
+        <div class="agents-label">已建置之 AI 代理人</div>
+        <div class="chips">
+          <div class="chip"><span class="chip-dot"></span>新店節能代理人</div>
+          <div class="chip"><span class="chip-dot"></span>桃園能源績效代理人</div>
+          <div class="chip"><span class="chip-dot"></span>淨零儀表板代理人</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+(function(){
+  var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  var b = document.body;
+  b.style.transform = 'scale('+s+')';
+  b.style.transformOrigin = 'top left';
+  b.style.position = 'fixed';
+  b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
+  b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.background = '#FFF8F3';
+})();
+</script>
+</html>
