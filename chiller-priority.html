@@ -22,7 +22,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
-    font-size: 13px; line-height: 1.7; color: #1A202C;
+    font-size: 16px; line-height: 1.7; color: #1A202C;
     background: #EEF2F8;
   }
   .page { max-width: 1080px; margin: 0 auto; background: var(--white); box-shadow: 0 2px 20px rgba(0,0,0,.1); }
@@ -37,22 +37,22 @@
     width:320px; height:320px; border-radius:50%;
     background: rgba(255,255,255,.05);
   }
-  .cover-tag { font-size:11px; letter-spacing:3px; color:rgba(255,255,255,.7); margin-bottom:12px; }
-  .cover-title { font-size:28px; font-weight:900; line-height:1.3; margin-bottom:10px; }
+  .cover-tag { font-size:14px; letter-spacing:3px; color:rgba(255,255,255,.7); margin-bottom:12px; }
+  .cover-title { font-size:31px; font-weight:900; line-height:1.3; margin-bottom:10px; }
   .cover-title em { color:var(--gold); font-style:normal; }
-  .cover-sub { font-size:13px; color:rgba(255,255,255,.8); margin-bottom:24px; }
+  .cover-sub { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:24px; }
   .cover-stats { display:flex; gap:24px; flex-wrap:wrap; }
   .cstat { background:rgba(255,255,255,.12); border-radius:10px; padding:14px 20px; text-align:center; min-width:120px; }
-  .cstat-num { font-size:24px; font-weight:900; color:var(--gold); }
-  .cstat-lbl { font-size:10px; color:rgba(255,255,255,.75); margin-top:2px; }
+  .cstat-num { font-size:27px; font-weight:900; color:var(--gold); }
+  .cstat-lbl { font-size:13px; color:rgba(255,255,255,.75); margin-top:2px; }
   .gold-bar { height:4px; background:linear-gradient(90deg,var(--gold),#E5C06A,var(--gold)); }
 
   /* ── 通用 section ── */
   .section { padding: 40px 56px; }
   .section + .section { border-top: 1px solid var(--gray300); }
-  .section-label { font-size:10px; letter-spacing:3px; color:var(--gray); margin-bottom:6px; font-weight:700; }
-  .section-title { font-size:18px; font-weight:800; color:var(--blue); margin-bottom:4px; }
-  .section-sub { font-size:12px; color:var(--gray); margin-bottom:20px; }
+  .section-label { font-size:13px; letter-spacing:3px; color:var(--gray); margin-bottom:6px; font-weight:700; }
+  .section-title { font-size:21px; font-weight:800; color:var(--blue); margin-bottom:4px; }
+  .section-sub { font-size:15px; color:var(--gray); margin-bottom:20px; }
 
   /* ── KPI 磚 ── */
   .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
@@ -61,27 +61,27 @@
   .kpi.green  { background:var(--mint);  border-left:4px solid var(--green); }
   .kpi.gold   { background:#FDF5E0; border-left:4px solid var(--gold); }
   .kpi.red    { background:#FEF0EE; border-left:4px solid var(--red); }
-  .kpi-num  { font-size:26px; font-weight:900; }
+  .kpi-num  { font-size:29px; font-weight:900; }
   .kpi.blue .kpi-num  { color:var(--blue); }
   .kpi.green .kpi-num { color:var(--green); }
   .kpi.gold .kpi-num  { color:#9A7322; }
   .kpi.red .kpi-num   { color:var(--red); }
-  .kpi-lbl  { font-size:11px; color:var(--gray); margin-top:4px; }
+  .kpi-lbl  { font-size:14px; color:var(--gray); margin-top:4px; }
 
   /* ── 緊急警示 ── */
   .alert-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:8px; }
   .alert-card { border-radius:10px; padding:14px 18px; display:flex; gap:14px; align-items:flex-start; }
   .alert-card.crit  { background:#FEF0EE; border:1.5px solid #F1948A; }
   .alert-card.warn  { background:#FDF5E0; border:1.5px solid #F0C040; }
-  .alert-icon { font-size:28px; flex-shrink:0; margin-top:2px; }
-  .alert-name { font-weight:800; font-size:14px; color:#1A202C; margin-bottom:4px; }
-  .alert-detail { font-size:11.5px; color:var(--gray); }
-  .alert-tag { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; margin-top:6px; }
+  .alert-icon { font-size:31px; flex-shrink:0; margin-top:2px; }
+  .alert-name { font-weight:800; font-size:17px; color:#1A202C; margin-bottom:4px; }
+  .alert-detail { font-size:14.5px; color:var(--gray); }
+  .alert-tag { display:inline-block; font-size:13px; font-weight:700; padding:2px 8px; border-radius:20px; margin-top:6px; }
   .tag-crit { background:var(--red); color:#fff; }
   .tag-warn { background:var(--orange); color:#fff; }
 
   /* ── 排名表 ── */
-  .priority-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .priority-table { width:100%; border-collapse:collapse; font-size:15px; }
   .priority-table th {
     background:var(--blue); color:#fff; padding:10px 10px; text-align:center;
     font-weight:700; border-bottom:2px solid #002D5A; position:sticky; top:0;
@@ -94,7 +94,7 @@
   .tr-high   { background:#FEFCE8; }
   .tr-medium { background:#EFF6FF; }
   .tr-low    { background:#F9FAFB; }
-  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:10px; font-weight:700; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:13px; font-weight:700; }
   .badge-done   { background:#C6F6D5; color:#22543D; }
   .badge-crit   { background:#FED7D7; color:#822727; }
   .badge-urgent { background:#FEFCBF; color:#744210; }
@@ -103,20 +103,20 @@
   .badge-low    { background:#E2E8F0; color:#4A5568; }
   .scope1-bar { height:8px; background:#003F7D; border-radius:4px; display:inline-block; min-width:2px; }
   .scope2-bar { height:8px; background:#2A7A4B; border-radius:4px; display:inline-block; margin-left:2px; min-width:2px; }
-  .rank-num { font-weight:900; font-size:16px; color:var(--blue); }
+  .rank-num { font-weight:900; font-size:19px; color:var(--blue); }
 
   /* ── 分年度時間軸 ── */
   .timeline { position:relative; padding-left:0; margin-top:16px; }
   .tl-item { display:grid; grid-template-columns:110px 1fr; gap:0; margin-bottom:0; }
   .tl-year-col { padding:16px 20px 16px 0; text-align:right; }
-  .tl-year-badge { display:inline-block; padding:6px 14px; border-radius:8px; font-weight:800; font-size:13px; color:#fff; }
+  .tl-year-badge { display:inline-block; padding:6px 14px; border-radius:8px; font-weight:800; font-size:16px; color:#fff; }
   .tl-content-col { border-left:3px solid var(--gray300); padding:16px 0 16px 24px; }
   .tl-item:last-child .tl-content-col { border-left-color:transparent; }
   .tl-dot { width:14px; height:14px; border-radius:50%; position:absolute; left:-8.5px; top:20px; border:2px solid #fff; }
   .tl-content-col { position:relative; }
-  .tl-phase-title { font-weight:800; font-size:14px; margin-bottom:10px; }
+  .tl-phase-title { font-weight:800; font-size:17px; margin-bottom:10px; }
   .tl-chips { display:flex; flex-wrap:wrap; gap:8px; }
-  .tl-chip { background:var(--gray100); border-radius:20px; padding:5px 14px; font-size:11.5px; border:1px solid var(--gray300); }
+  .tl-chip { background:var(--gray100); border-radius:20px; padding:5px 14px; font-size:14.5px; border:1px solid var(--gray300); }
   .tl-chip strong { color:var(--blue); }
   .tl-chip.chip-done   { background:#C6F6D5; border-color:#9AE6B4; }
   .tl-chip.chip-r22    { background:#FEF0EE; border-color:#F1948A; }
@@ -129,15 +129,15 @@
   .ref-card.r22    { background:#FEF0EE; border:2px solid #F1948A; }
   .ref-card.r410   { background:#FFF8E1; border:2px solid #FFD54F; }
   .ref-card.r134   { background:#E3F2FD; border:2px solid #90CAF9; }
-  .ref-name  { font-size:20px; font-weight:900; margin-bottom:4px; }
+  .ref-name  { font-size:23px; font-weight:900; margin-bottom:4px; }
   .ref-card.r22  .ref-name { color:var(--red); }
   .ref-card.r410 .ref-name { color:#D97706; }
   .ref-card.r134 .ref-name { color:#1D4ED8; }
-  .ref-gwp   { font-size:11px; color:var(--gray); margin-bottom:12px; }
-  .ref-stat  { font-size:13px; margin-bottom:4px; }
-  .ref-stat strong { font-size:18px; font-weight:900; }
-  .ref-arrow { font-size:24px; margin:8px 0; }
-  .ref-new   { font-size:11px; color:var(--green); font-weight:700; }
+  .ref-gwp   { font-size:14px; color:var(--gray); margin-bottom:12px; }
+  .ref-stat  { font-size:16px; margin-bottom:4px; }
+  .ref-stat strong { font-size:21px; font-weight:900; }
+  .ref-arrow { font-size:27px; margin:8px 0; }
+  .ref-new   { font-size:14px; color:var(--green); font-weight:700; }
 
   /* ── 返回儀表板 ── */
   .back-nav {
@@ -149,14 +149,14 @@
     display: inline-flex; align-items: center; gap: 6px;
     background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
     color: #fff; border-radius: 20px; padding: 4px 14px;
-    font-size: 11px; font-weight: 700; text-decoration: none;
+    font-size: 14px; font-weight: 700; text-decoration: none;
     transition: background .2s;
   }
   .back-btn:hover { background: rgba(255,255,255,.28); }
-  .back-nav-label { font-size: 11px; color: rgba(255,255,255,.45); letter-spacing: 1px; }
+  .back-nav-label { font-size: 14px; color: rgba(255,255,255,.45); letter-spacing: 1px; }
 
   /* ── 底部 ── */
-  .footer { background:var(--blue); color:rgba(255,255,255,.7); padding:24px 56px; font-size:11px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+  .footer { background:var(--blue); color:rgba(255,255,255,.7); padding:24px 56px; font-size:14px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
   .footer a { color:var(--gold); text-decoration:none; }
 
   @media(max-width:768px){
@@ -166,7 +166,7 @@
     .alert-grid { grid-template-columns:1fr; }
     .ref-grid { grid-template-columns:1fr; }
     .tl-item { grid-template-columns:90px 1fr; }
-    .priority-table { font-size:11px; }
+    .priority-table { font-size:14px; }
     .priority-table th, .priority-table td { padding:7px 6px; }
   }
 </style>
@@ -218,7 +218,7 @@
       <div class="kpi-lbl">R-22 高 GWP 主機<br>（GWP=1,810，4,990RT，需優先汰換）</div>
     </div>
   </div>
-  <p style="font-size:12px;color:var(--gray);background:var(--gray100);padding:10px 14px;border-radius:8px;">
+  <p style="font-size:15px;color:var(--gray);background:var(--gray100);padding:10px 14px;border-radius:8px;">
     ⚡ 2025 年 Scope 1+2 基準：9,175 tCO₂e｜2027 年太陽能全到位後預估 <strong>≈6,031 tCO₂e</strong>（已超額達成 2030 目標 6,863 tCO₂e）。<br>
     ⚠️ 上方 Scope 2「理論上限」係以 RT × 年冷房時數估算，<strong>僅供 27 項主機跨設施相對排序比較</strong>，不可直接加總計入正式減碳路徑；正式路徑仍以 2027 預估 ≈6,031 tCO₂e 為準。
   </p>
@@ -241,7 +241,7 @@
     <div class="alert-card warn" style="opacity:.7;">
       <div class="alert-icon">🚫</div>
       <div>
-        <div class="alert-name">台北東區聯絡處 CH-1（北區）<span style="background:#E2E8F0;color:#475569;font-size:10px;padding:1px 6px;border-radius:10px;margin-left:6px;">不在盤查範疇</span></div>
+        <div class="alert-name">台北東區聯絡處 CH-1（北區）<span style="background:#E2E8F0;color:#475569;font-size:13px;padding:1px 6px;border-radius:10px;margin-left:6px;">不在盤查範疇</span></div>
         <div class="alert-detail">離心式 × 1 台｜廠牌：TRANE｜1996 年啟用，<strong>機齡 30 年</strong><br>容量：400RT｜R-22｜全台第二老 R-22 主機（次於民權34年）<br>🚫 經確認不在盤查範疇，不計入減碳潛力總計（列此供資產管理參考）</div>
         <span class="alert-tag" style="background:#E2E8F0;color:#475569;">範疇外·不計入</span>
       </div>
@@ -271,7 +271,7 @@
       </div>
     </div>
   </div>
-  <div style="font-size:11px;color:var(--gray);margin-top:12px;padding:8px 14px;background:#FFF0E8;border-radius:6px;border-left:3px solid var(--orange);">
+  <div style="font-size:14px;color:var(--gray);margin-top:12px;padding:8px 14px;background:#FFF0E8;border-radius:6px;border-left:3px solid var(--orange);">
     📌 R-22（HCFC）臺灣已依蒙特婁議定書管制進口配額，2030 年前全面禁止。使用 R-22 機型每年維修費用攀升，建議優先汰換超過 20 年的 R-22 設備。
   </div>
 </div>
@@ -282,11 +282,11 @@
   <div class="section-title">23 會所完整評分排名（27 項，依官方主檔重算）</div>
   <div class="section-sub">優先分數 ＝（Scope1 + Scope2 減碳潛力）× 緊迫係數｜緊迫係數 = MIN(2.0, 機齡/15 + 0.3[若R-22] + 0.3[若往復式])｜顏色代表緊迫等級</div>
 
-  <div style="font-size:11px;color:var(--gray);background:#F7FAFC;border:1px solid #E2E8F0;border-radius:4px;padding:6px 10px;margin-bottom:12px;">
+  <div style="font-size:14px;color:var(--gray);background:#F7FAFC;border:1px solid #E2E8F0;border-radius:4px;padding:6px 10px;margin-bottom:12px;">
     📋 本排序為<strong>慈濟內部資產汰換優先管理工具</strong>，依 IPCC GWP 值與 GHG Protocol 架構自行設計，僅供跨設施相對排序參考，非 SBTi 或其他國際機構規定之計算方式
   </div>
 
-  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;">
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:14px;">
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#FFF5F5;border:1px solid #F1948A;border-radius:3px;display:inline-block;"></span>★★★ 最緊急</span>
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#FFFBEB;border:1px solid #FBD38D;border-radius:3px;display:inline-block;"></span>★★★ 緊急</span>
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#FEFCE8;border:1px solid #F6E05E;border-radius:3px;display:inline-block;"></span>★★ 高</span>
@@ -309,328 +309,328 @@
     <tbody>
       <!-- 已完成 -->
       <tr class="tr-done">
-        <td style="text-align:center;font-size:10px;color:var(--green);">✅</td>
-        <td>東區</td><td><strong>花蓮靜思堂</strong><br><span style="font-size:10px;color:var(--green);">新500RT R1234ze磁浮已啟用</span></td>
+        <td style="text-align:center;font-size:13px;color:var(--green);">✅</td>
+        <td>東區</td><td><strong>花蓮靜思堂</strong><br><span style="font-size:13px;color:var(--green);">新500RT R1234ze磁浮已啟用</span></td>
         <td style="text-align:center;">500</td><td style="text-align:center;color:var(--green);font-weight:700;">R1234ze</td>
         <td style="text-align:center;">—</td>
         <td style="text-align:center;">60.7</td><td style="text-align:center;">243</td>
         <td style="text-align:center;font-weight:700;color:var(--green);">303.7</td>
         <td style="text-align:center;">—</td>
         <td style="text-align:center;"><span class="badge badge-done">✅ 完成</span></td>
-        <td style="text-align:center;font-size:11px;">2026</td>
+        <td style="text-align:center;font-size:14px;">2026</td>
       </tr>
       <tr class="tr-done">
-        <td style="text-align:center;font-size:10px;color:var(--green);">✅</td>
-        <td>北區</td><td><strong>桃園分會</strong><br><span style="font-size:10px;color:var(--green);">新160RT KLFW R-134a啟用，舊機轉備用</span></td>
+        <td style="text-align:center;font-size:13px;color:var(--green);">✅</td>
+        <td>北區</td><td><strong>桃園分會</strong><br><span style="font-size:13px;color:var(--green);">新160RT KLFW R-134a啟用，舊機轉備用</span></td>
         <td style="text-align:center;">160</td><td style="text-align:center;color:var(--green);font-weight:700;">R-134a</td>
         <td style="text-align:center;">—</td>
         <td style="text-align:center;">40.1</td><td style="text-align:center;">39.4</td>
         <td style="text-align:center;font-weight:700;color:var(--green);">79.5</td>
         <td style="text-align:center;">—</td>
         <td style="text-align:center;"><span class="badge badge-done">✅ 完成</span></td>
-        <td style="text-align:center;font-size:11px;">2026</td>
+        <td style="text-align:center;font-size:14px;">2026</td>
       </tr>
       <tr class="tr-crit">
         <td style="text-align:center;"><span class="rank-num">1</span></td>
-        <td>北區</td><td><strong>三重志業園區</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2/CH-3/CH-4/CH-5｜SINKO新晃，19年</span></td>
+        <td>北區</td><td><strong>三重志業園區</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2/CH-3/CH-4/CH-5｜SINKO新晃，19年</span></td>
         <td style="text-align:center;">700</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">19年</td>
         <td style="text-align:center;">107.6</td><td style="text-align:center;">359.9</td>
         <td style="text-align:center;font-weight:700;">467.5</td>
         <td style="text-align:center;font-weight:700;">732</td>
         <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027</td>
+        <td style="text-align:center;font-size:14px;">2027</td>
       </tr>
       <tr class="tr-crit">
         <td style="text-align:center;"><span class="rank-num">2</span></td>
-        <td>東區</td><td><strong>花蓮同心圓餐廳</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜江陵，27年</span></td>
+        <td>東區</td><td><strong>花蓮同心圓餐廳</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜江陵，27年</span></td>
         <td style="text-align:center;">500</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">27年</td>
         <td style="text-align:center;">76.9</td><td style="text-align:center;">257.1</td>
         <td style="text-align:center;font-weight:700;">334.0</td>
         <td style="text-align:center;font-weight:700;">668</td>
         <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027</td>
+        <td style="text-align:center;font-size:14px;">2027</td>
       </tr>
       <tr class="tr-crit">
         <td style="text-align:center;"><span class="rank-num">3</span></td>
-        <td>南區</td><td><strong>高雄分會</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2/CH-3/CH-4｜堃霖，19年</span></td>
+        <td>南區</td><td><strong>高雄分會</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2/CH-3/CH-4｜堃霖，19年</span></td>
         <td style="text-align:center;">740</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">19年</td>
         <td style="text-align:center;">89.8</td><td style="text-align:center;">380.5</td>
         <td style="text-align:center;font-weight:700;">470.3</td>
         <td style="text-align:center;font-weight:700;">596</td>
         <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027</td>
+        <td style="text-align:center;font-size:14px;">2027</td>
       </tr>
       <tr class="tr-crit">
         <td style="text-align:center;"><span class="rank-num">4</span></td>
-        <td>東區</td><td><strong>花蓮靜思堂</strong><br><span style="font-size:10px;color:var(--gray);">CH-1｜McQuay，27年</span><br><span style="font-size:10px;color:var(--gray);">🔄 原老舊主機之一，新500RT R1234ze磁浮機啟用後轉為備用機（CH-2/3/4共1,050RT已退場回收）</span></td>
+        <td>東區</td><td><strong>花蓮靜思堂</strong><br><span style="font-size:13px;color:var(--gray);">CH-1｜McQuay，27年</span><br><span style="font-size:13px;color:var(--gray);">🔄 原老舊主機之一，新500RT R1234ze磁浮機啟用後轉為備用機（CH-2/3/4共1,050RT已退場回收）</span></td>
         <td style="text-align:center;">500</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">27年</td>
         <td style="text-align:center;">60.8</td><td style="text-align:center;">257.1</td>
         <td style="text-align:center;font-weight:700;">317.9</td>
         <td style="text-align:center;font-weight:700;">572</td>
         <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027</td>
+        <td style="text-align:center;font-size:14px;">2027</td>
       </tr>
       <tr class="tr-crit">
         <td style="text-align:center;"><span class="rank-num">5</span></td>
-        <td>南區</td><td><strong>臺南分會</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2/CH-3｜國友，24年</span></td>
+        <td>南區</td><td><strong>臺南分會</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2/CH-3｜國友，24年</span></td>
         <td style="text-align:center;">440</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">24年</td>
         <td style="text-align:center;">67.7</td><td style="text-align:center;">226.2</td>
         <td style="text-align:center;font-weight:700;">293.9</td>
         <td style="text-align:center;font-weight:700;">558</td>
         <td style="text-align:center;"><span class="badge badge-crit">★★★ 最緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027</td>
+        <td style="text-align:center;font-size:14px;">2027</td>
       </tr>
       <tr class="tr-low" style="opacity:.55;">
-        <td style="text-align:center;font-size:10px;color:var(--gray);">範疇外</td>
-        <td>北區</td><td><strong>台北東區聯絡處</strong> <span style="background:#E2E8F0;color:#475569;font-size:9px;padding:1px 6px;border-radius:10px;">🚫 不在盤查範疇</span><br><span style="font-size:10px;color:var(--gray);">CH-1｜TRANE，30年</span><br><span style="font-size:10px;color:var(--gray);">TRANE離心式400RT R-22（不計入減碳潛力總計）</span></td>
+        <td style="text-align:center;font-size:13px;color:var(--gray);">範疇外</td>
+        <td>北區</td><td><strong>台北東區聯絡處</strong> <span style="background:#E2E8F0;color:#475569;font-size:12px;padding:1px 6px;border-radius:10px;">🚫 不在盤查範疇</span><br><span style="font-size:13px;color:var(--gray);">CH-1｜TRANE，30年</span><br><span style="font-size:13px;color:var(--gray);">TRANE離心式400RT R-22（不計入減碳潛力總計）</span></td>
         <td style="text-align:center;">400</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">30年</td>
         <td style="text-align:center;">61.5</td><td style="text-align:center;">205.7</td>
         <td style="text-align:center;font-weight:700;">267.2</td>
         <td style="text-align:center;font-weight:700;color:var(--gray);">534</td>
         <td style="text-align:center;"><span class="badge badge-low">範疇外·不計入</span></td>
-        <td style="text-align:center;font-size:11px;">2027</td>
+        <td style="text-align:center;font-size:14px;">2027</td>
       </tr>
       <tr class="tr-urgent">
         <td style="text-align:center;"><span class="rank-num">7</span></td>
-        <td>中區</td><td><strong>民權聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2/CH-3｜中興，34年</span></td>
+        <td>中區</td><td><strong>民權聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2/CH-3｜中興，34年</span></td>
         <td style="text-align:center;">300</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">34年</td>
         <td style="text-align:center;">46.2</td><td style="text-align:center;">154.2</td>
         <td style="text-align:center;font-weight:700;">200.4</td>
         <td style="text-align:center;font-weight:700;">401</td>
         <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027–28</td>
+        <td style="text-align:center;font-size:14px;">2027–28</td>
       </tr>
       <tr class="tr-urgent">
         <td style="text-align:center;"><span class="rank-num">8</span></td>
-        <td>北區</td><td><strong>臺北分會</strong><br><span style="font-size:10px;color:var(--gray);">ACH-1/ACH-2/ACH-3｜國友，10年</span></td>
+        <td>北區</td><td><strong>臺北分會</strong><br><span style="font-size:13px;color:var(--gray);">ACH-1/ACH-2/ACH-3｜國友，10年</span></td>
         <td style="text-align:center;">500</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">10年</td>
         <td style="text-align:center;">76.9</td><td style="text-align:center;">257.1</td>
         <td style="text-align:center;font-weight:700;">334.0</td>
         <td style="text-align:center;font-weight:700;">323</td>
         <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027–28</td>
+        <td style="text-align:center;font-size:14px;">2027–28</td>
       </tr>
       <tr class="tr-urgent">
         <td style="text-align:center;"><span class="rank-num">9</span></td>
-        <td>中區</td><td><strong>清水聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2/CH-3｜國友，19年</span></td>
+        <td>中區</td><td><strong>清水聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2/CH-3｜國友，19年</span></td>
         <td style="text-align:center;">300</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">19年</td>
         <td style="text-align:center;">46.2</td><td style="text-align:center;">154.2</td>
         <td style="text-align:center;font-weight:700;">200.4</td>
         <td style="text-align:center;font-weight:700;">314</td>
         <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027–28</td>
+        <td style="text-align:center;font-size:14px;">2027–28</td>
       </tr>
       <tr class="tr-urgent">
         <td style="text-align:center;"><span class="rank-num">10</span></td>
-        <td>中區</td><td><strong>臺中分會</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2/CH-3｜詮宏，13年</span></td>
+        <td>中區</td><td><strong>臺中分會</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2/CH-3｜詮宏，13年</span></td>
         <td style="text-align:center;">400</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">13年</td>
         <td style="text-align:center;">61.5</td><td style="text-align:center;">205.7</td>
         <td style="text-align:center;font-weight:700;">267.2</td>
         <td style="text-align:center;font-weight:700;">311</td>
         <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027–28</td>
+        <td style="text-align:center;font-size:14px;">2027–28</td>
       </tr>
       <tr class="tr-urgent">
         <td style="text-align:center;"><span class="rank-num">11</span></td>
-        <td>中區</td><td><strong>豐原聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜中興，22年</span></td>
+        <td>中區</td><td><strong>豐原聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜中興，22年</span></td>
         <td style="text-align:center;">240</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">22年</td>
         <td style="text-align:center;">36.9</td><td style="text-align:center;">123.4</td>
         <td style="text-align:center;font-weight:700;">160.3</td>
         <td style="text-align:center;font-weight:700;">284</td>
         <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027–28</td>
+        <td style="text-align:center;font-size:14px;">2027–28</td>
       </tr>
       <tr class="tr-urgent">
         <td style="text-align:center;"><span class="rank-num">12</span></td>
-        <td>北區</td><td><strong>板橋志業園區</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜國友，22年</span></td>
+        <td>北區</td><td><strong>板橋志業園區</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜國友，22年</span></td>
         <td style="text-align:center;">260</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">22年</td>
         <td style="text-align:center;">31.6</td><td style="text-align:center;">133.7</td>
         <td style="text-align:center;font-weight:700;">165.3</td>
         <td style="text-align:center;font-weight:700;">243</td>
         <td style="text-align:center;"><span class="badge badge-urgent">★★★ 緊急</span></td>
-        <td style="text-align:center;font-size:11px;">2027–28</td>
+        <td style="text-align:center;font-size:14px;">2027–28</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">13</span></td>
-        <td>北區</td><td><strong>大安聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">M-CH｜鑫國，28年</span></td>
+        <td>北區</td><td><strong>大安聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">M-CH｜鑫國，28年</span></td>
         <td style="text-align:center;">150</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">28年</td>
         <td style="text-align:center;">18.2</td><td style="text-align:center;">77.1</td>
         <td style="text-align:center;font-weight:700;">95.3</td>
         <td style="text-align:center;font-weight:700;">178</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">14</span></td>
-        <td>北區</td><td><strong>新竹聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜國友，12年</span></td>
+        <td>北區</td><td><strong>新竹聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜國友，12年</span></td>
         <td style="text-align:center;">240</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">12年</td>
         <td style="text-align:center;">36.9</td><td style="text-align:center;">123.4</td>
         <td style="text-align:center;font-weight:700;">160.3</td>
         <td style="text-align:center;font-weight:700;">176</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">15</span></td>
-        <td>北區</td><td><strong>桃園分會</strong><br><span style="font-size:10px;color:var(--gray);">CHR-1｜弘旭，19年</span></td>
+        <td>北區</td><td><strong>桃園分會</strong><br><span style="font-size:13px;color:var(--gray);">CHR-1｜弘旭，19年</span></td>
         <td style="text-align:center;">160</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">19年</td>
         <td style="text-align:center;">24.6</td><td style="text-align:center;">82.3</td>
         <td style="text-align:center;font-weight:700;">106.9</td>
         <td style="text-align:center;font-weight:700;">167</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">16</span></td>
-        <td>北區</td><td><strong>萬華聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1｜江陵，26年</span></td>
+        <td>北區</td><td><strong>萬華聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1｜江陵，26年</span></td>
         <td style="text-align:center;">120</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">26年</td>
         <td style="text-align:center;">18.4</td><td style="text-align:center;">61.7</td>
         <td style="text-align:center;font-weight:700;">80.1</td>
         <td style="text-align:center;font-weight:700;">160</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">17</span></td>
-        <td>北區</td><td><strong>蘆洲聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜國友，18年</span></td>
+        <td>北區</td><td><strong>蘆洲聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜國友，18年</span></td>
         <td style="text-align:center;">160</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">18年</td>
         <td style="text-align:center;">24.6</td><td style="text-align:center;">82.3</td>
         <td style="text-align:center;font-weight:700;">106.9</td>
         <td style="text-align:center;font-weight:700;">160</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">18</span></td>
-        <td>北區</td><td><strong>雙和聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1｜弘旭，15年</span></td>
+        <td>北區</td><td><strong>雙和聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1｜弘旭，15年</span></td>
         <td style="text-align:center;">160</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">15年</td>
         <td style="text-align:center;">24.6</td><td style="text-align:center;">82.3</td>
         <td style="text-align:center;font-weight:700;">106.9</td>
         <td style="text-align:center;font-weight:700;">139</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">19</span></td>
-        <td>北區</td><td><strong>八德聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜鑫國，6年</span></td>
+        <td>北區</td><td><strong>八德聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜鑫國，6年</span></td>
         <td style="text-align:center;">540</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">6年</td>
         <td style="text-align:center;">65.6</td><td style="text-align:center;">277.6</td>
         <td style="text-align:center;font-weight:700;">343.2</td>
         <td style="text-align:center;font-weight:700;">137</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">20</span></td>
-        <td>中區</td><td><strong>彰化分會</strong><br><span style="font-size:10px;color:var(--gray);">CH-2｜SINKO新晃，26年</span></td>
+        <td>中區</td><td><strong>彰化分會</strong><br><span style="font-size:13px;color:var(--gray);">CH-2｜SINKO新晃，26年</span></td>
         <td style="text-align:center;">100</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;color:var(--red);font-weight:700;">26年</td>
         <td style="text-align:center;">15.4</td><td style="text-align:center;">51.4</td>
         <td style="text-align:center;font-weight:700;">66.8</td>
         <td style="text-align:center;font-weight:700;">134</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-high">
         <td style="text-align:center;"><span class="rank-num">21</span></td>
-        <td>中區</td><td><strong>彰化分會</strong><br><span style="font-size:10px;color:var(--gray);">CH-1｜國友，19年</span></td>
+        <td>中區</td><td><strong>彰化分會</strong><br><span style="font-size:13px;color:var(--gray);">CH-1｜國友，19年</span></td>
         <td style="text-align:center;">120</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">19年</td>
         <td style="text-align:center;">18.4</td><td style="text-align:center;">61.7</td>
         <td style="text-align:center;font-weight:700;">80.1</td>
         <td style="text-align:center;font-weight:700;">126</td>
         <td style="text-align:center;"><span class="badge badge-high">★★ 高</span></td>
-        <td style="text-align:center;font-size:11px;">2028–29</td>
+        <td style="text-align:center;font-size:14px;">2028–29</td>
       </tr>
       <tr class="tr-medium">
         <td style="text-align:center;"><span class="rank-num">22</span></td>
-        <td>北區</td><td><strong>雙和聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-2｜詮宏，16年</span></td>
+        <td>北區</td><td><strong>雙和聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-2｜詮宏，16年</span></td>
         <td style="text-align:center;">100</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">16年</td>
         <td style="text-align:center;">15.4</td><td style="text-align:center;">51.4</td>
         <td style="text-align:center;font-weight:700;">66.8</td>
         <td style="text-align:center;font-weight:700;">91</td>
         <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
-        <td style="text-align:center;font-size:11px;">2029–30</td>
+        <td style="text-align:center;font-size:14px;">2029–30</td>
       </tr>
       <tr class="tr-medium">
         <td style="text-align:center;"><span class="rank-num">23</span></td>
-        <td>中區</td><td><strong>大里聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-1/CH-2｜6年</span></td>
+        <td>中區</td><td><strong>大里聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-1/CH-2｜6年</span></td>
         <td style="text-align:center;">250</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">6年</td>
         <td style="text-align:center;">30.3</td><td style="text-align:center;">128.5</td>
         <td style="text-align:center;font-weight:700;">158.8</td>
         <td style="text-align:center;font-weight:700;">64</td>
         <td style="text-align:center;"><span class="badge badge-medium">★★ 中高</span></td>
-        <td style="text-align:center;font-size:11px;">2029–30</td>
+        <td style="text-align:center;font-size:14px;">2029–30</td>
       </tr>
       <tr class="tr-low">
         <td style="text-align:center;"><span class="rank-num">24</span></td>
-        <td>北區</td><td><strong>萬華聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">CH-2｜SINKO新晃，16年</span></td>
+        <td>北區</td><td><strong>萬華聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">CH-2｜SINKO新晃，16年</span></td>
         <td style="text-align:center;">50</td><td style="text-align:center;color:var(--red);font-weight:700;">R-22</td>
         <td style="text-align:center;font-weight:700;">16年</td>
         <td style="text-align:center;">7.6</td><td style="text-align:center;">25.7</td>
         <td style="text-align:center;font-weight:700;">33.3</td>
         <td style="text-align:center;font-weight:700;">45</td>
         <td style="text-align:center;"><span class="badge badge-low">★ 低</span></td>
-        <td style="text-align:center;font-size:11px;">2030後</td>
+        <td style="text-align:center;font-size:14px;">2030後</td>
       </tr>
       <tr class="tr-low">
         <td style="text-align:center;"><span class="rank-num">25</span></td>
-        <td>北區</td><td><strong>中正聯絡處</strong><br><span style="font-size:10px;color:var(--gray);">ACH-1/ACH-2｜4年</span></td>
+        <td>北區</td><td><strong>中正聯絡處</strong><br><span style="font-size:13px;color:var(--gray);">ACH-1/ACH-2｜4年</span></td>
         <td style="text-align:center;">260</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">4年</td>
         <td style="text-align:center;">31.6</td><td style="text-align:center;">133.7</td>
         <td style="text-align:center;font-weight:700;">165.3</td>
         <td style="text-align:center;font-weight:700;">44</td>
         <td style="text-align:center;"><span class="badge badge-low">★ 低</span></td>
-        <td style="text-align:center;font-size:11px;">2030後</td>
+        <td style="text-align:center;font-size:14px;">2030後</td>
       </tr>
       <tr class="tr-low" style="opacity:.55;">
-        <td style="text-align:center;font-size:10px;color:var(--gray);">範疇外</td>
-        <td>北區</td><td><strong>台北東區聯絡處</strong> <span style="background:#E2E8F0;color:#475569;font-size:9px;padding:1px 6px;border-radius:10px;">🚫 不在盤查範疇</span><br><span style="font-size:10px;color:var(--gray);">CH-3｜堃霖，3年</span></td>
+        <td style="text-align:center;font-size:13px;color:var(--gray);">範疇外</td>
+        <td>北區</td><td><strong>台北東區聯絡處</strong> <span style="background:#E2E8F0;color:#475569;font-size:12px;padding:1px 6px;border-radius:10px;">🚫 不在盤查範疇</span><br><span style="font-size:13px;color:var(--gray);">CH-3｜堃霖，3年</span></td>
         <td style="text-align:center;">120</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">3年</td>
         <td style="text-align:center;">14.5</td><td style="text-align:center;">61.7</td>
         <td style="text-align:center;font-weight:700;">76.2</td>
         <td style="text-align:center;font-weight:700;color:var(--gray);">15</td>
         <td style="text-align:center;"><span class="badge badge-low">範疇外·不計入</span></td>
-        <td style="text-align:center;font-size:11px;">暫緩</td>
+        <td style="text-align:center;font-size:14px;">暫緩</td>
       </tr>
       <tr class="tr-low" style="opacity:.55;">
-        <td style="text-align:center;font-size:10px;color:var(--gray);">範疇外</td>
-        <td>北區</td><td><strong>台北東區聯絡處</strong> <span style="background:#E2E8F0;color:#475569;font-size:9px;padding:1px 6px;border-radius:10px;">🚫 不在盤查範疇</span><br><span style="font-size:10px;color:var(--gray);">CH-2｜堃霖，2年</span></td>
+        <td style="text-align:center;font-size:13px;color:var(--gray);">範疇外</td>
+        <td>北區</td><td><strong>台北東區聯絡處</strong> <span style="background:#E2E8F0;color:#475569;font-size:12px;padding:1px 6px;border-radius:10px;">🚫 不在盤查範疇</span><br><span style="font-size:13px;color:var(--gray);">CH-2｜堃霖，2年</span></td>
         <td style="text-align:center;">160</td><td style="text-align:center;">R-134a</td>
         <td style="text-align:center;">2年</td>
         <td style="text-align:center;">19.5</td><td style="text-align:center;">82.3</td>
         <td style="text-align:center;font-weight:700;">101.8</td>
         <td style="text-align:center;font-weight:700;color:var(--gray);">14</td>
         <td style="text-align:center;"><span class="badge badge-low">範疇外·不計入</span></td>
-        <td style="text-align:center;font-size:11px;">暫緩</td>
+        <td style="text-align:center;font-size:14px;">暫緩</td>
       </tr>
     </tbody>
   </table>
   </div>
-  <p style="font-size:11px;color:var(--gray);margin-top:10px;">
+  <p style="font-size:14px;color:var(--gray);margin-top:10px;">
     ※ Scope1減量 = RT ×（舊冷媒GWP－1）× 0.000085（充填1kg/RT，運行洩漏率8.5%）｜Scope2減量 = RT × 0.51416（年冷房2,000RT-h，效率提升52%，電力係數0.494）<br>
     ※ 緊迫係數 = MIN(2.0, 機齡/15 + 0.3[若R-22] + 0.3[若往復式])｜優先分數 =（Scope1+Scope2）× 緊迫係數<br>
     📋 以上「優先分數」與「緊迫係數」為慈濟內部資產汰換優先管理工具，非 SBTi 或其他國際機構規定之計算方式<br>
@@ -705,7 +705,7 @@
             <span class="tl-chip chip-r22">🚫 <strong>台北東區聯絡處 CH-1</strong>｜400RT R-22（範疇外·不計入減碳潛力）</span>
             <span class="tl-chip chip-r134">🔄 <strong>花蓮靜思堂 CH-1</strong>｜500RT R-134a McQuay 27年（備用機，CH-2/3/4共1,050RT已退場回收）</span>
           </div>
-          <div style="margin-top:8px;font-size:11px;color:var(--gray);">預估 2027 新增 Scope 1 減量：<strong>~123 tCO₂e/年</strong>（民權+花蓮同心圓）</div>
+          <div style="margin-top:8px;font-size:14px;color:var(--gray);">預估 2027 新增 Scope 1 減量：<strong>~123 tCO₂e/年</strong>（民權+花蓮同心圓）</div>
         </div>
       </div>
     </div>
@@ -725,7 +725,7 @@
             <span class="tl-chip chip-r22"><strong>彰化分會</strong>｜220RT R-22 CH-2機齡26年</span>
             <span class="tl-chip chip-r22"><strong>萬華聯絡處</strong>｜170RT R-22 CH-1機齡26年</span>
           </div>
-          <div style="margin-top:8px;font-size:11px;color:var(--gray);">預估新增 Scope 1+2 減量：<strong>~900 tCO₂e/年</strong>（含三重+臺南+高雄）</div>
+          <div style="margin-top:8px;font-size:14px;color:var(--gray);">預估新增 Scope 1+2 減量：<strong>~900 tCO₂e/年</strong>（含三重+臺南+高雄）</div>
         </div>
       </div>
     </div>
@@ -762,7 +762,7 @@
             <span class="tl-chip chip-r22"><strong>雙和聯絡處</strong>｜260RT R-22 16年</span>
             <span class="tl-chip chip-r22"><strong>新竹聯絡處</strong>｜240RT R-22 12年</span>
           </div>
-          <div style="margin-top:8px;font-size:11px;color:var(--green);">
+          <div style="margin-top:8px;font-size:14px;color:var(--green);">
             🎯 <strong>2030 年目標達成</strong>：R-22 全面清零，Scope 1+2 降至 6,863 tCO₂e 以下（1.5°C 路徑）
           </div>
         </div>
@@ -797,7 +797,7 @@
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px;">
     <div>
       <p style="font-weight:700;margin-bottom:8px;color:var(--blue);">Scope 1（冷媒逸散）計算假設</p>
-      <ul style="font-size:12px;color:var(--gray);padding-left:16px;line-height:2;">
+      <ul style="font-size:15px;color:var(--gray);padding-left:16px;line-height:2;">
         <li>充填量：1.0 kg/RT（水冷螺旋/離心式標準估算）</li>
         <li>年洩漏率：運行中 8.5%（依基金會冷媒逸散係數）、備用靜置 2%、新機 5%</li>
         <li>新機全部換用 R1234ze（GWP=1）</li>
@@ -806,7 +806,7 @@
     </div>
     <div>
       <p style="font-weight:700;margin-bottom:8px;color:var(--green);">Scope 2（節電）計算假設</p>
-      <ul style="font-size:12px;color:var(--gray);padding-left:16px;line-height:2;">
+      <ul style="font-size:15px;color:var(--gray);padding-left:16px;line-height:2;">
         <li>舊機平均效率：1.0 kWh/RT-h</li>
         <li>新高效機效率：0.48 kWh/RT-h（磁浮/離心）</li>
         <li>年冷房需求：2,000 RT-h（台灣亞熱帶氣候）</li>
@@ -815,7 +815,7 @@
       </ul>
     </div>
   </div>
-  <div style="margin-top:14px;padding:10px 14px;background:#FFF8E1;border-radius:8px;border-left:3px solid var(--gold);font-size:11.5px;color:#744210;">
+  <div style="margin-top:14px;padding:10px 14px;background:#FFF8E1;border-radius:8px;border-left:3px solid var(--gold);font-size:14.5px;color:#744210;">
     ⚠️ 本報告為工程估算，用於制定汰換優先順序決策參考。實際節能效益須待新機啟用後進行 M&V（量測與驗證）確認，冷媒逸散減量須待次年度 SGS 第三方盤查反映於正式報告。
   </div>
 </div>
