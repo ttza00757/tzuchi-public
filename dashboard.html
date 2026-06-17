@@ -27,7 +27,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
-    font-size: 14px; line-height: 1.7; color: var(--dark);
+    font-size: 16px; line-height: 1.7; color: var(--dark);
     background: #EEF2F8; min-height: 100vh;
   }
   a { color: inherit; text-decoration: none; }
@@ -38,15 +38,15 @@
     color: #fff; padding: 32px 48px 28px;
   }
   .header-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-  .header-tag { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.65); margin-bottom: 6px; }
-  .header-title { font-size: 24px; font-weight: 900; line-height: 1.3; }
+  .header-tag { font-size: 12px; letter-spacing: 3px; color: rgba(255,255,255,.65); margin-bottom: 6px; }
+  .header-title { font-size: 26px; font-weight: 900; line-height: 1.3; }
   .header-title em { color: #FCD34D; font-style: normal; }
-  .header-sub { font-size: 12px; color: rgba(255,255,255,.75); margin-top: 4px; }
-  .header-date { font-size: 11px; color: rgba(255,255,255,.6); white-space: nowrap; padding-top: 4px; }
+  .header-sub { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 4px; }
+  .header-date { font-size: 13px; color: rgba(255,255,255,.6); white-space: nowrap; padding-top: 4px; }
   .header-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
   .hlink {
     background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
-    border-radius: 20px; padding: 5px 14px; font-size: 11px; color: #fff;
+    border-radius: 20px; padding: 5px 14px; font-size: 13px; color: #fff;
     transition: background .2s;
   }
   .hlink:hover { background: rgba(255,255,255,.25); }
@@ -62,18 +62,18 @@
     border-right: 1px solid var(--gray200);
   }
   .kpi-cell:last-child { border-right: none; }
-  .kpi-n { font-size: 26px; font-weight: 900; line-height: 1; }
+  .kpi-n { font-size: 28px; font-weight: 900; line-height: 1; }
   .kpi-n.blue   { color: var(--blue); }
   .kpi-n.green  { color: var(--green); }
   .kpi-n.yellow { color: var(--yellow); }
   .kpi-n.red    { color: var(--red); }
-  .kpi-l { font-size: 10.5px; color: var(--gray); margin-top: 4px; }
+  .kpi-l { font-size: 12.5px; color: var(--gray); margin-top: 4px; }
 
   /* ─── LEGEND ─── */
   .legend {
     display: flex; gap: 16px; flex-wrap: wrap;
     padding: 12px 32px; background: var(--gray100);
-    border-bottom: 1px solid var(--gray200); font-size: 11.5px;
+    border-bottom: 1px solid var(--gray200); font-size: 13.5px;
   }
   .leg { display: flex; align-items: center; gap: 6px; }
   .leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
@@ -94,16 +94,16 @@
 
   .card-head {
     display: flex; align-items: center; gap: 10px;
-    padding: 14px 18px; font-weight: 800; font-size: 14px;
+    padding: 14px 18px; font-weight: 800; font-size: 16px;
   }
   .card.green  .card-head { background: var(--green-bg);  color: var(--green); }
   .card.yellow .card-head { background: var(--yellow-bg); color: var(--yellow); }
   .card.red    .card-head { background: var(--red-bg);    color: var(--red); }
   .card.white  .card-head { background: var(--white-bg);  color: var(--gray); }
 
-  .card-head-icon { font-size: 18px; }
+  .card-head-icon { font-size: 20px; }
   .card-head-count {
-    margin-left: auto; font-size: 11px; font-weight: 700;
+    margin-left: auto; font-size: 13px; font-weight: 700;
     padding: 2px 8px; border-radius: 20px;
   }
   .card.green  .card-head-count { background: var(--green);  color: #fff; }
@@ -121,13 +121,13 @@
   }
   .item:last-child { border-bottom: none; }
   .item:hover { background: var(--gray100); }
-  .item-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+  .item-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
   .item-main { flex: 1; min-width: 0; }
-  .item-title { font-weight: 700; font-size: 13px; color: var(--dark); }
-  .item-detail { font-size: 11.5px; color: var(--gray); margin-top: 1px; line-height: 1.6; }
+  .item-title { font-weight: 700; font-size: 15px; color: var(--dark); }
+  .item-detail { font-size: 13.5px; color: var(--gray); margin-top: 1px; line-height: 1.6; }
   .item-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
   .badge {
-    font-size: 10px; font-weight: 700; padding: 1px 7px;
+    font-size: 12px; font-weight: 700; padding: 1px 7px;
     border-radius: 20px; white-space: nowrap;
   }
   .badge-green  { background: #D1FAE5; color: #065F46; }
@@ -144,7 +144,7 @@
   .prog-green  .prog-fill { background: var(--green); }
   .prog-yellow .prog-fill { background: #F59E0B; }
   .prog-red    .prog-fill { background: var(--red); }
-  .prog-label { font-size: 10px; color: var(--gray); margin-top: 2px; }
+  .prog-label { font-size: 12px; color: var(--gray); margin-top: 2px; }
 
   /* ─── FULL-WIDTH CARD ─── */
   .full { grid-column: 1 / -1; }
@@ -153,7 +153,7 @@
   .tl-mini { padding: 8px 18px 12px; background: #fff; }
   .tl-row { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--gray100); }
   .tl-row:last-child { border-bottom: none; }
-  .tl-yr { font-size: 11px; font-weight: 800; width: 56px; flex-shrink: 0; padding-top: 1px; }
+  .tl-yr { font-size: 13px; font-weight: 800; width: 56px; flex-shrink: 0; padding-top: 1px; }
   .tl-yr.done   { color: var(--green); }
   .tl-yr.urgent { color: var(--red); }
   .tl-yr.high   { color: #D97706; }
@@ -161,7 +161,7 @@
   .tl-yr.low    { color: var(--gray); }
   .tl-items { display: flex; flex-wrap: wrap; gap: 6px; }
   .tl-chip {
-    font-size: 11px; padding: 2px 10px; border-radius: 20px; border: 1px solid;
+    font-size: 13px; padding: 2px 10px; border-radius: 20px; border: 1px solid;
   }
   .tl-chip.done   { background: #D1FAE5; border-color: #6EE7B7; color: #065F46; }
   .tl-chip.urgent { background: #FEE2E2; border-color: #FECACA; color: #991B1B; }
@@ -172,7 +172,7 @@
   /* ─── FOOTER ─── */
   .footer {
     background: var(--blue); color: rgba(255,255,255,.65);
-    padding: 18px 32px; font-size: 11px;
+    padding: 18px 32px; font-size: 13px;
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 10px;
   }
@@ -570,7 +570,7 @@
         </div>
       </div>
     </div>
-    <div style="padding:10px 18px 14px;background:#fff;border-top:1px solid #E2E8F0;font-size:11.5px;color:var(--gray);">
+    <div style="padding:10px 18px 14px;background:#fff;border-top:1px solid #E2E8F0;font-size:13.5px;color:var(--gray);">
       ⚡ 27 項主機排序用 Scope1+2 理論潛力：<strong>4,782 tCO₂e/年</strong>（Scope1：1,034 + Scope2理論上限：3,748，僅供相對排序）｜正式減碳路徑仍以 2027 預估 ≈6,031 tCO₂e 為準｜📋 排序公式為內部管理工具，非SBTi規定算式｜
       完整排序計畫：<a href="chiller-priority.html" style="color:var(--blue2);font-weight:700;">冰機汰換優先排序報告 →</a>
     </div>
