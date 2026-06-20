@@ -6,78 +6,126 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1920px; height: 1080px; overflow: hidden; }
   body {
-    background: #FFFFFF;
+    background: #EDE5D6;
     font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', sans-serif;
     display: flex; flex-direction: column;
+    position: relative;
   }
+
+  body::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,113,59,0.13) 0%, transparent 70%);
+    top: -200px; right: -100px;
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,113,59,0.07) 0%, transparent 70%);
+    bottom: -100px; left: 200px;
+    pointer-events: none;
+  }
+
   .slide-header {
     padding: 64px 120px 0;
     flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+  .header-eyebrow {
+    font-size: 13px; letter-spacing: 0.25em;
+    color: #B06A3A; text-transform: uppercase;
+    margin-bottom: 10px; font-weight: 600;
   }
   .slide-title {
     font-family: 'Georgia', 'Microsoft JhengHei', serif;
     font-size: 46px; font-weight: 700;
     color: #2C1505;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
   }
-  .slide-title-en {
-    font-size: 19px; color: #9A6848;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    margin-top: 8px;
-  }
-  .rule { width: 100%; height: 1px; background: #F0DDD0; margin-top: 32px; }
+  .rule { width: 100%; height: 1px; background: rgba(180,120,70,0.2); margin-top: 28px; }
 
   .cards-area {
     flex: 1; display: flex;
     align-items: center;
-    padding: 0 120px;
-    gap: 40px;
+    padding: 32px 120px 52px;
+    gap: 28px;
+    position: relative; z-index: 1;
   }
-  .chapter-card {
-    flex: 1; height: 420px;
-    border-radius: 12px;
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 48px;
-    position: relative; overflow: hidden;
-    cursor: pointer;
-    transition: transform .2s;
-  }
-  .chapter-card:hover { transform: translateY(-4px); }
-  .chapter-card.c1 { background: linear-gradient(145deg, #1E0C04, #7A3010); }
-  .chapter-card.c2 { background: linear-gradient(145deg, #D4713B, #E8956D); }
-  .chapter-card.c3 { background: linear-gradient(145deg, #E8956D, #CF6535); }
-  .chapter-card.c4 { background: linear-gradient(145deg, #2C1505, #D4713B); }
 
+  .chapter-card {
+    flex: 1; height: 460px;
+    border-radius: 20px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 36px 40px 40px;
+    position: relative; overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid rgba(212,113,59,0.12);
+    box-shadow:
+      0 8px 32px rgba(140,80,30,0.10),
+      0 2px 8px rgba(140,80,30,0.05),
+      inset 0 1px 0 rgba(255,255,255,1);
+    transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s;
+  }
+  .chapter-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 48px rgba(140,80,30,0.16),
+      0 4px 12px rgba(140,80,30,0.08),
+      inset 0 1px 0 rgba(255,255,255,1);
+  }
+  .chapter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(90deg, #D4713B, #E8956D);
+  }
+
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
   .card-number {
-    font-size: 144px; font-weight: 700;
-    color: rgba(255,255,255,0.06);
-    position: absolute; top: 20px; right: 32px;
-    line-height: 1;
     font-family: 'Georgia', serif;
+    font-size: 72px; font-weight: 700;
+    color: rgba(212,113,59,0.12);
+    line-height: 1;
     letter-spacing: -0.04em;
+    margin-top: -8px;
   }
-  .card-label {
-    font-size: 17px; letter-spacing: 0.2em;
-    color: rgba(249,206,172,0.7);
-    text-transform: uppercase;
-    margin-bottom: 12px;
+  .card-chapter-tag {
+    font-size: 11px; letter-spacing: 0.2em;
+    color: #D4713B; text-transform: uppercase;
+    font-weight: 700;
+    background: rgba(212,113,59,0.1);
+    padding: 5px 12px; border-radius: 20px;
+    margin-top: 4px;
   }
+
+  .card-bottom {}
   .card-title {
     font-family: 'Georgia', 'Microsoft JhengHei', serif;
-    font-size: 43px; font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1.3;
+    font-size: 38px; font-weight: 700;
+    color: #2C1505;
+    line-height: 1.2;
+    margin-bottom: 18px;
   }
-  .card-items {
-    margin-top: 16px;
-    display: flex; flex-direction: column; gap: 6px;
+  .card-divider {
+    width: 32px; height: 2px;
+    background: rgba(212,113,59,0.4);
+    border-radius: 1px;
+    margin-bottom: 16px;
   }
+  .card-items { display: flex; flex-direction: column; gap: 8px; }
   .card-item {
-    font-size: 18px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.4;
-    padding-left: 14px;
+    font-size: 15px;
+    color: #6A4028;
+    line-height: 1.45;
+    padding-left: 16px;
     position: relative;
   }
   .card-item::before {
@@ -85,58 +133,83 @@
     position: absolute; left: 0; top: 9px;
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: rgba(249,206,172,0.5);
+    background: #D4713B;
+    opacity: 0.5;
   }
 </style>
 </head>
 <body>
   <div class="slide-header">
+    <div class="header-eyebrow">Today's Agenda</div>
     <div class="slide-title">今日報告架構</div>
-    <div class="slide-title-en">Agenda</div>
     <div class="rule"></div>
   </div>
 
   <div class="cards-area">
-    <div class="chapter-card c1">
-      <div class="card-number">一</div>
-      <div class="card-label">Chapter 01</div>
-      <div class="card-title">成果</div>
-      <div class="card-items">
-        <div class="card-item">EMS 建置與全省推展</div>
-        <div class="card-item">AI 效率分析（新店・桃園）</div>
-        <div class="card-item">AI 擬定招標計畫</div>
+    <div class="chapter-card">
+      <div class="card-top">
+        <div class="card-number">一</div>
+        <div class="card-chapter-tag">Chapter 01</div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-title">成果</div>
+        <div class="card-divider"></div>
+        <div class="card-items">
+          <div class="card-item">EMS 建置與全省推展</div>
+          <div class="card-item">AI 效率分析（新店・桃園）</div>
+          <div class="card-item">AI 擬定招標計畫</div>
+        </div>
       </div>
     </div>
-    <div class="chapter-card c2">
-      <div class="card-number">二</div>
-      <div class="card-label">Chapter 02</div>
-      <div class="card-title">歷程</div>
-      <div class="card-items">
-        <div class="card-item">2024/02 → 2026/05</div>
-        <div class="card-item">EMS → 顧問 → AI 分析</div>
-        <div class="card-item">從數據到行動</div>
+
+    <div class="chapter-card">
+      <div class="card-top">
+        <div class="card-number">二</div>
+        <div class="card-chapter-tag">Chapter 02</div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-title">歷程</div>
+        <div class="card-divider"></div>
+        <div class="card-items">
+          <div class="card-item">2024/02 → 2026/05</div>
+          <div class="card-item">EMS → 顧問 → AI 分析</div>
+          <div class="card-item">從數據到行動</div>
+        </div>
       </div>
     </div>
-    <div class="chapter-card c3">
-      <div class="card-number">三</div>
-      <div class="card-label">Chapter 03</div>
-      <div class="card-title">節能補助申請</div>
-      <div class="card-items">
-        <div class="card-item">政府節能補助計畫</div>
-        <div class="card-item">申請進度說明</div>
+
+    <div class="chapter-card">
+      <div class="card-top">
+        <div class="card-number">三</div>
+        <div class="card-chapter-tag">Chapter 03</div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-title">節能補助申請</div>
+        <div class="card-divider"></div>
+        <div class="card-items">
+          <div class="card-item">政府節能補助計畫</div>
+          <div class="card-item">申請進度說明</div>
+        </div>
       </div>
     </div>
-    <div class="chapter-card c4">
-      <div class="card-number">四</div>
-      <div class="card-label">Chapter 04</div>
-      <div class="card-title">電表數位化</div>
-      <div class="card-items">
-        <div class="card-item">儀表板建置成果</div>
-        <div class="card-item">23 大會所電力監控</div>
-        <div class="card-item">推算 vs 實測差異分析</div>
+
+    <div class="chapter-card">
+      <div class="card-top">
+        <div class="card-number">四</div>
+        <div class="card-chapter-tag">Chapter 04</div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-title">電表數位化</div>
+        <div class="card-divider"></div>
+        <div class="card-items">
+          <div class="card-item">儀表板建置成果</div>
+          <div class="card-item">23 大會所電力監控</div>
+          <div class="card-item">推算 vs 實測差異分析</div>
+        </div>
       </div>
     </div>
   </div>
+
 <script>
 (function(){
   var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
@@ -147,7 +220,7 @@
   b.style.top  = ((window.innerHeight - 1080*s)/2) + 'px';
   b.style.left = ((window.innerWidth  - 1920*s)/2) + 'px';
   document.documentElement.style.overflow = 'hidden';
-  document.documentElement.style.background = document.body.style.background || getComputedStyle(b).background;
+  document.documentElement.style.background = '#EDE5D6';
 })();
 </script>
 </body>
