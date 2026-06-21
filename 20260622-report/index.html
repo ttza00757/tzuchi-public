@@ -113,6 +113,7 @@
   }
   #present-stage iframe {
     border: none; position: absolute;
+    top: 0; left: 0;            /* 鎖定靜態位置在左上，避免 flex align-items:center 把 1080px 高的 iframe 上移、令 translate 基準錯位 */
     width: 1920px; height: 1080px;
     transform-origin: top left;
     pointer-events: none;
