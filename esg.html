@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慈濟慈善基金會｜永續發展組 ESG System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{
+  --jade:#1A7A5E;--jade2:#2AA67D;--jade-pale:#E8F5F0;--jade-faint:#F3FAF7;
+  --earth:#3D2E22;--lotus:#C17E6A;--gold:#C9A84C;--sky:#4A8FAF;--red:#C84040;
+  --cream:#F8F5EF;--white:#FFFFFF;--mist:#7A8E98;--border:rgba(26,122,94,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--cream);color:var(--earth);font-size:13px;}
+
+/* NAV TABS */
+.nav{background:linear-gradient(135deg,#0D3D2B,#1A7A5E 55%,#2AA67D);padding:0 28px;min-height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.2);}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-logo{width:30px;height:30px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nav-title{color:#fff;font-family:'Noto Serif TC',serif;font-size:14px;font-weight:700;}
+.nav-sub{color:rgba(255,255,255,.5);font-size:9px;font-family:'Space Grotesk',sans-serif;letter-spacing:.1em;}
+.tab-bar{display:flex;gap:2px;overflow-x:auto;}
+.tab-link{padding:6px 13px;color:rgba(255,255,255,.65);font-size:11px;font-family:'Space Grotesk',sans-serif;border-radius:7px;text-decoration:none;white-space:nowrap;transition:all .2s;}
+.tab-link:hover,.tab-link.active{background:rgba(255,255,255,.2);color:#fff;}
+.badge{background:rgba(201,168,76,.3);color:#F9D97A;padding:3px 8px;border-radius:12px;font-size:9.5px;font-family:'Space Grotesk',sans-serif;font-weight:600;}
+
+/* PAGES */
+.page{display:none;padding:24px 28px 48px;}
+.page:target,.page.default{display:block;}
+.ph{margin-bottom:18px;}
+.ph h2{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:700;color:var(--earth);margin-bottom:3px;}
+.ph p{font-size:11px;color:var(--mist);}
+
+/* CARD */
+.card{background:var(--white);border-radius:12px;padding:20px;box-shadow:0 2px 14px rgba(26,122,94,.07);border:1px solid var(--border);margin-bottom:18px;}
+.card-title{font-family:'Noto Serif TC',serif;font-size:13.5px;font-weight:600;color:var(--earth);display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.ci{width:26px;height:26px;background:var(--jade-pale);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.card-sub{font-size:10.5px;color:var(--mist);margin-bottom:14px;padding-left:34px;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.g13{display:grid;grid-template-columns:1fr 300px;gap:16px;}
+
+/* KPI */
+.kpi{background:var(--white);border-radius:11px;padding:14px 16px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(26,122,94,.06);}
+.kl{font-size:9px;letter-spacing:.1em;color:var(--mist);font-family:'Space Grotesk',sans-serif;text-transform:uppercase;margin-bottom:6px;}
+.kv{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--jade);}
+.ku{font-size:10px;font-weight:400;color:var(--mist);margin-left:2px;}
+.kd{display:inline-flex;align-items:center;margin-top:5px;font-size:10px;padding:2px 7px;border-radius:16px;font-family:'Space Grotesk',sans-serif;}
+.dg{background:#E8F5F0;color:var(--jade);}
+.dw{background:#FEF0EA;color:#C04A20;}
+.dn{background:#F4F4F4;color:var(--mist);}
+
+/* PROGRESS BAR */
+.pr{margin-bottom:11px;}
+.prh{display:flex;justify-content:space-between;margin-bottom:4px;font-size:11px;}
+.prn{font-weight:500;color:var(--earth);}
+.prv{color:var(--mist);font-family:'Space Grotesk',sans-serif;}
+.prbg{height:6px;background:#EEE;border-radius:3px;overflow:hidden;}
+.prfill{height:100%;border-radius:3px;}
+
+/* BADGE */
+.bdg{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9.5px;font-family:'Space Grotesk',sans-serif;font-weight:700;}
+.b-jade{background:var(--jade-pale);color:var(--jade);}
+.b-red{background:#FCEAEA;color:var(--red);}
+.b-gold{background:#FFF8E8;color:var(--gold);}
+.b-sky{background:#EAF4FA;color:var(--sky);}
+.b-mist{background:#F4F4F4;color:var(--mist);}
+.pos{color:var(--jade);font-weight:600;}
+.neg{color:var(--red);font-weight:600;}
+
+/* CHART: CSS LINE CHART */
+.chart-area{position:relative;height:220px;border-left:1px solid #EEE;border-bottom:1px solid #EEE;margin:0 36px 24px 36px;}
+.chart-ylabel{position:absolute;left:-38px;display:flex;flex-direction:column;justify-content:space-between;height:100%;font-family:'Space Grotesk',sans-serif;font-size:9px;color:#BBB;text-align:right;padding:0;top:0;}
+.chart-xlabel{position:absolute;bottom:-20px;font-family:'Space Grotesk',sans-serif;font-size:9px;color:#BBB;transform:translateX(-50%);}
+.chart-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid var(--jade);transform:translate(-50%,50%);}
+.chart-dot.est{border-style:dashed;border-color:var(--gold);}
+.chart-dot.target{background:#FCEAEA;border-color:var(--red);}
+.chart-label{position:absolute;font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;transform:translateX(-50%);white-space:nowrap;}
+.chart-grid{position:absolute;left:0;right:0;height:1px;background:#F0EDE7;}
+.chart-note{font-size:8.5px;color:#BBB;padding-left:36px;margin-top:28px;}
+
+/* BAR CHART */
+.bar-group{display:flex;align-items:flex-end;gap:4px;height:160px;border-bottom:1px solid #EEE;padding:0 4px;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.bar-inner{display:flex;gap:2px;align-items:flex-end;width:100%;}
+.bar{flex:1;border-radius:2px 2px 0 0;min-height:2px;}
+.bar-label{font-size:8px;color:#888;text-align:center;padding-top:4px;font-family:'Noto Sans TC',sans-serif;}
+
+/* TABLE */
+.tw{overflow-x:auto;border-radius:10px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:11.5px;}
+thead tr{background:var(--jade-faint);}
+th{padding:8px 11px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:.08em;color:var(--jade);font-weight:600;text-transform:uppercase;border-bottom:2px solid var(--border);}
+td{padding:7px 11px;border-bottom:1px solid #F0EDE7;}
+tbody tr:hover{background:var(--jade-faint);}
+tbody tr:last-child td{border-bottom:none;}
+.tn{font-family:'Space Grotesk',sans-serif;font-weight:500;}
+
+/* INTENSITY CARD */
+.int-card{border-radius:10px;padding:12px 10px;text-align:center;cursor:pointer;border:1.5px solid var(--border);transition:box-shadow .2s;}
+.int-card:hover{box-shadow:0 4px 14px rgba(26,122,94,.12);}
+.int-card.warn{background:#FEF0EA;border-color:rgba(200,64,64,.2);}
+.int-card.ok{background:var(--jade-faint);}
+
+/* AI BOX */
+.ai-box{background:linear-gradient(135deg,#2A7A5E,#3DAB84);border-radius:12px;padding:16px;color:#fff;margin-bottom:16px;}
+.ai-item{background:rgba(255,255,255,.1);border-radius:8px;padding:9px 12px;margin-bottom:7px;border-left:3px solid;}
+.ai-item.good{border-color:#7EFFC8;}
+.ai-item.warn{border-color:#F9D97A;}
+.ai-item.urg{border-color:#FFB3B3;}
+.ai-item.info{border-color:#B3D9F0;}
+.ai-tag{display:inline-block;font-size:9px;padding:1px 7px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-right:5px;}
+
+/* MILESTONE */
+.ms{display:grid;grid-template-columns:70px 12px 1fr;gap:8px;margin-bottom:4px;}
+.ms-yr{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--jade);text-align:right;padding-top:1px;}
+.ms-track{display:flex;flex-direction:column;align-items:center;}
+.ms-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--jade);background:#fff;flex-shrink:0;}
+.ms-dot.done{background:var(--jade);}
+.ms-dot.now{background:var(--gold);border-color:var(--gold);}
+.ms-line{width:2px;flex:1;min-height:12px;background:linear-gradient(var(--jade2),var(--jade-pale));margin-top:2px;}
+.ms-body{padding-bottom:14px;}
+.ms-title{font-size:12px;font-weight:600;color:var(--earth);}
+.ms-desc{font-size:10.5px;color:var(--mist);}
+
+/* DEPT */
+.dept-card{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:14px;margin-bottom:10px;}
+.task{display:flex;gap:7px;padding:6px 0;border-top:1px solid #F0EDE7;align-items:flex-start;}
+.tdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.s-done{background:var(--jade);}
+.s-ing{background:var(--gold);}
+.s-pend{background:#CCC;}
+
+/* DEC BOX */
+.dec-box{background:linear-gradient(135deg,#2E8B6A,#2A7A5E);border-radius:12px;padding:16px;color:#fff;margin-bottom:16px;}
+.dec-item{background:rgba(255,255,255,.1);border-radius:8px;padding:9px 12px;margin-bottom:7px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;}
+.dec-tag{font-size:9.5px;padding:2px 9px;border-radius:10px;background:rgba(201,168,76,.4);color:#F9D97A;font-family:'Space Grotesk',sans-serif;white-space:nowrap;}
+
+/* SCEN STRIP */
+.scen-strip{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.scen-btn{padding:5px 14px;border-radius:8px;font-size:11px;font-family:'Space Grotesk',sans-serif;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.scen-btn.on{background:var(--jade);color:#fff;}
+.scen-btn.off{background:var(--white);color:var(--mist);border:1.5px solid var(--border);}
+
+/* SOLAR */
+.solar-bar-wrap{display:flex;gap:12px;align-items:flex-end;height:160px;padding:0 4px;border-bottom:1px solid #EEE;}
+.solar-year{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.solar-bar-outer{width:100%;max-width:60px;display:flex;gap:4px;align-items:flex-end;}
+
+/* FOOTER */
+.footer{padding:14px 28px;border-top:1px solid var(--border);background:var(--white);display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--mist);}
+.fbadges{display:flex;gap:6px;}
+.fbdg{font-size:9px;color:var(--jade);border:1px solid rgba(26,122,94,.2);padding:2px 9px;border-radius:14px;font-family:'Space Grotesk',sans-serif;}
+
+@media(max-width:900px){
+  .nav{padding:8px 14px;flex-wrap:wrap;gap:6px;}
+  .tab-bar{display:none;}
+  .page{padding:14px 12px 40px;}
+  .g2,.g3,.g4,.g5,.g13{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">🪷</div>
+    <div>
+      <div class="nav-title">慈濟慈善基金會</div>
+      <div class="nav-sub">永續發展組 · ESG SYSTEM · NET ZERO TRACKER</div>
+    </div>
+  </div>
+  <div class="tab-bar">
+    <a class="tab-link active" href="#overview">📊 總覽</a>
+    <a class="tab-link" href="#locations">🏢 各據點排放</a>
+    <a class="tab-link" href="#milestones">🎯 里程碑秘書</a>
+    <a class="tab-link" href="#solar">☀ 綠能追蹤</a>
+    <a class="tab-link" href="#chiller">❄ 冰機計畫</a>
+    <a class="tab-link" href="#scenario">📐 情境分析</a>
+    <a class="tab-link" href="#crossdept">🤝 跨部門追蹤</a>
+    <a class="tab-link" href="dashboard.html" style="margin-left:10px;border-left:1px solid rgba(255,255,255,.3);border-radius:0;padding-left:15px;">📊 SBTi儀表板</a>
+    <a class="tab-link" href="https://electricpj.tzuchi-org.tw/" target="_blank" rel="noopener">⚡ 能源管理系統</a>
+  </div>
+  <div class="badge">基準年 2024 · SGS認證</div>
+</div>
+
+<!-- ═══ PAGE 1: 總覽 ═══ -->
+<div id="overview" class="page default">
+<div class="ph"><h2>淨零排放路徑總覽儀表板</h2><p>慈濟慈善基金會 23 個靜思堂及聯絡處 · Scope 1+2 · 基準年 2024（SGS認證）· SBTi 1.5°C ACA</p></div>
+
+<!-- KPI -->
+<div class="g5" style="margin-bottom:18px;">
+  <div class="kpi"><div class="kl">2024基準年全量（S1-S6）</div><div class="kv">12,929<span class="ku">tCO₂e</span></div><div class="kd dn">23所 SGS認證</div></div>
+  <div class="kpi"><div class="kl">2024 Scope 1+2（SBTi）</div><div class="kv">9,175<span class="ku">tCO₂e</span></div><div class="kd dn">SBTi計算基準</div></div>
+  <div class="kpi"><div class="kl">2025 Scope 1+2 實際</div><div class="kv">8,327<span class="ku">tCO₂e</span></div><div class="kd dg">↓ 9.2% 超前軌跡</div></div>
+  <div class="kpi"><div class="kl">2030 SBTi目標（↓25.2%）</div><div class="kv">6,863<span class="ku">tCO₂e</span></div><div class="kd dg">預計2027提前達成</div></div>
+  <div class="kpi"><div class="kl">冰機汰換總減碳潛力</div><div class="kv">4,582<span class="ku">tCO₂e</span></div><div class="kd dg">全面汰換後（排序用理論潛力）</div></div>
+</div>
+
+<!-- Path chart + sidebar -->
+<div class="g13" style="margin-bottom:18px;">
+  <div class="card">
+    <div class="card-title"><div class="ci">📈</div>Scope 1+2 減碳路徑（2024–2030）</div>
+    <div class="card-sub">實際值 vs SBTi 1.5°C 上限 · 陰影=超標風險區</div>
+
+    <!-- CSS Line Chart -->
+    <div style="position:relative;padding:0 8px;">
+      <div class="chart-ylabel">
+        <span>10k</span><span>9k</span><span>8k</span><span>7k</span><span>6k</span><span>5k</span>
+      </div>
+      <div class="chart-area">
+        <!-- Grid lines at 20% intervals (5k-10k range = 5000 span, each 1000=20%) -->
+        <div class="chart-grid" style="bottom:20%;"></div>
+        <div class="chart-grid" style="bottom:40%;"></div>
+        <div class="chart-grid" style="bottom:60%;"></div>
+        <div class="chart-grid" style="bottom:80%;"></div>
+        <!-- SBTi red zone shade -->
+        <div style="position:absolute;left:0;right:0;top:0;bottom:37.3%;background:rgba(200,64,64,.04);pointer-events:none;"></div>
+        <!-- SVG lines (inline, always renders) -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <!-- SBTi dashed line: 2024(100%)→2025(75.8%)→2026(68.1%)→2027(60.4%)→2030(37.3%) -->
+          <polyline points="0,0 16.7,24.2 33.3,31.9 50,39.6 100,62.7"
+            fill="none" stroke="#C84040" stroke-width="0.8" stroke-dasharray="2,1.5" vector-effect="non-scaling-stroke"/>
+          <!-- Actual fill area -->
+          <polygon points="0,100 0,0 16.7,16.9 33.3,21.4 43.4,81.1 43.4,100"
+            fill="rgba(26,122,94,0.08)"/>
+          <!-- Actual solid line 2024→2026 -->
+          <polyline points="0,0 16.7,16.9 33.3,21.4"
+            fill="none" stroke="#1A7A5E" stroke-width="1.8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+          <!-- Est line 2026→2027 (dashed, solar ramp) -->
+          <polyline points="33.3,21.4 43.4,81.1"
+            fill="none" stroke="#1A7A5E" stroke-width="1.8" stroke-dasharray="3,2" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+          <!-- Projection 2027→2030 -->
+          <line x1="43.4" y1="81.1" x2="100" y2="62.7"
+            stroke="#1A7A5E" stroke-width="0.8" stroke-dasharray="2,1.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <!-- Actual data points -->
+        <!-- 2024: val=9175, bottom=(9175-5000)/5000*100=83.5% -->
+        <div class="chart-dot" style="left:0%;bottom:83.5%;"></div>
+        <div class="chart-label" style="left:0%;bottom:89%;color:#1A7A5E;">9,175</div>
+        <span class="chart-xlabel" style="left:0%;">2024</span>
+        <!-- 2025: val=8327, bottom=66.5% -->
+        <div class="chart-dot" style="left:16.7%;bottom:66.5%;"></div>
+        <div class="chart-label" style="left:16.7%;bottom:72%;color:#1A7A5E;">8,327</div>
+        <span class="chart-xlabel" style="left:16.7%;">2025</span>
+        <!-- 2026 est: val=7931, bottom=58.6% -->
+        <div class="chart-dot est" style="left:33.3%;bottom:58.6%;"></div>
+        <div class="chart-label" style="left:33.3%;bottom:64%;color:var(--gold);">7,931</div>
+        <span class="chart-xlabel" style="left:33.3%;">2026</span>
+        <!-- 2027 est: val=5944, bottom=18.9% -->
+        <div class="chart-dot est" style="left:43.4%;bottom:18.9%;width:13px;height:13px;"></div>
+        <div class="chart-label" style="left:56%;bottom:14%;color:var(--gold);">5,944</div>
+        <span style="position:absolute;left:43%;bottom:28%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:6px;padding:2px 7px;font-size:8.5px;color:#9A7A28;font-family:'Space Grotesk',sans-serif;white-space:nowrap;">☀ 太陽能41場全到位</span>
+        <span class="chart-xlabel" style="left:43.4%;">2027</span>
+        <!-- 2030 target -->
+        <div class="chart-dot target" style="left:100%;bottom:37.3%;"></div>
+        <div class="chart-label" style="left:92%;bottom:31%;color:var(--red);">6,863</div>
+        <span class="chart-xlabel" style="left:100%;">2030</span>
+      </div>
+      <div class="chart-note">* 2026–2027 為工程估算，太陽能效益依建置進度逐步認列</div>
+    </div>
+    <!-- Legend -->
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
+      <div style="display:flex;align-items:center;gap:5px;font-size:10.5px;"><div style="width:20px;height:3px;background:#1A7A5E;border-radius:1px;"></div>實際 / 工程估算</div>
+      <div style="display:flex;align-items:center;gap:5px;font-size:10.5px;"><div style="width:20px;height:2px;background:#C84040;"></div>SBTi 1.5°C 上限</div>
+      <div style="display:flex;align-items:center;gap:5px;font-size:10.5px;"><div style="width:10px;height:10px;border-radius:50%;background:#E8F5F0;border:2px solid #1A7A5E;"></div>SGS認證</div>
+      <div style="display:flex;align-items:center;gap:5px;font-size:10.5px;"><div style="width:10px;height:10px;border-radius:50%;background:#FFF8E8;border:2px dashed #C9A84C;"></div>工程估算</div>
+    </div>
+  </div>
+
+  <!-- Right sidebar -->
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-title"><div class="ci">🏆</div>2030達成預估</div>
+      <div style="text-align:center;padding:8px 0;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:var(--jade);">5,944</div>
+        <div style="font-size:10.5px;color:var(--mist);">tCO₂e（2027提前達成）</div>
+        <div style="margin:10px 0;height:6px;background:#EEE;border-radius:3px;overflow:hidden;"><div style="height:100%;width:87%;background:var(--jade);border-radius:3px;"></div></div>
+        <div style="font-size:10px;color:var(--mist);">87% 達成 vs 2030目標 6,863</div>
+        <div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:#E8F5F0;padding:4px 12px;border-radius:16px;font-size:10.5px;color:var(--jade);font-weight:600;">🎉 超額 919 tCO₂e</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:0;flex:1;">
+      <div class="card-title"><div class="ci">⚡</div>四大減碳行動貢獻</div>
+      <div style="margin-top:8px;">
+        <div class="pr"><div class="prh"><div class="prn">☀ 太陽能綠電（2027全到位）</div><div class="prv">2,748 tCO₂e/年</div></div><div class="prbg"><div class="prfill" style="width:85%;background:#1A7A5E;height:6px;border-radius:3px;"></div></div></div>
+        <div class="pr"><div class="prh"><div class="prn">❄ 高效冰水主機（3所已啟用）</div><div class="prv">460.2 tCO₂e/年</div></div><div class="prbg"><div class="prfill" style="width:14%;background:#2AA67D;height:6px;border-radius:3px;"></div></div></div>
+        <div class="pr"><div class="prh"><div class="prn">🚗 公務車電動化</div><div class="prv">41.1 tCO₂e/年</div></div><div class="prbg"><div class="prfill" style="width:1.3%;background:#C9A84C;height:6px;border-radius:3px;"></div></div></div>
+        <div class="pr"><div class="prh"><div class="prn">📋 ISO 50001（5所認證）</div><div class="prv">管理基礎</div></div><div class="prbg"><div class="prfill" style="width:0%;background:#4A8FAF;height:6px;border-radius:3px;"></div></div></div>
+        <div style="padding-top:8px;border-top:1px solid #F0EDE7;display:flex;justify-content:space-between;font-size:11px;margin-top:4px;">
+          <span style="color:var(--mist);">合計已量化</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--jade);">3,249 tCO₂e/年</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scope breakdown -->
+<div class="g3" style="margin-bottom:18px;">
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title"><div class="ci">🏭</div>Scope 1 冷媒逸散</div>
+    <div class="card-sub">2024 vs 2025</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--jade);margin-bottom:8px;">1,464 → 1,431 tCO₂e</div>
+    <div class="pos" style="font-size:10.5px;">↓ 2.2%（花蓮磁浮換R1234ze貢獻）</div>
+    <div style="height:1px;background:#F0EDE7;margin:10px 0;"></div>
+    <div style="font-size:10px;color:var(--mist);">R-22 機組（GWP=1,810）</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--red);">32台 4,290RT</div>
+    <div style="font-size:10px;color:var(--mist);margin-top:6px;">R-134a 機組（GWP=1,430）</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--gold);">15台 2,860RT</div>
+    <div style="padding:7px 10px;background:var(--jade-pale);border-radius:7px;font-size:10.5px;color:var(--jade);margin-top:10px;">全換R1234ze後年減：<strong>909 tCO₂e</strong></div>
+  </div>
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title"><div class="ci">⚡</div>Scope 2 電力排放</div>
+    <div class="card-sub">2024 vs 2025 · 23所</div>
+    <div style="display:flex;gap:10px;margin-bottom:12px;">
+      <div style="flex:1;text-align:center;background:var(--jade-faint);border-radius:8px;padding:10px;">
+        <div style="font-size:9.5px;color:var(--mist);">2024</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--earth);">7,327</div>
+        <div style="font-size:9.5px;color:var(--mist);">tCO₂e</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:16px;color:var(--jade);">→</div>
+      <div style="flex:1;text-align:center;background:var(--jade-pale);border-radius:8px;padding:10px;">
+        <div style="font-size:9.5px;color:var(--mist);">2025</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--jade);">6,550</div>
+        <div style="font-size:9.5px;color:var(--jade);">↓ 10.6%</div>
+      </div>
+    </div>
+    <div class="pos" style="font-size:11px;">↓ 776 tCO₂e 已減少</div>
+    <div style="color:var(--mist);font-size:10.5px;">花蓮磁浮冰機啟用最大貢獻（−387 tCO₂e）</div>
+    <div style="margin-top:8px;padding:6px 10px;background:var(--jade-faint);border-radius:7px;font-size:10.5px;color:var(--jade);">太陽能2027全到位後再減 2,748 tCO₂e</div>
+  </div>
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title"><div class="ci">📊</div>各類別排放比重</div>
+    <div class="card-sub">2025年 23所全量 11,898 tCO₂e</div>
+    <div class="pr"><div class="prh"><div class="prn">類別2 電力（Scope2）</div><div class="prv">6,550（55.1%）</div></div><div class="prbg"><div class="prfill" style="width:55.1%;background:#2AA67D;height:6px;border-radius:3px;"></div></div></div>
+    <div class="pr"><div class="prh"><div class="prn">類別4 採購廢棄物</div><div class="prv">1,829（15.4%）</div></div><div class="prbg"><div class="prfill" style="width:15.4%;background:#C9A84C;height:6px;border-radius:3px;"></div></div></div>
+    <div class="pr"><div class="prh"><div class="prn">類別1 直接排放（Scope1）</div><div class="prv">1,777（14.9%）</div></div><div class="prbg"><div class="prfill" style="width:14.9%;background:#1A7A5E;height:6px;border-radius:3px;"></div></div></div>
+    <div class="pr"><div class="prh"><div class="prn">類別5 產品使用</div><div class="prv">1,154（9.7%）</div></div><div class="prbg"><div class="prfill" style="width:9.7%;background:#C17E6A;height:6px;border-radius:3px;"></div></div></div>
+    <div class="pr"><div class="prh"><div class="prn">類別3 運輸</div><div class="prv">588（4.9%）</div></div><div class="prbg"><div class="prfill" style="width:4.9%;background:#4A8FAF;height:6px;border-radius:3px;"></div></div></div>
+  </div>
+</div>
+
+<!-- Intensity -->
+<div class="card">
+  <div class="card-title"><div class="ci">📐</div>各據點 Scope 1+2 排放強度對比（2024 vs 2025）</div>
+  <div class="card-sub">單位：kgCO₂e/m² · 範圍一+範圍二 · SGS認證數據 · 中期目標：≤15.0 kgCO₂e/m²</div>
+  <!-- Summary -->
+  <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+    <div style="background:var(--jade-faint);border-radius:8px;padding:8px 14px;font-size:11px;"><span style="color:var(--mist);">10所平均強度</span> <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--jade);">16.58 kgCO₂e/m²</span></div>
+    <div style="background:#FFF8E8;border-radius:8px;padding:8px 14px;font-size:11px;"><span style="color:var(--mist);">尚未達標15.0目標</span> <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--gold);">5所</span></div>
+    <div style="background:var(--jade-pale);border-radius:8px;padding:8px 14px;font-size:11px;"><span style="color:var(--mist);">最佳標竿</span> <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--jade);">彰化 8.55 kgCO₂e/m²</span></div>
+  </div>
+  <div class="g5">
+    <div class="int-card warn"><div style="font-size:9px;color:var(--red);background:#FCEAEA;padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名1 🔴</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">三重志業</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--red);">22.86</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="neg" style="font-size:9.5px;">+2.6% ▲唯一逆增</div><div style="font-size:8.5px;color:var(--red);margin-top:2px;">▲目標差距+7.86</div></div>
+    <div class="int-card warn"><div style="font-size:9px;color:var(--gold);background:#FFF8E8;padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名2 🟡</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">板橋志業</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--red);">20.93</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓6.2%</div><div style="font-size:8.5px;color:var(--gold);margin-top:2px;">▲目標差距+5.93</div></div>
+    <div class="int-card warn"><div style="font-size:9px;color:var(--gold);background:#FFF8E8;padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名3 🟡</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">桃園分會</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--red);">20.43</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓12.5%</div><div style="font-size:8.5px;color:var(--gold);margin-top:2px;">▲目標差距+5.43</div></div>
+    <div class="int-card warn"><div style="font-size:9px;color:var(--gold);background:#FFF8E8;padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名4 🟡</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">臺北分會</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--red);">20.00</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓14.7%</div><div style="font-size:8.5px;color:var(--gold);margin-top:2px;">▲目標差距+5.00</div></div>
+    <div class="int-card warn"><div style="font-size:9px;color:var(--sky);background:#EAF4FA;padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名5 🔵</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">高雄志業</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--gold);">15.11</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓4.1%</div><div style="font-size:8.5px;color:var(--gold);margin-top:2px;">▲差距+0.11</div></div>
+  </div>
+  <div class="g5" style="margin-top:10px;">
+    <div class="int-card ok"><div style="font-size:9px;color:var(--jade2);background:var(--jade-pale);padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名6 🟢</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">花蓮</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--jade);">15.07</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓17.5% 最大降幅</div><div style="font-size:8.5px;color:var(--jade);margin-top:2px;">✓ 接近目標</div></div>
+    <div class="int-card ok"><div style="font-size:9px;color:var(--jade2);background:var(--jade-pale);padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名7 🟢</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">臺中分會</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--jade);">15.05</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓6.0%</div><div style="font-size:8.5px;color:var(--jade);margin-top:2px;">✓ 接近目標</div></div>
+    <div class="int-card ok"><div style="font-size:9px;color:var(--jade2);background:var(--jade-pale);padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名8 ⚪</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">屏東分會</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--jade);">14.74</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓17.3%</div><div style="font-size:8.5px;color:var(--jade);margin-top:2px;">✓ 已達目標</div></div>
+    <div class="int-card ok"><div style="font-size:9px;color:var(--jade2);background:var(--jade-pale);padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名9 ⚪</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">台南分會</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--jade);">13.68</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓6.2%</div><div style="font-size:8.5px;color:var(--jade);margin-top:2px;">✓ 已達目標</div></div>
+    <div class="int-card ok"><div style="font-size:9px;color:var(--jade2);background:var(--jade-pale);padding:1px 5px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;display:inline-block;margin-bottom:4px;">排名10 ⚪</div><div style="font-size:10.5px;font-weight:600;color:var(--earth);">彰化分會</div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:var(--jade);">8.55</div><div style="font-size:8.5px;color:var(--mist);">kgCO₂e/m²</div><div class="pos" style="font-size:9.5px;">↓4.0%</div><div style="font-size:8.5px;color:var(--jade);margin-top:2px;">✓ 最佳標竿</div></div>
+  </div>
+  <div style="margin-top:12px;padding:8px 14px;background:#F8F5EF;border-radius:8px;font-size:11px;color:var(--earth);">
+    <div style="width:24px;height:3px;background:var(--gold);border-radius:2px;display:inline-block;vertical-align:middle;margin-right:8px;"></div>
+    中期目標線 <strong>15.0 kgCO₂e/m²</strong>（建議2030前達標）· <strong>三重志業強度最高+唯一逆增，需立即診斷</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══ PAGE 2: 各據點排放 ═══ -->
+<div id="locations" class="page">
+<div class="ph"><h2>各據點排放詳細分析</h2><p>10個分會 + 13個聯絡處 · 2024 vs 2025 · Scope 1+2 及全量 · SGS認證數據</p></div>
+
+<!-- 10所分會長條比較 -->
+<div class="card">
+  <div class="card-title"><div class="ci">📊</div>10個分會／志業園區 年度排放比較（tCO₂e）</div>
+  <div class="card-sub">2023 / 2024 / 2025 全量排放 · 點擊據點名稱查看細節</div>
+  <div class="bar-group" style="height:180px;gap:6px;">
+    <!-- Each location: 3 bars side by side -->
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:97px;" title="2023: 3,252"></div><div class="bar" style="background:#1A7A5E;height:100px;" title="2024: 3,181"></div><div class="bar" style="background:#2AA67D;height:86px;" title="2025: 2,741"></div></div><div class="bar-label">花蓮</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:36px;" title="2023: 1,146"></div><div class="bar" style="background:#1A7A5E;height:37px;" title="2024: 1,170"></div><div class="bar" style="background:#2AA67D;height:32px;" title="2025: 1,032"></div></div><div class="bar-label">台北</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:16px;" title="2023: 497"></div><div class="bar" style="background:#1A7A5E;height:16px;" title="2024: 510"></div><div class="bar" style="background:#2AA67D;height:15px;" title="2025: 463"></div></div><div class="bar-label">桃園</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:29px;" title="2023: 932"></div><div class="bar" style="background:#1A7A5E;height:32px;" title="2024: 1,020"></div><div class="bar" style="background:#2AA67D;height:28px;" title="2025: 881"></div></div><div class="bar-label">台中</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:18px;" title="2023: 571"></div><div class="bar" style="background:#1A7A5E;height:16px;" title="2024: 507"></div><div class="bar" style="background:#2AA67D;height:16px;" title="2025: 513"></div></div><div class="bar-label">彰化</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:19px;" title="2023: 591"></div><div class="bar" style="background:#1A7A5E;height:20px;" title="2024: 627"></div><div class="bar" style="background:#2AA67D;height:19px;" title="2025: 590"></div></div><div class="bar-label">台南</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:4px;" title="2023: 127"></div><div class="bar" style="background:#1A7A5E;height:4px;" title="2024: 128"></div><div class="bar" style="background:#2AA67D;height:4px;" title="2025: 112"></div></div><div class="bar-label">屏東</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:19px;" title="2023: 608"></div><div class="bar" style="background:#1A7A5E;height:17px;" title="2024: 546"></div><div class="bar" style="background:#2AA67D;height:16px;" title="2025: 513"></div></div><div class="bar-label">板橋</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:20px;" title="2023: 633"></div><div class="bar" style="background:#1A7A5E;height:21px;" title="2024: 673"></div><div class="bar" style="background:#2AA67D;height:22px;" title="2025: 685 ▲逆增"></div></div><div class="bar-label">三重</div></div>
+    <div class="bar-col"><div class="bar-inner"><div class="bar" style="background:#B8D4E8;height:33px;" title="2023: 1,055"></div><div class="bar" style="background:#1A7A5E;height:33px;" title="2024: 1,033"></div><div class="bar" style="background:#2AA67D;height:32px;" title="2025: 1,025"></div></div><div class="bar-label">高雄</div></div>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:4px;font-size:10px;"><div style="width:10px;height:8px;background:#B8D4E8;border-radius:2px;"></div>2023</div>
+    <div style="display:flex;align-items:center;gap:4px;font-size:10px;"><div style="width:10px;height:8px;background:#1A7A5E;border-radius:2px;"></div>2024</div>
+    <div style="display:flex;align-items:center;gap:4px;font-size:10px;"><div style="width:10px;height:8px;background:#2AA67D;border-radius:2px;"></div>2025</div>
+    <div style="font-size:10px;color:var(--red);margin-left:8px;">▲ 三重志業2025逆增，需立即關注</div>
+  </div>
+</div>
+
+<!-- Full table -->
+<div class="card">
+  <div class="card-title"><div class="ci">📋</div>各據點完整數據總表（2024–2025）</div>
+  <div class="card-sub">Scope 1+2 / 全量 / 面積強度 / vs 2024 差異分析</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>據點</th><th>區域</th><th>S1+2 2024</th><th>S1+2 2025</th><th>S1+2差異</th><th>全量2024</th><th>全量2025</th><th>全量差異</th><th>強度2025</th><th>SBTi 2025</th></tr></thead>
+      <tbody>
+        <tr><td><strong>花蓮靜思堂</strong></td><td><span class="bdg b-sky">東區</span></td><td class="tn">2,227</td><td class="tn">1,837</td><td class="tn pos">↓17.5%</td><td class="tn">3,181</td><td class="tn">2,741</td><td class="tn pos">↓13.8%</td><td class="tn">15.07</td><td><span class="bdg b-jade">✓達標</span></td></tr>
+        <tr><td><strong>臺北分會</strong></td><td><span class="bdg b-jade">北區</span></td><td class="tn">911</td><td class="tn">777</td><td class="tn pos">↓14.7%</td><td class="tn">1,170</td><td class="tn">1,032</td><td class="tn pos">↓11.8%</td><td class="tn">20.00</td><td><span class="bdg b-red">⚑未達</span></td></tr>
+        <tr><td><strong>桃園分會</strong></td><td><span class="bdg b-jade">北區</span></td><td class="tn">388</td><td class="tn">339</td><td class="tn pos">↓12.5%</td><td class="tn">510</td><td class="tn">463</td><td class="tn pos">↓9.2%</td><td class="tn">20.43</td><td><span class="bdg b-red">⚑未達</span></td></tr>
+        <tr><td><strong>臺中分會</strong></td><td><span class="bdg b-gold">中區</span></td><td class="tn">668</td><td class="tn">629</td><td class="tn pos">↓5.8%</td><td class="tn">1,020</td><td class="tn">881</td><td class="tn pos">↓13.6%</td><td class="tn">15.05</td><td><span class="bdg b-jade">✓達標</span></td></tr>
+        <tr><td><strong>彰化分會</strong></td><td><span class="bdg b-gold">中區</span></td><td class="tn">242</td><td class="tn">233</td><td class="tn pos">↓4.0%</td><td class="tn">507</td><td class="tn">513</td><td class="tn neg">+1.2%</td><td class="tn">8.55</td><td><span class="bdg b-jade">✓達標</span></td></tr>
+        <tr><td><strong>台南分會</strong></td><td><span class="bdg b-lotus">南區</span></td><td class="tn">475</td><td class="tn">445</td><td class="tn pos">↓6.1%</td><td class="tn">627</td><td class="tn">590</td><td class="tn pos">↓5.9%</td><td class="tn">13.68</td><td><span class="bdg b-jade">✓達標</span></td></tr>
+        <tr><td><strong>屏東分會</strong></td><td><span class="bdg b-lotus">南區</span></td><td class="tn">59</td><td class="tn">49</td><td class="tn pos">↓17.5%</td><td class="tn">128</td><td class="tn">112</td><td class="tn pos">↓12.5%</td><td class="tn">14.74</td><td><span class="bdg b-jade">✓達標</span></td></tr>
+        <tr><td><strong>板橋志業園區</strong></td><td><span class="bdg b-jade">北區</span></td><td class="tn">428</td><td class="tn">401</td><td class="tn pos">↓6.2%</td><td class="tn">546</td><td class="tn">513</td><td class="tn pos">↓6.0%</td><td class="tn">20.93</td><td><span class="bdg b-red">⚑未達</span></td></tr>
+        <tr style="background:#FEF0EA;"><td><strong>三重志業園區</strong> ⚠</td><td><span class="bdg b-jade">北區</span></td><td class="tn">513</td><td class="tn">526</td><td class="tn neg">+2.6% ▲</td><td class="tn">673</td><td class="tn">685</td><td class="tn neg">+1.8% ▲</td><td class="tn">22.86</td><td><span class="bdg b-red">⚑未達</span></td></tr>
+        <tr><td><strong>高雄志業園區</strong></td><td><span class="bdg b-lotus">南區</span></td><td class="tn">721</td><td class="tn">692</td><td class="tn pos">↓4.0%</td><td class="tn">1,033</td><td class="tn">1,025</td><td class="tn pos">↓0.8%</td><td class="tn">15.11</td><td><span class="bdg b-jade">✓達標</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:10px;padding:8px 12px;background:#FEF0EA;border-radius:8px;font-size:11px;color:var(--red);">⚠ <strong>三重志業園區</strong>：唯一Scope1+2逆增所（+2.6%），強度22.86為全機構最高，建議總務處2026 Q3前完成HVAC診斷。</div>
+</div>
+
+<!-- 13聯絡處摘要 -->
+<div class="card">
+  <div class="card-title"><div class="ci">🏘</div>13個聯絡處排放摘要（2024–2025）</div>
+  <div class="card-sub">Scope 1+2 · 合計：2,024→1,931 tCO₂e（↓4.6%）</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>聯絡處</th><th>區域</th><th>S1+2 2024</th><th>S1+2 2025</th><th>差異</th><th>主要異動</th></tr></thead>
+      <tbody>
+        <tr><td>東區聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">107</td><td class="tn">89</td><td class="pos tn">↓17.2%</td><td style="font-size:10.5px;color:var(--mist);">S1逸散大幅下降</td></tr>
+        <tr><td>萬華聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">210</td><td class="tn">214</td><td class="neg tn">+2.0%</td><td style="font-size:10.5px;color:var(--mist);">S2用電微增</td></tr>
+        <tr><td>內湖聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">179</td><td class="tn">167</td><td class="pos tn">↓7.1%</td><td style="font-size:10.5px;color:var(--mist);">S1冷媒逸散下降</td></tr>
+        <tr><td>大安聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">116</td><td class="tn">115</td><td class="pos tn">↓1.4%</td><td style="font-size:10.5px;color:var(--mist);">持平</td></tr>
+        <tr style="background:#FEF0EA;"><td>中正聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">150</td><td class="tn">168</td><td class="neg tn">+12.4% ▲</td><td style="font-size:10.5px;color:var(--red);">S2用電逆增，需查明原因</td></tr>
+        <tr><td>雙和聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">334</td><td class="tn">323</td><td class="pos tn">↓3.4%</td><td style="font-size:10.5px;color:var(--mist);">S1冷媒改善</td></tr>
+        <tr><td>蘆洲聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">238</td><td class="tn">237</td><td class="pos tn">↓0.4%</td><td style="font-size:10.5px;color:var(--mist);">持平</td></tr>
+        <tr><td>八德聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">287</td><td class="tn">253</td><td class="pos tn">↓11.8%</td><td style="font-size:10.5px;color:var(--mist);">S2用電下降</td></tr>
+        <tr><td>新竹聯絡處</td><td><span class="bdg b-jade">北區</span></td><td class="tn">292</td><td class="tn">223</td><td class="pos tn">↓23.6%</td><td style="font-size:10.5px;color:var(--jade);">最大降幅，S2大幅下降</td></tr>
+        <tr><td>清水聯絡處</td><td><span class="bdg b-gold">中區</span></td><td class="tn">184</td><td class="tn">175</td><td class="pos tn">↓4.6%</td><td style="font-size:10.5px;color:var(--mist);">穩定下降</td></tr>
+        <tr><td>大里聯絡處</td><td><span class="bdg b-gold">中區</span></td><td class="tn">193</td><td class="tn">194</td><td class="neg tn">+0.1%</td><td style="font-size:10.5px;color:var(--mist);">持平</td></tr>
+        <tr><td>民權聯絡處</td><td><span class="bdg b-gold">中區</span></td><td class="tn">106</td><td class="tn">100</td><td class="pos tn">↓5.1%</td><td style="font-size:10.5px;color:var(--mist);">使用頻率低，評估空調替換</td></tr>
+        <tr><td>豐原聯絡處</td><td><span class="bdg b-gold">中區</span></td><td class="tn">146</td><td class="tn">143</td><td class="pos tn">↓2.3%</td><td style="font-size:10.5px;color:var(--mist);">穩定</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE 3: 里程碑秘書 ═══ -->
+<div id="milestones" class="page">
+<div class="ph"><h2>🤖 ESG 秘書 — 年度里程碑與智能分析</h2><p>每個節點的進度分析 · 落差原因 · SBTi路徑影響 · 優化建議</p></div>
+
+<div class="g2" style="margin-bottom:18px;">
+<div class="card" style="margin-bottom:0;">
+  <div class="card-title"><div class="ci">🗓</div>治理里程碑時間軸（2021–2050）</div>
+  <div class="card-sub">點選各節點標題查看詳細分析</div>
+  <div class="ms"><div class="ms-yr">2021</div><div class="ms-track"><div class="ms-dot done"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">碳盤查元年</div><div class="ms-desc">花蓮靜思堂啟動碳盤查，建立基礎流程</div><span class="bdg b-jade" style="margin-top:4px;display:inline-block;">已完成</span></div></div>
+  <div class="ms"><div class="ms-yr">2022</div><div class="ms-track"><div class="ms-dot done"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">盤查擴至10所靜思堂</div><div class="ms-desc">全台10個靜思堂建立GHG盤查</div><span class="bdg b-jade" style="margin-top:4px;display:inline-block;">已完成</span></div></div>
+  <div class="ms"><div class="ms-yr">2023</div><div class="ms-track"><div class="ms-dot done"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">SGS認證 10所基準年</div><div class="ms-desc">10所取得SGS第三方認證，確立盤查基準</div><span class="bdg b-jade" style="margin-top:4px;display:inline-block;">已完成</span></div></div>
+  <div class="ms"><div class="ms-yr">2024</div><div class="ms-track"><div class="ms-dot done"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">23所新基準年確立</div><div class="ms-desc">Scope 1+2 = 9,175 tCO₂e（SGS認證）· 13所聯絡處納入 · 確立HFC冷媒逸散新機會</div><span class="bdg b-jade" style="margin-top:4px;display:inline-block;">已完成</span></div></div>
+  <div class="ms"><div class="ms-yr">2025</div><div class="ms-track"><div class="ms-dot done"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">Scope 1+2 = 8,327（↓9.2%）超前軌跡</div><div class="ms-desc">超前SBTi 1.5°C軌跡462 tCO₂e · ISO 50001擴至5所 · 全量↓7.97%</div><span class="bdg b-jade" style="margin-top:4px;display:inline-block;">已完成</span></div></div>
+  <div class="ms"><div class="ms-yr">2026 Q2</div><div class="ms-track"><div class="ms-dot now"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">三所冰機行動啟用</div><div class="ms-desc">花蓮磁浮500RT R1234ze + 新店管路優化 + 桃園新機（合計~460 tCO₂e/年，花蓮為驗收基準值）</div><span class="bdg b-gold" style="margin-top:4px;display:inline-block;">進行中</span></div></div>
+  <div class="ms"><div class="ms-yr">2027</div><div class="ms-track"><div class="ms-dot"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">預計提前達成2030目標</div><div class="ms-desc">太陽能41場全到位（2,748 tCO₂e）+ 冰機第一波 → 預估5,944 tCO₂e，超額919</div><span class="bdg b-mist" style="margin-top:4px;display:inline-block;">規劃中</span></div></div>
+  <div class="ms"><div class="ms-yr">2030</div><div class="ms-track"><div class="ms-dot"></div><div class="ms-line"></div></div><div class="ms-body"><div class="ms-title">Scope 1+2 ≤ 6,863 tCO₂e（SBTi目標）</div><div class="ms-desc">R-22全面清零 · 第一份整合性永續報告 · ISO 50001推展至全23所</div><span class="bdg b-mist" style="margin-top:4px;display:inline-block;">規劃中</span></div></div>
+  <div class="ms"><div class="ms-yr">2050</div><div class="ms-track"><div class="ms-dot"></div></div><div class="ms-body"><div class="ms-title">Scope 1+2+3 全面淨零</div><div class="ms-desc">與SBTi 1.5°C路徑一致 · 台灣NGO減碳示範</div><span class="bdg b-mist" style="margin-top:4px;display:inline-block;">目標</span></div></div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px;">
+<!-- 2025 深度分析 -->
+<div class="ai-box">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><div style="font-size:18px;">🤖</div><div><div style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:700;">2025 年度深度分析</div><div style="font-size:10px;opacity:.6;font-family:'Space Grotesk',sans-serif;">ESG秘書 · 超前進度</div></div></div>
+  <div class="ai-item good"><strong>📋 實際狀況：</strong>Scope 1+2實際降至8,327 tCO₂e（↓9.2%），超前SBTi要求4.2%，領先462 tCO₂e。全量下降7.97%（12,929→11,898 tCO₂e）。</div>
+  <div class="ai-item info"><strong>🔍 驅動因素：</strong>花蓮靜思堂Scope2電力↓387 tCO₂e（冰機優化/設備改善）為最大單一貢獻，佔全機構降幅45%以上。ISO 50001在5所推展強化能源管理意識。</div>
+  <div class="ai-item warn"><strong>⚠ 落差：</strong>三重志業園區唯一逆增（+1.8%），Scope2不降反增。彰化分會Scope5類別5逆增9.8%，需確認數據填報正確性。花蓮降幅佔比過高，代表系統性措施尚不足。</div>
+  <div class="ai-item good"><strong>💡 建議：</strong>三重HVAC診斷2026 Q3前完成；彰化Scope5數據審查2026 Q2；推動板橋/三重ISO 50001認證作為管理效益對照組。</div>
+</div>
+
+<!-- 2026 Q2 分析 -->
+<div class="ai-box">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><div style="font-size:18px;">🤖</div><div><div style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:700;">2026 Q2 冰機行動分析</div><div style="font-size:10px;opacity:.6;font-family:'Space Grotesk',sans-serif;">ESG秘書 · 進行中</div></div></div>
+  <div class="ai-item info"><strong>📋 三所效益：</strong>花蓮419.8＋新店30.1＋桃園10.31＝合計460.2 tCO₂e/年。花蓮冷媒由R-134a換R-1234ze（GWP: 1430→7），冷媒減量佔最大部分；桃園冷媒面非減量、僅認列 Scope2 實測 10.31。</div>
+  <div class="ai-item warn"><strong>⚠ 風險：</strong>花蓮已於2026-06-25結案（419.8為ESCO M&V驗收基準值，實際間歇使用推估≈278）；桃園10.31、新店5.74為EMS實測年化，官方結案欄待填。桃園採R-134a為過渡方案，下次汰換（2031年）建議直升R-1234ze。</div>
+  <div class="ai-item good"><strong>✅ 已完成：</strong>花蓮M&V已結案（2026-06-25，節能率49.25%），2027年汰換決策鏈的關鍵輸入已到位。</div>
+</div>
+</div>
+</div>
+
+<!-- 2050全局建議 -->
+<div class="ai-box">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div style="font-size:20px;">🌱</div><div><div style="font-family:'Noto Serif TC',serif;font-size:14px;font-weight:700;">2050 淨零全路徑 — 8大優化建議</div><div style="font-size:10px;opacity:.6;">基於真實GHG盤查數據 + SBTi路徑 + 冰機分析</div></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    <div class="ai-item urg"><span class="ai-tag" style="background:rgba(200,64,64,.3);color:#FFB3B3;">立即行動</span><strong>三重志業唯一逆增，需立即HVAC診斷</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">強度22.86+逆增2.6%，建議總務處2026 Q3診斷報告，提前列入2027冰機第一波。</div></div>
+    <div class="ai-item warn"><span class="ai-tag" style="background:rgba(201,168,76,.3);color:#F9D97A;">需關注</span><strong>聯絡處HFC冷媒盤查不完整</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">13所聯絡處2024年Scope1逸散741 tCO₂e（佔全機構40%），目前仍為估算值。總務處2026 Q3完成冷媒型號全盤查。</div></div>
+    <div class="ai-item warn"><span class="ai-tag" style="background:rgba(201,168,76,.3);color:#F9D97A;">需關注</span><strong>兩套目標需釐清：SBTi 50% vs 25.2%</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">冰機分析Excel設2030↓50%（6,464），董事會報告用SBTi ACA↓25.2%（6,863）。對外統一用6,863。</div></div>
+    <div class="ai-item good"><span class="ai-tag" style="background:rgba(42,166,125,.3);color:#7EFFC8;">機會</span><strong>太陽能是2027達標核心，確保41場如期完工</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">太陽能佔已量化行動86%。每延遲1個月損失229 tCO₂e減量機會，請持續追蹤未完工案場進度。</div></div>
+    <div class="ai-item info"><span class="ai-tag" style="background:rgba(74,143,175,.3);color:#B3D9F0;">建議</span><strong>2040目標需Scope3啟動，現在規劃2028執行</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">2040目標3,009 tCO₂e需Scope3減量（2025年類3+4+5合計3,570 tCO₂e）。建議2026年啟動Scope3盤查。</div></div>
+    <div class="ai-item info"><span class="ai-tag" style="background:rgba(74,143,175,.3);color:#B3D9F0;">建議</span><strong>桃園採R-134a是過渡方案，下次直升R-1234ze</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">桃園新機R-134a充填208kg，年溢散≈25.3 t仍為最大單一Scope1項（冷媒面非減量，GWP−21%屬質性改善），下次汰換2031年直升R-1234ze。</div></div>
+    <div class="ai-item warn"><span class="ai-tag" style="background:rgba(201,168,76,.3);color:#F9D97A;">需關注</span><strong>彰化Scope5異常增加，需數據審查</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">彰化2025年類別5排放183.9→201.7（↑9.8%），需確認是數據填報問題還是實際排放增加。</div></div>
+    <div class="ai-item good"><span class="ai-tag" style="background:rgba(42,166,125,.3);color:#7EFFC8;">機會</span><strong>2026年建立2050淨零工作小組</strong><div style="font-size:10.5px;opacity:.85;margin-top:3px;">建築零碳化、完全電力化、供應鏈碳中和是三大支柱。建議納入財務、總務、採購等跨部門代表。</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE 4: 綠能追蹤 ═══ -->
+<div id="solar" class="page">
+<div class="ph"><h2>☀ 綠能追蹤 — 太陽能建置 &amp; 三目標比較</h2><p>5,080 kWp · 41案場 · T-REC憑證 · SBTi / 基金會 / 淨零標章 三目標對比</p></div>
+
+<div class="g5" style="margin-bottom:18px;">
+  <div class="kpi"><div class="kl">目標總建置容量</div><div class="kv">5,080<span class="ku">kWp</span></div><div class="kd dn">41案場</div></div>
+  <div class="kpi"><div class="kl">2027年年減碳效益</div><div class="kv">2,748<span class="ku">tCO₂e</span></div><div class="kd dg">全到位後</div></div>
+  <div class="kpi"><div class="kl">2027年發電量</div><div class="kv">5,560<span class="ku">萬度</span></div><div class="kd dg">T-REC可申請</div></div>
+  <div class="kpi"><div class="kl">T-REC抵扣上限</div><div class="kv">無<span class="ku">上限</span></div><div class="kd dn">非碳權，不受25%限制</div></div>
+  <div class="kpi"><div class="kl">已完工案場（估計）</div><div class="kv">23<span class="ku">場</span></div><div class="kd dg">剩18場2027前完工</div></div>
+</div>
+
+<!-- 年度效益長條 -->
+<div class="card" style="margin-bottom:18px;">
+  <div class="card-title"><div class="ci">📊</div>太陽能年度抵減效益（tCO₂e）</div>
+  <div class="card-sub">發電折算總潛力 vs T-REC實際可認列量</div>
+  <div class="solar-bar-wrap">
+    <div class="solar-year">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--mist);">0</div>
+      <div class="solar-bar-outer" style="height:130px;"><div style="flex:1;background:#EEE;border-radius:3px 3px 0 0;height:2px;"></div><div style="flex:1;background:#EEE;border-radius:3px 3px 0 0;height:2px;"></div></div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:9.5px;color:#BBB;">2024</div>
+      <div style="font-size:9px;color:var(--mist);text-align:center;">尚未建置</div>
+    </div>
+    <div class="solar-year">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--jade);">395</div>
+      <div class="solar-bar-outer" style="height:130px;align-items:flex-end;">
+        <div style="flex:1;background:rgba(201,168,76,.35);border-radius:3px 3px 0 0;height:17px;"></div>
+        <div style="flex:1;background:#1A7A5E;border-radius:3px 3px 0 0;height:17px;"></div>
+      </div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:9.5px;color:#BBB;">2025</div>
+      <div style="font-size:9px;color:var(--mist);text-align:center;">部分啟用</div>
+    </div>
+    <div class="solar-year">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--jade);">1,200</div>
+      <div class="solar-bar-outer" style="height:130px;align-items:flex-end;">
+        <div style="flex:1;background:rgba(201,168,76,.35);border-radius:3px 3px 0 0;height:60px;"></div>
+        <div style="flex:1;background:#1A7A5E;border-radius:3px 3px 0 0;height:57px;"></div>
+      </div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:9.5px;color:#BBB;">2026</div>
+      <div style="font-size:9px;color:var(--mist);text-align:center;">T-REC申請中</div>
+    </div>
+    <div class="solar-year">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--jade);">2,748</div>
+      <div class="solar-bar-outer" style="height:130px;align-items:flex-end;">
+        <div style="flex:1;background:rgba(201,168,76,.35);border-radius:3px 3px 0 0;height:130px;"></div>
+        <div style="flex:1;background:#1A7A5E;border-radius:3px 3px 0 0;height:130px;"></div>
+      </div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:9.5px;color:#BBB;">2027</div>
+      <div style="font-size:9px;color:var(--jade);text-align:center;font-weight:600;">全到位</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:14px;margin-top:8px;font-size:10.5px;">
+    <div style="display:flex;align-items:center;gap:5px;"><div style="width:12px;height:12px;border-radius:3px;background:rgba(201,168,76,.35);"></div>發電折算tCO₂e（總潛力）</div>
+    <div style="display:flex;align-items:center;gap:5px;"><div style="width:12px;height:12px;border-radius:3px;background:#1A7A5E;"></div>T-REC認列抵減tCO₂e</div>
+  </div>
+</div>
+
+<!-- T-REC說明 -->
+<div class="g2" style="margin-bottom:18px;">
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title"><div class="ci">📋</div>T-REC 再生能源憑證說明</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+      <div style="background:var(--jade-faint);border-radius:9px;padding:12px;border-left:4px solid var(--jade);">
+        <div style="font-size:11.5px;font-weight:600;color:var(--jade);margin-bottom:5px;">✅ T-REC 可全數抵換，無年度數量上限</div>
+        <div style="font-size:11px;line-height:1.7;">依GHG Protocol Scope 2市場基準法，持有T-REC可將對應電力Scope 2歸零計算。每1張憑證=1,000度電=0.494 tCO₂e抵減。</div>
+      </div>
+      <div style="background:#FFF8E8;border-radius:9px;padding:12px;border-left:4px solid var(--gold);">
+        <div style="font-size:11.5px;font-weight:600;color:var(--gold);margin-bottom:5px;">⚠ 自發自用 vs T-REC 不可重複計算</div>
+        <div style="font-size:11px;line-height:1.7;">屋頂太陽能自發自用可降低Location-based Scope2；若申請T-REC則改採Market-based計算Scope2=0。兩者不可重複，建議採T-REC符合GHG Protocol雙重報告要求。</div>
+      </div>
+      <div style="background:#FCEAEA;border-radius:9px;padding:12px;border-left:4px solid var(--red);">
+        <div style="font-size:11.5px;font-weight:600;color:var(--red);margin-bottom:5px;">❗ T-REC ≠ 碳權，不受25%抵換上限限制</div>
+        <div style="font-size:11px;line-height:1.7;">淨零標章碳權抵換上限（銅～金25%，鑽石10%）是針對外購碳權，T-REC為再生能源憑證，不計入碳權上限。慈濟自有太陽能T-REC可不受限制。</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title"><div class="ci">🏆</div>淨零標章（TAISE 2026）對應分析</div>
+    <div style="margin-top:8px;display:flex;flex-direction:column;gap:7px;">
+      <div style="display:flex;gap:8px;padding:9px;border-radius:8px;background:var(--jade-pale);border:1.5px solid var(--jade);">
+        <div style="font-size:14px;">🌱</div>
+        <div style="flex:1;"><div style="font-size:11.5px;font-weight:600;">綠級</div><div style="font-size:10.5px;color:var(--mist);">提交承諾計畫書</div></div>
+        <span class="bdg b-jade">可立即申請</span>
+      </div>
+      <div style="display:flex;gap:8px;padding:9px;border-radius:8px;background:var(--jade-faint);">
+        <div style="font-size:14px;">🥉</div>
+        <div style="flex:1;"><div style="font-size:11.5px;font-weight:600;">銅級（2030前）</div><div style="font-size:10.5px;color:var(--mist);">服務場域減量≥30%</div></div>
+        <span class="bdg b-gold">2027可達</span>
+      </div>
+      <div style="display:flex;gap:8px;padding:9px;border-radius:8px;background:var(--jade-faint);">
+        <div style="font-size:14px;">🥈</div>
+        <div style="flex:1;"><div style="font-size:11.5px;font-weight:600;">銀級（2035前）</div><div style="font-size:10.5px;color:var(--mist);">服務場域減量≥40%，<strong>須附Scope3減量規劃</strong></div></div>
+        <span class="bdg b-mist">需Scope3計畫</span>
+      </div>
+      <div style="display:flex;gap:8px;padding:9px;border-radius:8px;background:var(--jade-faint);">
+        <div style="font-size:14px;">🥇</div>
+        <div style="flex:1;"><div style="font-size:11.5px;font-weight:600;">金級（2040前）</div><div style="font-size:10.5px;color:var(--mist);">100%服務場域淨零</div></div>
+        <span class="bdg b-mist">2040目標</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 三目標比較表 -->
+<div class="card">
+  <div class="card-title"><div class="ci">🎯</div>三目標年度比較 — 實際值 vs ① SBTi vs ② 基金會目標 vs ③ 淨零標章</div>
+  <div class="card-sub">以2024年為基準 · 綠=達標 · 紅=超標 · 單位：tCO₂e（Scope 1+2）</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>年度</th><th>實際S1+2</th><th>① SBTi 1.5°C上限</th><th>SBTi狀態</th><th>② 基金會目標</th><th>基金會狀態</th><th>③ 淨零標章門檻</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr style="background:var(--jade-faint);"><td><strong>2024 📌</strong></td><td class="tn">9,175</td><td class="tn">9,175</td><td><span class="bdg b-mist">基準年</span></td><td class="tn">9,175</td><td><span class="bdg b-mist">基準年</span></td><td class="tn">—</td><td style="font-size:10.5px;">SGS認證基準年</td></tr>
+        <tr><td><strong>2025 ✓</strong></td><td class="tn">8,327</td><td class="tn">8,790</td><td><span class="bdg b-jade">✓達標</span></td><td class="tn">8,716</td><td><span class="bdg b-jade">✓達標</span></td><td class="tn">—</td><td style="font-size:10.5px;">超前SBTi 462 tCO₂e</td></tr>
+        <tr><td><strong>2026 ⚙</strong></td><td class="tn">7,931</td><td class="tn">8,405</td><td><span class="bdg b-jade">✓達標</span></td><td class="tn">8,280</td><td><span class="bdg b-jade">✓達標</span></td><td class="tn">—</td><td style="font-size:10.5px;">工程估算</td></tr>
+        <tr><td><strong>2027 ⚙</strong></td><td class="tn">5,944</td><td class="tn">8,021</td><td><span class="bdg b-jade">✓超前</span></td><td class="tn">5,944</td><td><span class="bdg b-jade">✓達標</span></td><td class="tn">—</td><td style="font-size:10.5px;">太陽能全到位</td></tr>
+        <tr><td><strong>2030</strong></td><td class="tn">—</td><td class="tn">6,863</td><td><span class="bdg b-mist">待確認</span></td><td class="tn">6,863</td><td><span class="bdg b-mist">待確認</span></td><td class="tn">≤6,423（↓30%銅級）</td><td style="font-size:10.5px;">銅級：服務場域↓30%</td></tr>
+        <tr><td><strong>2035</strong></td><td class="tn">—</td><td class="tn">5,667</td><td><span class="bdg b-mist">規劃中</span></td><td class="tn">—</td><td><span class="bdg b-mist">—</span></td><td class="tn">≤5,505（↓40%銀級）</td><td style="font-size:10.5px;">銀級須附Scope3規劃</td></tr>
+        <tr><td><strong>2040</strong></td><td class="tn">—</td><td class="tn">3,009</td><td><span class="bdg b-mist">規劃中</span></td><td class="tn">1,246~4,840</td><td><span class="bdg b-gold">有條件</span></td><td class="tn">全場域淨零（金級）</td><td style="font-size:10.5px;">樂觀/保守情境範圍</td></tr>
+        <tr><td><strong>2050</strong></td><td class="tn">—</td><td class="tn">0</td><td><span class="bdg b-mist">目標</span></td><td class="tn">0</td><td><span class="bdg b-mist">目標</span></td><td class="tn">全場域淨零（鑽石級）</td><td style="font-size:10.5px;">Scope1+2+3淨零</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE 5: 冰機計畫 ═══ -->
+<div id="chiller" class="page">
+<div class="ph"><h2>❄ 冰水主機汰換計畫</h2><p>22會所 · 26項待汰換 · 依SBTi路徑優先排序 · 2026–2031</p></div>
+
+<div class="g4" style="margin-bottom:18px;">
+  <div class="kpi"><div class="kl">全汰換年減碳</div><div class="kv">4,582<span class="ku">tCO₂e</span></div><div class="kd dg">排序用理論潛力</div></div>
+  <div class="kpi"><div class="kl">Scope1冷媒減量</div><div class="kv">988<span class="ku">tCO₂e</span></div><div class="kd dg">換R-1234ze全部</div></div>
+  <div class="kpi"><div class="kl">Scope2節電減量</div><div class="kv">3,594<span class="ku">tCO₂e</span></div><div class="kd dn">M&V驗證後確認</div></div>
+  <div class="kpi"><div class="kl">已完成（花蓮+新店+桃園）</div><div class="kv">460.2<span class="ku">tCO₂e</span></div><div class="kd dg">2026已實現</div></div>
+</div>
+
+<!-- 能源管理委員會決議 -->
+<div style="background:linear-gradient(135deg,#3D0D0D,#7A1A1A);border-radius:12px;padding:16px;margin-bottom:18px;color:#fff;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:8px;"><div style="font-size:18px;">🚨</div><div style="font-family:'Noto Serif TC',serif;font-size:14px;font-weight:700;">能源管理委員會 — 待決議（5項）</div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;margin-bottom:7px;">
+    <div style="font-size:12px;font-weight:700;">決議一：確認全台冰機汰換排序原則（v2公式）</div>
+    <div style="font-size:10.5px;opacity:.8;margin-top:3px;">優先分數=（Scope1+Scope2）×緊迫係數；緊迫係數=MIN(2.0, 機齡/15+0.3[R-22]+0.3[往復式])</div>
+    <div style="margin-top:5px;"><span style="font-size:9.5px;padding:2px 8px;border-radius:8px;background:rgba(200,64,64,.3);color:#FFB3B3;font-family:'Space Grotesk',sans-serif;font-weight:700;">待決議</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;margin-bottom:7px;">
+    <div style="font-size:12px;font-weight:700;">決議二：核定2027年汰換項目</div>
+    <div style="font-size:10.5px;opacity:.8;margin-top:3px;">① 花蓮同心圓餐廳（500RT R-22，27年）② 花蓮靜思堂CH-1（500RT R-134a，27年，備用機）③ 台北東區聯絡處CH-1（400RT R-22，30年，範疇外）<br>⊘ 民權聯絡處已移出，改評估分離式空調</div>
+    <div style="margin-top:5px;display:flex;gap:6px;"><span style="font-size:9.5px;padding:2px 8px;border-radius:8px;background:rgba(200,64,64,.4);color:#FFB3B3;font-family:'Space Grotesk',sans-serif;font-weight:700;">最緊急</span><span style="font-size:9.5px;padding:2px 8px;border-radius:8px;background:rgba(201,168,76,.4);color:#F9D97A;font-family:'Space Grotesk',sans-serif;font-weight:700;">預算需授權</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;margin-bottom:7px;">
+    <div style="font-size:12px;font-weight:700;">決議三：台北東區聯絡處CH-1（範疇外，僅供資產參考）</div>
+    <div style="font-size:10.5px;opacity:.8;margin-top:3px;">CH-1/2/3不在盤查範疇，已自減碳潛力排除。CH-1為TRANE離心式400RT R-22，1996年（機齡30年），汰換屬資產管理。</div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;margin-bottom:7px;">
+    <div style="font-size:12px;font-weight:700;">決議四：核定2027–2028年汰換項目</div>
+    <div style="font-size:10.5px;opacity:.8;margin-top:3px;">三重志業（700RT R-22 19年）、臺南（440RT R-22 24年）、高雄（740RT R-134a 19年）、彰化CH-2（100RT R-22 26年）、萬華（170RT R-22 26年）<br>預估減碳 ~1,100 tCO₂e/年</div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;">
+    <div style="font-size:12px;font-weight:700;">決議五：新店靜思堂 R-22 冰機汰換方向</div>
+    <div style="font-size:10.5px;opacity:.8;margin-top:3px;">500RT R-22（三台，10年），最大未解鎖Scope1機會76.9 tCO₂e/年。2030年R-22禁止進口，建議2029-30排入計畫。</div>
+    <div style="margin-top:5px;"><span style="font-size:9.5px;padding:2px 8px;border-radius:8px;background:rgba(201,168,76,.4);color:#F9D97A;font-family:'Space Grotesk',sans-serif;font-weight:700;">最大Scope1機會 · 2029–30</span></div>
+  </div>
+</div>
+
+<!-- 汰換排序表 -->
+<div class="card">
+  <div class="card-title"><div class="ci">📋</div>汰換優先排序表（22會所 26項）</div>
+  <div class="card-sub">依冷媒策略、減碳效益、SBTi路徑排序 · 點選行列查看細節</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>狀態</th><th>區域</th><th>設施</th><th>容量(RT)</th><th>冷媒</th><th>機齡</th><th>S1減量</th><th>S2減量</th><th>合計</th><th>建議年度</th></tr></thead>
+      <tbody>
+        <tr style="background:#E8F5F0;"><td><span class="bdg b-jade">✅已完成</span></td><td><span class="bdg b-sky">東區</span></td><td>花蓮靜思堂</td><td class="tn">500</td><td><span class="bdg b-jade">R-1234ze</span></td><td class="tn">新機</td><td class="tn pos">173.9</td><td class="tn">245.9</td><td class="tn" style="font-weight:700;">419.8</td><td class="tn">2026</td></tr>
+        <tr style="background:#E8F5F0;"><td><span class="bdg b-jade">✅已完成</span></td><td><span class="bdg b-jade">北區</span></td><td>桃園分會</td><td class="tn">160</td><td><span class="bdg b-gold">R-134a</span></td><td class="tn">新機</td><td class="tn">—</td><td class="tn">10.31</td><td class="tn" style="font-weight:700;">10.31</td><td class="tn">2026</td></tr>
+        <tr style="background:#FCEAEA;"><td><span class="bdg b-red">★★★最緊急</span></td><td><span class="bdg b-jade">北區</span></td><td>三重志業×5台</td><td class="tn">700</td><td><span class="bdg b-red">R-22</span></td><td class="tn">19年</td><td class="tn pos">107.6</td><td class="tn">359.9</td><td class="tn" style="font-weight:700;">467.5</td><td class="tn">2027</td></tr>
+        <tr style="background:#FCEAEA;"><td><span class="bdg b-red">★★★最緊急</span></td><td><span class="bdg b-sky">東區</span></td><td>花蓮同心圓×2</td><td class="tn">500</td><td><span class="bdg b-red">R-22</span></td><td class="tn">27年</td><td class="tn pos">76.9</td><td class="tn">257.1</td><td class="tn" style="font-weight:700;">334.0</td><td class="tn">2027</td></tr>
+        <tr style="background:#FCEAEA;"><td><span class="bdg b-red">★★★最緊急</span></td><td><span class="bdg b-lotus">南區</span></td><td>高雄分會×4</td><td class="tn">740</td><td><span class="bdg b-gold">R-134a</span></td><td class="tn">19年</td><td class="tn pos">89.8</td><td class="tn">380.5</td><td class="tn" style="font-weight:700;">470.3</td><td class="tn">2027</td></tr>
+        <tr><td><span class="bdg b-gold">★★緊急</span></td><td><span class="bdg b-lotus">南區</span></td><td>臺南分會×3</td><td class="tn">440</td><td><span class="bdg b-red">R-22</span></td><td class="tn">24年</td><td class="tn pos">67.7</td><td class="tn">226.2</td><td class="tn" style="font-weight:700;">293.9</td><td class="tn">2027-28</td></tr>
+        <tr><td><span class="bdg b-gold">★★緊急</span></td><td><span class="bdg b-jade">北區</span></td><td>臺北分會×3</td><td class="tn">500</td><td><span class="bdg b-red">R-22</span></td><td class="tn">10年</td><td class="tn pos">76.9</td><td class="tn">257.1</td><td class="tn" style="font-weight:700;">334.0</td><td class="tn">2027-28</td></tr>
+        <tr><td><span class="bdg b-gold">★★緊急</span></td><td><span class="bdg b-gold">中區</span></td><td>清水聯絡處×3</td><td class="tn">300</td><td><span class="bdg b-red">R-22</span></td><td class="tn">19年</td><td class="tn pos">46.2</td><td class="tn">154.2</td><td class="tn" style="font-weight:700;">200.4</td><td class="tn">2027-28</td></tr>
+        <tr><td><span class="bdg b-sky">★★高</span></td><td><span class="bdg b-jade">北區</span></td><td>板橋志業×2</td><td class="tn">260</td><td><span class="bdg b-gold">R-134a</span></td><td class="tn">22年</td><td class="tn pos">31.6</td><td class="tn">133.7</td><td class="tn" style="font-weight:700;">165.3</td><td class="tn">2028-29</td></tr>
+        <tr><td><span class="bdg b-sky">★★高</span></td><td><span class="bdg b-gold">中區</span></td><td>臺中分會×3</td><td class="tn">400</td><td><span class="bdg b-red">R-22</span></td><td class="tn">13年</td><td class="tn pos">61.5</td><td class="tn">205.7</td><td class="tn" style="font-weight:700;">267.2</td><td class="tn">2028-29</td></tr>
+        <tr><td><span class="bdg b-mist">★低</span></td><td><span class="bdg b-jade">北區</span></td><td>中正聯絡處</td><td class="tn">260</td><td><span class="bdg b-gold">R-134a</span></td><td class="tn">4年</td><td class="tn pos">31.6</td><td class="tn">133.7</td><td class="tn" style="font-weight:700;">165.3</td><td class="tn">2030後</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 分年路線圖 -->
+<div class="card">
+  <div class="card-title"><div class="ci">🗓</div>2026–2031 分年汰換路線圖</div>
+  <div class="card-sub">依SBTi路徑優先順序，每年汰換200–500RT</div>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+    <div style="display:flex;gap:12px;align-items:flex-start;"><div style="background:#1A7A5E;color:#fff;border-radius:8px;padding:5px 10px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;white-space:nowrap;">2026 ✅</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><div style="background:#E8F5F0;border:1px solid #1A7A5E;border-radius:6px;padding:3px 9px;font-size:10.5px;">花蓮靜思堂 500RT R-1234ze磁浮（419.8 tCO₂e 驗收基準）✅</div><div style="background:#E8F5F0;border:1px solid #1A7A5E;border-radius:6px;padding:3px 9px;font-size:10.5px;">桃園分會 160RT KLFW R-134a（Scope2 10.31 tCO₂e 實測）✅</div><div style="background:#E8F5F0;border:1px solid #1A7A5E;border-radius:6px;padding:3px 9px;font-size:10.5px;">新店靜思堂 管路+控制優化（30.1 tCO₂e）✅</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;"><div style="background:#C84040;color:#fff;border-radius:8px;padding:5px 10px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;white-space:nowrap;">2027</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><div style="background:#FCEAEA;border:1px solid #C84040;border-radius:6px;padding:3px 9px;font-size:10.5px;">花蓮同心圓 500RT R-22（334 tCO₂e）</div><div style="background:#FCEAEA;border:1px solid #C84040;border-radius:6px;padding:3px 9px;font-size:10.5px;">高雄分會 740RT（470 tCO₂e）</div><div style="background:#FCEAEA;border:1px solid #C84040;border-radius:6px;padding:3px 9px;font-size:10.5px;">☀ 太陽能41場全到位（2,748 tCO₂e）</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;"><div style="background:#C9A84C;color:#fff;border-radius:8px;padding:5px 10px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;white-space:nowrap;">2027-28</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><div style="background:#FFF8E8;border:1px solid #C9A84C;border-radius:6px;padding:3px 9px;font-size:10.5px;">三重志業 700RT（468 tCO₂e）</div><div style="background:#FFF8E8;border:1px solid #C9A84C;border-radius:6px;padding:3px 9px;font-size:10.5px;">臺南分會 440RT（294 tCO₂e）</div><div style="background:#FFF8E8;border:1px solid #C9A84C;border-radius:6px;padding:3px 9px;font-size:10.5px;">臺北分會 500RT（334 tCO₂e）</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;"><div style="background:#4A8FAF;color:#fff;border-radius:8px;padding:5px 10px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;white-space:nowrap;">2028-29</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><div style="background:#EAF4FA;border:1px solid #4A8FAF;border-radius:6px;padding:3px 9px;font-size:10.5px;">清水聯絡處 300RT</div><div style="background:#EAF4FA;border:1px solid #4A8FAF;border-radius:6px;padding:3px 9px;font-size:10.5px;">板橋志業 260RT</div><div style="background:#EAF4FA;border:1px solid #4A8FAF;border-radius:6px;padding:3px 9px;font-size:10.5px;">臺中分會 400RT</div><div style="background:#EAF4FA;border:1px solid #4A8FAF;border-radius:6px;padding:3px 9px;font-size:10.5px;">彰化分會 220RT</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;"><div style="background:#888;color:#fff;border-radius:8px;padding:5px 10px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;white-space:nowrap;">2030後</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><div style="background:#F4F4F4;border:1px solid #CCC;border-radius:6px;padding:3px 9px;font-size:10.5px;">新店靜思堂 500RT（2030年R-22禁進口前汰換）</div><div style="background:#F4F4F4;border:1px solid #CCC;border-radius:6px;padding:3px 9px;font-size:10.5px;">R-134a機組長期路線圖（15台2,860RT）</div></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE 6: 情境分析 ═══ -->
+<div id="scenario" class="page">
+<div class="ph"><h2>📐 情境分析 · Scope 3 行動方向</h2><p>樂觀 vs 保守情境 · 2040年缺口分析 · Scope 3 路線圖</p></div>
+
+<!-- 情境KPI -->
+<div class="g3" style="margin-bottom:18px;">
+  <div class="kpi"><div class="kl">樂觀情境 2027年排放</div><div class="kv">4,264<span class="ku">tCO₂e</span></div><div class="kd dg">↓53.5% Scope2節電全採計</div></div>
+  <div class="kpi"><div class="kl">保守情境 2027年排放</div><div class="kv">5,507<span class="ku">tCO₂e</span></div><div class="kd dn">↓40% 排除未結案Scope2節電</div></div>
+  <div class="kpi"><div class="kl">兩情境差距</div><div class="kv">1,243<span class="ku">tCO₂e</span></div><div class="kd dw">桃園/新店Scope2及2027首波待驗證</div></div>
+</div>
+
+<!-- 情境路徑表格化 -->
+<div class="card" style="margin-bottom:18px;">
+  <div class="card-title"><div class="ci">📈</div>樂觀 vs 保守情境路徑（2024–2050）</div>
+  <div class="card-sub">路徑圖以資料表呈現，數值更精確</div>
+  <!-- CSS chart for scenarios -->
+  <div style="position:relative;padding:0 8px;margin-bottom:8px;">
+    <div class="chart-ylabel"><span>10k</span><span>8k</span><span>6k</span><span>4k</span><span>2k</span><span>0</span></div>
+    <div class="chart-area" style="height:200px;">
+      <div class="chart-grid" style="bottom:20%;"></div>
+      <div class="chart-grid" style="bottom:40%;"></div>
+      <div class="chart-grid" style="bottom:60%;"></div>
+      <div class="chart-grid" style="bottom:80%;"></div>
+      <!-- 2030 target line -->
+      <div style="position:absolute;left:0;right:0;bottom:68.6%;height:1px;background:rgba(74,143,175,.4);border-top:1px dashed rgba(74,143,175,.4);"><span style="position:absolute;right:2px;top:-14px;font-size:8.5px;color:#4A8FAF;font-family:'Space Grotesk',sans-serif;">2030目標6,863</span></div>
+      <!-- 2040 target line -->
+      <div style="position:absolute;left:0;right:0;bottom:30.1%;height:1px;background:rgba(74,143,175,.25);border-top:1px dashed rgba(74,143,175,.25);"><span style="position:absolute;right:2px;top:-14px;font-size:8.5px;color:#4A8FAF;font-family:'Space Grotesk',sans-serif;">2040目標3,009</span></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <!-- SBTi line (2024→2027→2030→2040→2050) at x: 0,28,46,73,100 -->
+        <polyline points="0,8.25 28,19.79 46,31.37 73,69.91 100,100"
+          fill="none" stroke="#C84040" stroke-width="0.7" stroke-dasharray="2,1.5" vector-effect="non-scaling-stroke"/>
+        <!-- Optimistic fill -->
+        <polygon points="0,100 0,8.25 28,57.4 46,68.6 73,87.54 100,100"
+          fill="rgba(26,122,94,0.08)"/>
+        <!-- Optimistic line -->
+        <polyline points="0,8.25 28,57.4 46,68.6 73,87.54 100,100"
+          fill="none" stroke="#1A7A5E" stroke-width="1.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        <!-- Conservative line -->
+        <polyline points="0,8.25 28,44.9 46,68.6 73,51.6 100,92"
+          fill="none" stroke="#C9A84C" stroke-width="1.2" stroke-dasharray="3,2" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <!-- Key labels -->
+      <div class="chart-label" style="left:0%;bottom:95%;color:#1A7A5E;">9,175</div>
+      <div class="chart-label" style="left:28%;bottom:61%;color:#1A7A5E;">4,264</div>
+      <div class="chart-label" style="left:28%;bottom:46%;color:var(--gold);">5,507</div>
+      <span class="chart-xlabel" style="left:0%;">2024</span>
+      <span class="chart-xlabel" style="left:28%;">2027</span>
+      <span class="chart-xlabel" style="left:46%;">2030</span>
+      <span class="chart-xlabel" style="left:73%;">2040</span>
+      <span class="chart-xlabel" style="left:100%;">2050</span>
+    </div>
+  </div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10.5px;margin-top:30px;">
+    <div style="display:flex;align-items:center;gap:5px;"><div style="width:20px;height:3px;background:#1A7A5E;border-radius:1px;"></div>樂觀（Scope2節電全採計）</div>
+    <div style="display:flex;align-items:center;gap:5px;"><div style="width:20px;height:2px;background:#C9A84C;"></div>保守（冰機僅Scope1冷媒）</div>
+    <div style="display:flex;align-items:center;gap:5px;"><div style="width:20px;height:2px;background:#C84040;"></div>SBTi 1.5°C</div>
+  </div>
+</div>
+
+<!-- 行動明細表 -->
+<div class="card" style="margin-bottom:18px;">
+  <div class="card-title"><div class="ci">📋</div>減碳行動組合 — 樂觀 vs 保守假設</div>
+  <div class="card-sub">T-REC有制度保障兩情境均計入；冰機Scope2節電待M&V驗證</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>行動項目</th><th>範疇</th><th>樂觀情境</th><th>保守情境</th><th>差異</th><th>狀態</th></tr></thead>
+      <tbody>
+        <tr><td>☀ 太陽能 T-REC（2027全到位）</td><td><span class="bdg b-sky">S2</span></td><td class="tn pos">2,748</td><td class="tn pos">2,748</td><td class="tn">—</td><td><span class="bdg b-jade">確認</span></td></tr>
+        <tr><td>❄ 花蓮磁浮冰機節電（Scope2）</td><td><span class="bdg b-sky">S2</span></td><td class="tn pos">245.9</td><td class="tn pos">245.9</td><td class="tn">—</td><td><span class="bdg b-jade">已結案</span></td></tr>
+        <tr><td>❄ 花蓮磁浮冰機冷媒（Scope1）</td><td><span class="bdg b-jade">S1</span></td><td class="tn pos">173.9</td><td class="tn pos">173.9</td><td class="tn">—</td><td><span class="bdg b-jade">確認</span></td></tr>
+        <tr><td>❄ 桃園冰機節電（Scope2）</td><td><span class="bdg b-sky">S2</span></td><td class="tn pos">10.31</td><td class="tn neg">—（排除）</td><td class="tn neg">+10.31</td><td><span class="bdg b-gold">驗證中</span></td></tr>
+        <tr><td>❄ 桃園冰機冷媒（Scope1）</td><td><span class="bdg b-jade">S1</span></td><td class="tn">—（非減量）</td><td class="tn">—（非減量）</td><td class="tn">—</td><td><span class="bdg b-mist">非減量</span></td></tr>
+        <tr><td>❄ 新店管路+泵浦</td><td><span class="bdg b-sky">S2</span></td><td class="tn pos">30.1</td><td class="tn neg">—（排除）</td><td class="tn neg">+30.1</td><td><span class="bdg b-gold">驗證中</span></td></tr>
+        <tr><td>❄ 2027年第一波冰機（台北+高雄+三重）</td><td><span class="bdg b-mist">S1+2</span></td><td class="tn pos">660</td><td class="tn pos">330</td><td class="tn neg">+330</td><td><span class="bdg b-mist">工程估算</span></td></tr>
+        <tr><td>🚗 公務車電動化（SGS校正）</td><td><span class="bdg b-jade">S1</span></td><td class="tn pos">41.1</td><td class="tn pos">41.1</td><td class="tn">—</td><td><span class="bdg b-jade">確認</span></td></tr>
+        <tr style="background:var(--jade-faint);font-weight:700;"><td colspan="2">合計減量</td><td class="tn pos">3,909.3 tCO₂e</td><td class="tn">3,538.9 tCO₂e</td><td class="tn neg">差距370.4 tCO₂e</td><td>2027預估</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:12px;padding:10px 14px;background:#FFF8E8;border-radius:8px;font-size:11.5px;line-height:1.7;">⚠ <strong>結論：</strong>即使保守情境，<strong>2030目標（6,863 tCO₂e）仍可達成</strong>。但2040目標（3,009 tCO₂e）在保守情境仍有 <strong>≈2,758 tCO₂e 缺口</strong>，需Scope 3減量與碳權補足。</div>
+</div>
+
+<!-- Scope 3 -->
+<div class="card">
+  <div class="card-title"><div class="ci">🌐</div>Scope 3 現況 &amp; 行動路線圖</div>
+  <div class="card-sub">類別3+4+5 合計 3,571 tCO₂e · 佔全量30% · 2040年達標的必要條件</div>
+  <div class="g3" style="margin-bottom:14px;">
+    <div style="background:var(--jade-faint);border-radius:10px;padding:14px;border-left:4px solid #4A8FAF;">
+      <div style="font-size:10px;color:var(--mist);margin-bottom:5px;">類別3：員工通勤+差旅 588 tCO₂e</div>
+      <div style="font-size:11px;font-weight:600;color:var(--sky);margin-bottom:5px;">執行難度：低 · 潛力：88–147 tCO₂e</div>
+      <div style="font-size:10.5px;line-height:1.7;color:var(--earth);">• 視訊優先取代跨所出差（2026下半年）<br>• 公車/捷運月票補貼制度（2027）<br>• 花蓮-台北路線替代方案（高鐵 vs 飛機）</div>
+    </div>
+    <div style="background:var(--jade-faint);border-radius:10px;padding:14px;border-left:4px solid #1A7A5E;">
+      <div style="font-size:10px;color:var(--mist);margin-bottom:5px;">類別4：採購廢棄物 1,829 tCO₂e</div>
+      <div style="font-size:11px;font-weight:600;color:var(--jade);margin-bottom:5px;">執行難度：中 · 潛力：183–366 tCO₂e</div>
+      <div style="font-size:10.5px;line-height:1.7;color:var(--earth);">• 主要供應商碳足跡盤查要求（2027-28）<br>• 優先採購ISO 14001認證廠商（2027）<br>• 廚房廢棄物堆肥化計畫（2027）</div>
+    </div>
+    <div style="background:var(--jade-faint);border-radius:10px;padding:14px;border-left:4px solid #C9A84C;">
+      <div style="font-size:10px;color:var(--mist);margin-bottom:5px;">類別5：產品使用 1,154 tCO₂e</div>
+      <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:5px;">執行難度：高 · 潛力：58–115 tCO₂e</div>
+      <div style="font-size:10.5px;line-height:1.7;color:var(--earth);">• 智慧電表普及（2027-28）<br>• 院所節能競賽標準化月度公告（2026）<br>• 非必要設備關機政策（2026）</div>
+    </div>
+  </div>
+  <div style="padding:10px 14px;background:#FFF8E8;border-radius:8px;font-size:11px;color:var(--earth);">
+    ⚠ <strong>重要提醒：</strong>依TAISE 2026版淨零標章規範，<strong>申請銀級（含）以上標章須附Scope 3減量規劃</strong>（2026版新增要求）。建議永續發展組2026年下半年啟動Scope 3正式盤查與計畫提交。
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE 7: 跨部門追蹤 ═══ -->
+<div id="crossdept" class="page">
+<div class="ph"><h2>🤝 跨部門行動追蹤</h2><p>各部門任務狀態 · 2026年關鍵節點 · 能源管理委員會待決議</p></div>
+
+<div class="g2">
+<div>
+
+  <!-- 總務處 -->
+  <div class="dept-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="width:32px;height:32px;background:#E8F5F0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;">🔧</div>
+      <div><div style="font-size:12.5px;font-weight:600;">總務處</div><div style="font-size:10.5px;color:var(--mist);">冰水主機汰換、設備維護、HFC冷媒管理、公務車、採購、太陽能施工</div></div>
+    </div>
+    <div class="task"><div class="tdot s-done"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">花蓮冰機 M&V 驗證完成</div><div style="font-size:10.5px;color:var(--mist);">已結案（2026-06-25）：節能率 49.25%，419.8 tCO₂e 為驗收基準值</div></div><div style="font-size:10px;color:var(--jade);white-space:nowrap;">✅ 2026/06/25</div></div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">花蓮 HFC 首次補充量記錄</div><div style="font-size:10.5px;color:var(--mist);">記錄R-1234ze補充量，確認2026年Scope1逸散</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">2026/05</div></div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">10所HFC冷媒型號全盤查</div><div style="font-size:10.5px;color:var(--mist);">三重、板橋、台南等冷媒型號確認（目前估算值）</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">2026 Q3</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">三重志業 HVAC 系統診斷</div><div style="font-size:10.5px;color:var(--red);">唯一Scope2逆增所（+1.8%），強度22.86最高，需找出原因</div></div><div style="font-size:10px;color:var(--red);white-space:nowrap;">2026 Q3</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">台北/高雄採購規格制定</div><div style="font-size:10.5px;color:var(--mist);">依花蓮驗證結果制定離心懸浮式+R-1234ze採購規格</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026 Q4</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">2027年冰機汰換施工規劃</div><div style="font-size:10.5px;color:var(--mist);">台北（267）、高雄（207）、三重（122）tCO₂e/年</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2027</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">公務車電動化時程制定</div><div style="font-size:10.5px;color:var(--mist);">優先汰換13輛高里程燃油車（目前2電+4油電）</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026下半年</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">充電樁建置規劃</div><div style="font-size:10.5px;color:var(--mist);">主要會所停車場充電設施</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2027</div></div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">T-REC 再生能源憑證取得</div><div style="font-size:10.5px;color:var(--mist);">太陽能發電對應憑證，Scope 2歸零計算</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">2027</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">三重/板橋 ISO 50001 推展</div><div style="font-size:10.5px;color:var(--mist);">無設備汰換干擾，作為管理效益對照組</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2027</div></div>
+  </div>
+
+  <!-- 人資處 -->
+  <div class="dept-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="width:32px;height:32px;background:#EAF4FA;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;">👥</div>
+      <div><div style="font-size:12.5px;font-weight:600;">人資處</div><div style="font-size:10.5px;color:var(--mist);">員工通勤管理、Scope 3 類別3數據收集</div></div>
+    </div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">員工通勤調查啟動</div><div style="font-size:10.5px;color:var(--mist);">Scope 3 類3通勤排放（23所588 tCO₂e）數據收集，建立通勤碳足跡基礎資料</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026下半年</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">公車/捷運通勤補貼制度</div><div style="font-size:10.5px;color:var(--mist);">鼓勵大眾交通，減少自用車通勤碳排</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2027</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">視訊優先取代跨所出差制度化</div><div style="font-size:10.5px;color:var(--mist);">建立跨所會議視訊優先政策，減少差旅排放</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026下半年</div></div>
+  </div>
+
+</div>
+<div>
+
+  <!-- 永續發展組 -->
+  <div class="dept-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="width:32px;height:32px;background:#E8F5F0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;">🌱</div>
+      <div><div style="font-size:12.5px;font-weight:600;">永續發展組</div><div style="font-size:10.5px;color:var(--mist);">GHG盤查管理、SBTi路徑追蹤、對外溝通、輔導顧問協作</div></div>
+    </div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">2026年度SGS碳盤查啟動</div><div style="font-size:10.5px;color:var(--mist);">確保花蓮/新店/桃園新行動效益納入認證</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026 Q4</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">Scope 3 減量計畫啟動</div><div style="font-size:10.5px;color:var(--mist);">類3通勤+類4採購廢棄物優先，目標2028執行</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026下半年</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:600;color:var(--jade);">TAISE 淨零標章綠級申請</div><div style="font-size:10.5px;color:var(--jade);">慈濟目前已符合綠級條件，建議2026年提交淨零承諾計畫書</div></div><div style="font-size:10px;color:var(--jade);white-space:nowrap;">2026</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">輔導顧問溝通 &amp; SGS查證陪伴輔導</div><div style="font-size:10.5px;color:var(--mist);">協助準備查證文件、陪伴SGS第三方查證作業流程</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026–2027</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">2030整合性永續報告規劃</div><div style="font-size:10.5px;color:var(--mist);">含SBTi ACA路徑揭露，對外標竿溝通</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2030</div></div>
+  </div>
+
+  <!-- 財務處 -->
+  <div class="dept-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="width:32px;height:32px;background:#FFF8E8;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;">💰</div>
+      <div><div style="font-size:12.5px;font-weight:600;">財務處</div><div style="font-size:10.5px;color:var(--mist);">冰機汰換預算編列、能源費用追蹤、ROI分析</div></div>
+    </div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">2027年冰機汰換預算編列</div><div style="font-size:10.5px;color:var(--mist);">台北+高雄+三重估計預算（請總務處確認規格後提報）</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">2026 Q3</div></div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">能源費用 vs 減碳效益 ROI 分析</div><div style="font-size:10.5px;color:var(--mist);">各項措施投資報酬率計算，協助優先排序決策</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">滾動更新</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">R-22料源風險成本評估</div><div style="font-size:10.5px;color:var(--mist);">2030年R-22禁止進口後，維修費用攀升趨勢追蹤</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026下半年</div></div>
+  </div>
+
+  <!-- 各會所行政 -->
+  <div class="dept-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="width:32px;height:32px;background:#FAF0EC;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;">🏢</div>
+      <div><div style="font-size:12.5px;font-weight:600;">各會所行政</div><div style="font-size:10.5px;color:var(--mist);">月度數據回報、節能競賽推動、ISO 50001配合</div></div>
+    </div>
+    <div class="task"><div class="tdot s-done"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">月度電表數據統一回報</div><div style="font-size:10.5px;color:var(--mist);">格式標準化提報永續發展組，建立持續數據品質</div></div><div style="font-size:10px;color:var(--jade);white-space:nowrap;">每月</div></div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">三重志業異常用電追蹤</div><div style="font-size:10.5px;color:var(--red);">2025逆增，需提報2026上半年每月用電明細給總務處</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">2026 Q2</div></div>
+    <div class="task"><div class="tdot s-ing"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">彰化 Scope 5 數據審查</div><div style="font-size:10.5px;color:var(--mist);">2025年類別5排放異常增加（↑9.8%），確認數據填報正確性</div></div><div style="font-size:10px;color:var(--gold);white-space:nowrap;">2026 Q2</div></div>
+    <div class="task"><div class="tdot s-pend"></div><div style="flex:1;"><div style="font-size:11.5px;font-weight:500;">院所節能競賽啟動</div><div style="font-size:10.5px;color:var(--mist);">月度用電公告，提升同仁節能意識與行為改變</div></div><div style="font-size:10px;color:var(--mist);white-space:nowrap;">2026下半年</div></div>
+  </div>
+
+</div>
+</div>
+
+<!-- 狀態說明 -->
+<div style="margin-top:14px;display:flex;gap:16px;font-size:10.5px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:5px;"><div class="tdot s-done" style="width:8px;height:8px;margin-top:0;flex-shrink:0;"></div>已完成</div>
+  <div style="display:flex;align-items:center;gap:5px;"><div class="tdot s-ing" style="width:8px;height:8px;margin-top:0;flex-shrink:0;"></div>進行中</div>
+  <div style="display:flex;align-items:center;gap:5px;"><div class="tdot s-pend" style="width:8px;height:8px;margin-top:0;flex-shrink:0;"></div>待啟動</div>
+</div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <div>財團法人中華民國佛教慈濟慈善事業基金會 · 永續發展組 · SBTi 1.5°C ACA · SGS認證 · 台電0.494 kgCO₂/kWh · 資料截止：2026-07-03（已與 SBTi 儀表板 da54422 口徑校準）</div>
+  <div class="fbadges"><a class="fbdg" href="dashboard.html" style="text-decoration:none;">📊 SBTi儀表板</a><a class="fbdg" href="https://electricpj.tzuchi-org.tw/" target="_blank" rel="noopener" style="text-decoration:none;">⚡ 能源管理系統</a><div class="fbdg">SGS認證</div><div class="fbdg">ISO14064</div><div class="fbdg">SBTi ACA</div><div class="fbdg">ISO50001×5</div></div>
+</div>
+
+<!-- PAGE NAVIGATION JS (minimal - just for tab highlighting) -->
+<script>
+// Minimal JS: only used for tab highlighting, not content rendering
+document.querySelectorAll('.tab-link').forEach(link=>{
+  link.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-link').forEach(l=>l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+// Show page based on hash
+function applyHash(){
+  const hash=location.hash.slice(1)||'overview';
+  document.querySelectorAll('.page').forEach(p=>{
+    p.style.display=(p.id===hash)?'block':'none';
+  });
+  document.querySelectorAll('.tab-link').forEach(l=>{
+    l.classList.toggle('active',l.getAttribute('href')==='#'+hash);
+  });
+}
+window.addEventListener('hashchange',applyHash);
+// On load show overview
+applyHash();
+</script>
+</body>
+</html>
